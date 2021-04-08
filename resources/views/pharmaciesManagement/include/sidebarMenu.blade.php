@@ -5,7 +5,7 @@
         <ul class="nav flex-column">
             <li class="nav-item " >
                 <a class="nav-link active " aria-current="page" href="{{route('newReports')}}">
-                    <i class="fas fa-inbox "></i>
+                    <i class="fas fa-inbox"></i>
                     <span data-feather="file" class="ml-2">بلاغات وارده</span>
                     <i class="fas fa-caret-down ml-3 dropdown "></i>
                 </a>
@@ -32,16 +32,16 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('addReport')}}">
-                    <i class="fas fa-plus "></i>
-                    <span data-feather="file" class="ml-2"> إضافة بلاغ جديد</span>
+                <a class="nav-link active" aria-current="page" href="{{route('addDrug')}}">
+                    <i class="fas fa-plus"></i>
+                    <span data-feather="file" class="ml-2">إضافة دواء جديد</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active " aria-current="page" href="{{route('followReports')}}">
                     <i class="fas fa-chalkboard-teacher "></i>
                     <span data-feather="file" class="ml-2">متابعةالبلاغات</span>
-                    <i class="fas fa-caret-down ml-1 dropdown "></i>
+                    <i class="fas fa-caret-down ml-2 dropdown "></i>
                 </a>
                 <ul class="UL">
                     <li class="nav-item " >
@@ -65,14 +65,8 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('managementReports')}}">
-                    <i class="fas fa-cogs "></i>
-                    <span data-feather="file" class="ml-2">إدارة البلاغات</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">
-                    <i class="fas fa-file-contract "></i>
+                    <i class="fas fa-file-contract"></i>
                     <span data-feather="file" class="ml-2">التقارير</span>
                 </a>
             </li>

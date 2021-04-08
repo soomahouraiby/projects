@@ -1,35 +1,28 @@
 @extends('layouts\master')
 @section('content')
 
+    {{--Fixed--}}
+    <div id="New">
+        <a class="nav-link active" href="../pharmaciesManagement/follow.php">
+            <i class="fas fa-plus fa-1x ml-0 mr-0"></i>
+            <span data-feather="file" class="ml-1">متابعة</span>
+        </a>
+    </div>
+
     <main class="col-md-8 ms-sm-auto col-lg-10 px-md-4 ">
-
         {{--Title--}}
-
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 pr-2  border-bottom main " >
-            <h1 class="h2   ml-2 mt-2 mb-2">تفاصيل بلاغ وارد</h1>
-            <div class="dropdown">
-                <button type="button" class="btn btn-sm  dropdown-toggle mr-4 ml-4 button" data-toggle="dropdown" id="btn">
-                    الجهه المُحال إليها
-                </button>
-                <div class="dropdown-menu dropdown-menu-right bg-light">
-                    <a class="dropdown-item " href="#">إدارة الصيدلة</a>
-                </div>
-            </div>
+            <h1 class="h2 ml-4">تفاصيل بلاغ وارد</h1>
         </div>
 
-        {{--Title--}}
-
-
-
-        {{--Start Content--}}
-
-        <div class="row" style="width: 100%;" >
+        {{--Content--}}
+        <div class="row" style="width: 100%" >
 
             {{--//////////////////////////////////////////////////////--}}
-            {{--                       بيانات المبلغ                   --}}
+            {{--                    بيانات المبلغ                      --}}
             {{--//////////////////////////////////////////////////////--}}
 
-            <div class="card shadow col-lg-5" style="width: 40%; background-color: #F9F9F9;"  >
+            <div class="card shadow " style="width: 50% ;background-color: #F9F9F9;"  >
                 <div class="card-header "style="background-color: #F9F9F9;">
                     <h5 class="card-title" style="color:#5468FF">بيانات المبلغ</h5>
                 </div>
@@ -56,10 +49,10 @@
             </div>
 
             {{--//////////////////////////////////////////////////////--}}
-            {{--                       تفاصيل الموقع                   --}}
+            {{--                   تفاصيل الموقع                       --}}
             {{--//////////////////////////////////////////////////////--}}
 
-            <div class="card shadow  col-md-4 col-lg-5" style="width: 40%;background-color: #F9F9F9;"  >
+            <div class="card shadow  col-md-4 " style="width: 50%;background-color: #F9F9F9;"  >
                 <div class="card-header " style="background-color: #F9F9F9;">
                     <h5 class="card-title" style="color:#5468FF"> موقع البلاغ</h5>
                 </div>
@@ -84,15 +77,15 @@
             </div>
         </div>
 
-        <div class="row" style="width: 100%;" >
+        <div class="row" style="" >
 
             {{--//////////////////////////////////////////////////////--}}
-            {{--                       تفاصيل الدواء                    --}}
+            {{--                    تفاصيل الدواء                      --}}
             {{--//////////////////////////////////////////////////////--}}
 
-            <div class="card shadow  col-md-4 col-lg-5" style="width: 40%; background-color: #F9F9F9;"  >
+            <div class="card shadow  col-md-4" style=" background-color: #F9F9F9;"  >
                 <div class="card-header "style="background-color: #F9F9F9;">
-                    <h5 class="card-title" style="color:#5468FF">تفاصيل الدواء</h5>
+                    <a class="card-title nav-link h5" href="../pharmaciesManagement/detailsDrug.php" style="color:#5468FF">تفاصيل الدواء</a>
                 </div>
                 <div class="card-body">
                     <div class="row" >
@@ -111,6 +104,7 @@
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
                                 <div class="card-img-top" ><img class="card-img-top img-fluid" src="../images/Panadol.jpg"></div>
+                                <a class="btn float-right" href="../pharmaciesManagement/detailsDrug.php">المزيد</a>
                             </li>
                         </ul>
                     </div>
@@ -118,10 +112,10 @@
             </div>
 
             {{--//////////////////////////////////////////////////////--}}
-            {{--                       موضوع البلاغ                    --}}
+            {{--                    موضوع البلاغ                        --}}
             {{--//////////////////////////////////////////////////////--}}
 
-            <div class="card shadow  col-md-4 col-lg-5" style="width: 40%;background-color: #F9F9F9;"  >
+            <div class="card shadow  col-md-4" style="background-color: #F9F9F9;"  >
                 <div class="card-header " style="background-color: #F9F9F9;">
                     <h5 class="card-title" style="color:#5468FF"> موضوع البلاغ</h5>
                 </div>
@@ -149,9 +143,6 @@
                 </div>
             </div>
         </div>
-
-        {{--End Content--}}
-
     </main>
 
 @endsection

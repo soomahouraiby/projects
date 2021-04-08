@@ -8,8 +8,8 @@
             <span class="text-light ml-2"> العمليات</span>
         </button>
         <div class="dropdown-menu dropdown-menu-right">
-{{--            <a class="dropdown-item text-primary" href="#">#</a>--}}
-{{--            <div class="dropdown-divider"></div>--}}
+            {{--            <a class="dropdown-item text-primary" href="#">#</a>--}}
+            {{--            <div class="dropdown-divider"></div>--}}
             <a class="dropdown-item text-primary" href="#">تسجيل الخروج</a>
         </div>
     </div>

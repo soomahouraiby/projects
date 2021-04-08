@@ -5,19 +5,21 @@
         {{--Start Content Title--}}
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 pr-2  border-bottom main " >
-            <h1 class="h2  ml-4">إدارة البلاغات</h1>
+            <h1 class="h2  ml-2 mt-2 mb-2">إدارة البلاغات</h1>
             <div class="btn-toolbar ">
                 <input class="form-control form-control-dark w-50 mr-5" type="text" placeholder="بحث" aria-label="بحث" size="30" style="border: 2px solid #ECECEC;
                     border-radius: 20px;">
-                <div class="btn-group show ">
-                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle mr-4 ml-4 button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <a>عرض</a>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-sm  dropdown-toggle mr-4 ml-4 button" data-toggle="dropdown" id="btn">
+                        عرض
                     </button>
-                    <!--<div class="dropdown-menu show" x-placement="bottom-start" >
-                             <a class="dropdown-item" href="#">مسحوب</a>
-                             <a class="dropdown-item" href="#">مهرب</a>
-                             <a class="dropdown-item" href="#">غير مطابق</a>
-                        <div>-->
+                    <div class="dropdown-menu dropdown-menu-right bg-light">
+                        <a class="dropdown-item " href="#">جميع البلاغات</a>
+                        <a class="dropdown-item " href="#">بلاغ وارد</a>
+                        <a class="dropdown-item " href="#">قيد المتابعة</a>
+                        <a class="dropdown-item " href="#">تم متابعتها</a>
+                        <a class="dropdown-item " href="#">تم انهائها</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,15 +50,15 @@
                     <div id="table-purchases-replace-element "class="col-lg-4 " style=" ">
                         <button class="btn btn-falcon-default btn-sm" type="button">
                             <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
-                            <span class="d-none d-sm-inline-block ml-1">بلاغ وارد</span>
+                            <span class="d-none d-sm-inline-block ">بلاغ وارد</span>
                         </button>
                         <button class="btn btn-falcon-default btn-sm mx-2" type="button">
                             <span class="fas fa-filter" data-fa-transform="shrink-3 down-2"></span>
-                            <span class="d-none d-sm-inline-block ml-1">فلتره</span>
+                            <span class="d-none d-sm-inline-block ">فلتره</span>
                         </button>
                         <button class="btn btn-falcon-default btn-sm" type="button">
                             <span class="fas fa-external-link-alt" data-fa-transform="shrink-3 down-2"></span>
-                            <span class="d-none d-sm-inline-block ml-1">تصدير</span>
+                            <span class="d-none d-sm-inline-block ">تصدير</span>
                         </button>
                     </div>
                 </div>
@@ -90,14 +92,18 @@
                             <td class="align-middle text-left  white-space-nowrap payment">
                                 <a class="badge badge rounded-pill badge-soft-success  align-items-center text-left nav-link active " href="#" style="background-color:#E3E6EA; color:#7D899B;  height:25px;"  >
                                     <span data-feather="file  text-center " >بلاغ وارد </span>
-                                    <i class="fas fa-file-contract ml-4"></i>
+                                    <i class="fas fa-file-contract ml-3"></i>
                                 </a>
                             </td>
-
                             <td class="align-middle white-space-nowrap">
-                                <div class="dropdown font-sans-serif"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Refund</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item text-warning" href="#!">Archive</a><a class="dropdown-item text-danger" href="#!">Delete</a>
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
+                                        <span class="fas fa-ellipsis-h fs--1"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
+                                        <a class="dropdown-item" href="#">عرض</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  " href="#!">إنهاء</a>
                                     </div>
                                 </div>
                             </td>
@@ -116,11 +122,15 @@
                                     <i class="fas fa-file-contract ml-3"></i>
                                 </a>
                             </td>
-
                             <td class="align-middle white-space-nowrap">
-                                <div class="dropdown font-sans-serif"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Refund</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item text-warning" href="#!">Archive</a><a class="dropdown-item text-danger" href="#!">Delete</a>
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
+                                        <span class="fas fa-ellipsis-h fs--1"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
+                                        <a class="dropdown-item" href="#">عرض</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  " href="#!">إنهاء</a>
                                     </div>
                                 </div>
                             </td>
@@ -139,11 +149,15 @@
                                     <i class="fas fa-file-contract ml-3"></i>
                                 </a>
                             </td>
-
                             <td class="align-middle white-space-nowrap">
-                                <div class="dropdown font-sans-serif"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Refund</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item text-warning" href="#!">Archive</a><a class="dropdown-item text-danger" href="#!">Delete</a>
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
+                                        <span class="fas fa-ellipsis-h fs--1"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
+                                        <a class="dropdown-item" href="#">عرض</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  " href="#!">إنهاء</a>
                                     </div>
                                 </div>
                             </td>
@@ -162,11 +176,15 @@
                                     <i class="fas fa-file-contract ml-4"></i>
                                 </a>
                             </td>
-
                             <td class="align-middle white-space-nowrap">
-                                <div class="dropdown font-sans-serif"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Refund</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item text-warning" href="#!">Archive</a><a class="dropdown-item text-danger" href="#!">Delete</a>
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
+                                        <span class="fas fa-ellipsis-h fs--1"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
+                                        <a class="dropdown-item" href="#">عرض</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  " href="#!">إنهاء</a>
                                     </div>
                                 </div>
                             </td>
@@ -185,11 +203,15 @@
                                     <i class="fas fa-file-contract ml-4"></i>
                                 </a>
                             </td>
-
                             <td class="align-middle white-space-nowrap">
-                                <div class="dropdown font-sans-serif"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Refund</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item text-warning" href="#!">Archive</a><a class="dropdown-item text-danger" href="#!">Delete</a>
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
+                                        <span class="fas fa-ellipsis-h fs--1"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
+                                        <a class="dropdown-item" href="#">عرض</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  " href="#!">إنهاء</a>
                                     </div>
                                 </div>
                             </td>
@@ -208,11 +230,15 @@
                                     <i class="fas fa-file-contract ml-3"></i>
                                 </a>
                             </td>
-
                             <td class="align-middle white-space-nowrap">
-                                <div class="dropdown font-sans-serif"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Refund</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item text-warning" href="#!">Archive</a><a class="dropdown-item text-danger" href="#!">Delete</a>
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
+                                        <span class="fas fa-ellipsis-h fs--1"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
+                                        <a class="dropdown-item" href="#">عرض</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  " href="#!">إنهاء</a>
                                     </div>
                                 </div>
                             </td>
@@ -231,11 +257,15 @@
                                     <i class="fas fa-file-contract ml-3"></i>
                                 </a>
                             </td>
-
                             <td class="align-middle white-space-nowrap">
-                                <div class="dropdown font-sans-serif"><button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0"><a class="dropdown-item" href="#!">View</a><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item" href="#!">Refund</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item text-warning" href="#!">Archive</a><a class="dropdown-item text-danger" href="#!">Delete</a>
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
+                                        <span class="fas fa-ellipsis-h fs--1"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
+                                        <a class="dropdown-item" href="#">عرض</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  " href="#!">إنهاء</a>
                                     </div>
                                 </div>
                             </td>

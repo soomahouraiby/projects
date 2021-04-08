@@ -24,7 +24,3 @@
     </main>
 
 @endsection
-
-
-
-

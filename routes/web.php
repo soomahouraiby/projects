@@ -26,7 +26,16 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/followReports','UsersController@followReports')->name('followReports');
     Route::get('/managementReports','UsersController@managementReports')->name('managementReports');
     Route::get('/detailsReport','UsersController@detailsReport')->name('detailsReport');
+});
+
+
+Route::group(['namespace'=>'pharmaciesManagement'],function (){
+
+    Route::get('/addDrug','UsersController@addDrug')->name('addDrug');
+    Route::get('/newReports','UsersController@newReports')->name('newReports');
+    Route::get('/followReports','UsersController@followReports')->name('followReports');
+    Route::get('/follow','UsersController@follow')->name('follow');
+    Route::get('/detailsReport','UsersController@detailsReport')->name('detailsReport');
+
 
 });
-Route::get('/newReports','ReportsController@getNewReports');
-Route::get('/newReports2','ReportsController@gettype_report');

@@ -14,66 +14,66 @@ body {
     font-family:myFirstFont;
 }
 .main {
-	background-color: #ffffff;
-	position: fixed;
-	z-index: 150;
-	width: 80%;
-	margin-top: 0%;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 150;
+    width: 80%;
+    margin-top: 0%;
 }
 
 #New {
-	width: 125px;
-	height: 40px;
-	margin-bottom: 10%;
-	border-radius: 10px;
-	background-color: var(--second-color);
-	position: absolute;
-	top: 90%;
-	left: 1%;
-	position: fixed;
-	z-index: 150;
+    width: 125px;
+    height: 40px;
+    margin-bottom: 10%;
+    border-radius: 10px;
+    background-color: var(--second-color);
+    position: absolute;
+    top: 90%;
+    left: 1%;
+    position: fixed;
+    z-index: 150;
 }
 
 #New a {
-	color: #ffffff;
+    color: #ffffff;
 }
 
 #New a i {
-	color: #dad6d6;
+    color: #dad6d6;
 }
 
 .navbar a {
-	margin: 14px;
-	color: #f1f1f1;
+    margin: 14px;
+    color: #f1f1f1;
 }
 
 nav {
-	background-color: var(--first-color);
+    background-color: var(--first-color);
 }
 
 li i .dropdown ::before {
-	transform: rotate(-135deg);
-	top: 1.2rem;
+    transform: rotate(-135deg);
+    top: 1.2rem;
 }
 
 .Ul {
-	display: none;
-	font-size: 13px;
+    display: none;
+    font-size: 13px;
 }
 
 nav ul {
-	list-style: none;
-	position: relative;
-	display: inline-table;
+    list-style: none;
+    position: relative;
+    display: inline-table;
 }
 
 nav ul li:hover > ul {
-	display: block;
+    display: block;
 }
 
 ul li a {
-	color:var(--fourth-color) ;
-	margin: 10px;
+    color:#ffffff ;
+    margin: 10px;
 }
 div .dropdown a{
     color:var(--fourth-color) ;
@@ -84,79 +84,83 @@ div .dropdown a:hover{
 }
 
 ul li a:hover {
-	color:var(--third-color);
+    color: #d6d6d6;
 }
 
 table tbody tr td a {
-	color: var(--fourth-color);
+    color: var(--fourth-color);
 }
 
 table tbody tr td a:hover {
-	color: var(--fourth-color);
+    color: var(--fourth-color);
 }
 
 .row #sidebarMenu {
-	background-color:  #EDECEC;
+    background-color:var(--first-color);
 }
 
 .button:hover {
-	background-color: var(--fourth-color);
+    background-color: var(--fourth-color);
 }
 
 .card {
-	width: 82%;
-	margin-right: 35px;
-	margin-top: 10%;
+    width: 82%;
+    margin-right: 35px;
+    margin-top: 10%;
 }
 
 .card .card-header {
-	background-color: #f9f9f9;
+    background-color: #f9f9f9;
 }
 
 .card table {
-	background-color: #f9f9f9;
-	color: var(--fourth-color);
+    background-color: #f9f9f9;
+    color: var(--fourth-color);
 }
 
 .btn {
-	color: var(--fourth-color);
+    color: var(--fourth-color);
 }
 
 .btn:hover {
-	color: #f1f1f1;
-	background-color: var(--second-color);
+    color: #f1f1f1;
+    background-color: var(--second-color);
 }
 
 #btn{
-    color: #f1f1f1;
-    background-color: var(--second-color);
+    color: var(--second-color);
+    background-color:#ffffff ;
     height: 37px;
     font-size: 15px;
 }
 #btn:hover{
-    color: #f1f1f1;
-    background-color: #49507A;
+    color:#ffffff;
+    background-color:var(--second-color);
     height: 37px;
     font-size: 15px;
 }
 
 h1 {
-	color: var(--fourth-color);
+    color: var(--fourth-color);
 }
 
 h4 {
-	color: var(--third-color);
+    color: var(--third-color);
 }
 
 table thead {
-	color: var(--third-color);
+    color: var(--third-color);
 }
 
 
 label {
-	color: var(--fivth-color);
+    color: var(--fivth-color);
 }
 
 p {
-	color: var(--first-color);
+    color: var(--first-color);
+}
+
+a:hover{
+    text-decoration:none;
 }

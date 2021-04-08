@@ -29,4 +29,5 @@ class UsersController extends Controller
     public function newReports(){
         return view('operationsManagement/newReports');
     }
+
 }
