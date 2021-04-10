@@ -4,9 +4,11 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Model;
+use Laratrust\Laratrust;
 use Laratrust\Traits\LaratrustUserTrait;
 
-class User
+class User extends Model
 {
     use LaratrustUserTrait;
 
