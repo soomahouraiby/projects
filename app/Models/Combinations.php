@@ -8,11 +8,8 @@ use App\Models\Types_report;
 class Combinations extends Model
 {
     //use HasFactory;
-    protected $table="combination";
-    protected $fillable = [
-        'ction_no',
-        'material_no',
-        'drug_no',
+    protected $table=" combination";
+    protected $fillable = ['ction_no', 'material_no', 'drug_no',
 
     ];
     public $timestamps=false;

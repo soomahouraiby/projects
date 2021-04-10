@@ -41,193 +41,26 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
+                    @foreach($reports as $report)
+                        <tr class="reportRow{{$report -> report_no}}">
+
+                            <td><a class="nav-link "  href="{{route('OP_detailsReport')}}">{{$report -> presented_report}}</a></td>
+                            <td><a class="nav-link  "  href="{{route('OP_detailsReport')}}">{{$report -> report_date}} </a></td>
+                            <td ><a class="nav-link  " href="{{route('OP_detailsReport')}}">{{$report -> type_report_no}}</a></td>
+                            <td class="align-middle white-space-nowrap">
+                                <div class="dropdown font-sans-serif">
+                                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
+                                        <span class="fas fa-ellipsis-h fs--1"></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
+                                        <a class="dropdown-item" href="{{route('OP_detailsReport')}}">عرض</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  " href="#!">تحويل</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="nav-link "  href="{{route('detailsReport')}}">احلام محمد الفاشق</a></td>
-                        <td><a class="nav-link  "  href="{{route('detailsReport')}}">June 21, 1961</a></td>
-                        <td ><a class="nav-link  " href="{{route('detailsReport')}}">مهرب</a></td>
-                        <td class="align-middle white-space-nowrap">
-                            <div class="dropdown font-sans-serif">
-                                <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal float-right" type="button" id="dropdown0" data-toggle="dropdown">
-                                    <span class="fas fa-ellipsis-h fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
-                                    <a class="dropdown-item" href="{{route('detailsReport')}}">عرض</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item  " href="#!">تحويل</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -238,3 +71,6 @@
     </main>
 
 @endsection
+
+
+
