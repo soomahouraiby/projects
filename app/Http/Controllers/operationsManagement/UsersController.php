@@ -1,20 +1,17 @@
 <?php
+namespace App\Http\Controllers\operationsManagement;
 
-namespace App\Http\Controllers;
-
-
-
-
+use App\Http\Controllers\Controller;
 use App\Models\Reports;
 use App\Models\Types_report;
 use Illuminate\Http\Request;
 
-class ReportsController extends Controller
+class UsersController extends Controller
 {
-    public function getNewReports()
-    {
-       // return Reports::get();
-        $reports = Reports::select('report_no',
+    public function newReports(){
+
+        // return Reports::get();
+        $report = Reports::select('report_no',
             'presented_report',
             'report_date',
             'type_report_no' )->get(); // return collection
@@ -38,7 +35,7 @@ class ReportsController extends Controller
 //            }
 //        }
 
-       return view('operationsManagement.newReports', compact('reports'));
+        return view('operationsManagement/newReports', compact('report'));
     }
 
 //relationship
@@ -47,5 +44,26 @@ class ReportsController extends Controller
         //return $type = Reports::get();
         return $type = Reports::with('type_report')-> find(1);
         //return  $type -> type_report;
+
+    }
+
+    public function addReport(){
+        return view('operationsManagement/addReport');
+    }
+
+    public function followReports(){
+        return view('operationsManagement/followReports');
+    }
+
+    public function managementReports(){
+        return view('operationsManagement/managementReports');
+    }
+
+    public function detailsReport(){
+        return view('operationsManagement/detailsReport');
+    }
+
+    public function detailsFollow(){
+        return view('operationsManagement/detailsFollow');
     }
 }
