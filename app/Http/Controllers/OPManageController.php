@@ -40,9 +40,11 @@ class OPManageController extends Controller
 
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->join('site', 'reports.sit_no', '=', 'site.site_no')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->select('reports.report_no','reports.authors_name','reports.authors_phone',
                 'reports.authors_character', 'reports.authors_age','reports.report_date',
-                'reports.notes_user', 'types_reports.type_report')
+                'reports.notes_user', 'types_reports.type_report','site.pharmacy_name','site.street_name','site.sit_dec')
             ->find($report_no);
         return view('operationsManagement.detailsReport',compact('reports'));
 

@@ -59,7 +59,7 @@
             {{--                       تفاصيل الموقع                   --}}
             {{--//////////////////////////////////////////////////////--}}
 
-         {{--   <div class="card shadow  col-md-4 col-lg-5" style="width: 40%;background-color: #F9F9F9;"  >
+            <div class="card shadow  col-md-4 col-lg-5" style="width: 40%;background-color: #F9F9F9;"  >
                 <div class="card-header " style="background-color: #F9F9F9;">
                     <h5 class="card-title" style="color:#5468FF"> موقع البلاغ</h5>
                 </div>
@@ -67,16 +67,16 @@
                     <div class="row">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item" style="background-color: #F9F9F9;">
-                                <label> : </label>
-                                <label  class="ml-3"></label>
+                                <label> :اسم الصيدلية </label>
+                                <label  class="ml-3">{{$reports -> pharmacy_name}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
-                                <label>  : </label>
-                                <label  class="ml-3"></label>
+                                <label>  :الشارع </label>
+                                <label  class="ml-3">{{$reports -> street_name}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
-                                <label> : </label>
-                                <label  class="ml-3"></label>
+                                <label> : وصف الموقع</label>
+                                <label  class="ml-3">{{$reports -> sit_dec}}</label>
                             </li>
                         </ul>
                     </div>
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div class="row" style="width: 100%;" >--}}
+        <div class="row" style="width: 100%;" >
 
             {{--//////////////////////////////////////////////////////--}}
             {{--                       تفاصيل الدواء                    --}}
