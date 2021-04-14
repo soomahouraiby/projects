@@ -34,7 +34,7 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/addReport','OPManageController@addReport')->name('OP_addReport');
     Route::get('/followReports','OPManageController@followReports')->name('OP_followReports');
     Route::get('/managementReports','OPManageController@managementReports')->name('OP_managementReports');
-    Route::get('/detailsReport','OPManageController@detailsReport')->name('OP_detailsReport');
+    Route::get('/detailsReport/{report_no}','OPManageController@detailsReport')->name('OP_detailsReport');
 });
 
 Route::group(['namespace'=>'pharmaciesManagement'],function (){
@@ -48,5 +48,21 @@ Route::group(['namespace'=>'pharmaciesManagement'],function (){
 
 });
 
-Route::get('/newReports2','OPManageController@material');
-Route::get('/newReports4','OPManageController@detailsReport');
+
+######################OPController############################
+//Route::get('/newReports1','OPManageController@newReports');
+//Route::get('/detailsReport1','OPManageController@detailsReport1');
+Route::get('/getReportType','OPManageController@getReportType');
+Route::get('/getReportUser','OPManageController@getReportUser');
+Route::get('/getReportDrug','OPManageController@getReportDrug');
+Route::get('/getReportSit','OPManageController@getReportSit');
+Route::get('/getReportDetails','OPManageController@getReportDetails');
+Route::get('/getReportMaterial','OPManageController@getReportMaterial');
+Route::get('/getshipment','OPManageController@getShipment');
+Route::get('getshipment1', function () {
+    return \App\Models\Commercial_drugs::latest()->get();
+});
+######################OPController############################
+
+Route::get('create', 'OPManageController@create');
+Route::post('store', 'OPManageController@store')->name('report.store');

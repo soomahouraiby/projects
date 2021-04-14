@@ -9,12 +9,7 @@ class Agents extends Model
 {
     //use HasFactory;
     protected $table="agents";
-    protected $fillable = [
-        'agent_no',
-        'agent_name',
-        'agent_phone',
-        'agent_email',
-        'agent_address',
+    protected $fillable = ['agent_no', 'agent_name', 'agent_phone', 'agent_email', 'agent_address',
     ];
     public $timestamps=false;
 

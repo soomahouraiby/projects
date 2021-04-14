@@ -2,19 +2,22 @@
 
 namespace App\Models;
 
-//use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Types_report;
+use App\Models\Smuggled_drugs;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Commercial_drugs;
+use App\Models\Types_report;
+use App\Models\Sites;
+use App\Models\Shipments;
+use Illuminate\Database\Eloquent\Model;
+
 class Reports extends Model
 {
     //use HasFactory;
     protected $table = "reports";
     protected $fillable = [
         'report_no', 'report_date', 'pharmacy_address', 'notes_user', 'district',
-        'comerical_name','material_name','drug_picture','companies_name','agent_name',
-        'presented_report', 'report_status', 'app_user_no', 'type_report_no',
-        'drug_no', 'report_details_no', 'sit_no',
+        'drug_picture','authors_phone','authors_character', 'authors_name', 'report_status',
+        'smuggled_drugs_no', 'type_report_no', 'drug_no', 'sit_no',
     ];
     protected $primaryKey = 'report_no';
 
@@ -26,39 +29,35 @@ class Reports extends Model
 
     public function type_report()
     {
-        return $this->belongsTo('App\Models\Types_report',
-            'type_report_no','type_report_no');
+        return $this->belongsTo(Types_report::class, 'type_report_no');
     }
 
-    public function app_user()
+    public function smuggled_drugs()
     {
-        return $this->hasOne('App\Models\App_users',
-            'app_user_no');
+        return $this->belongsTo(Smuggled_drugs::class, 'Smuggled_drugs_no');
     }
 
     public function drug()
     {
-        return $this->belongsTo('App\Models\Commercial_drugs',
-            'drug_no');
+        return $this->belongsTo(Commercial_drugs::class, 'drug_no');
     }
-
-    public function report_details()
-    {
-        return $this->belongsTo('App\Models\Report_detailes',
-            'report_details_no', 'report_details_no');
-    }
-
 
     public function sit()
     {
-        return $this->belongsTo('App\Models\Sites',
-            'sit_no', 'site_no');
+        return $this->belongsTo(Sites::class, 'sit_no');
     }
 
     public function effective_material(){
-        return $this->hasOneThrough('App\Models\Effective_materials','App\Models\Commercial_drugs',
-        'report_no','drug_no');
+        return $this->hasOneThrough(Effective_materials::class,Commercial_drugs::class);
+
     }
+
+    public function shipment(){
+        return $this->hasOneThrough(Shipments::class,Commercial_drugs::class);
+
+    }
+
+
 
 
 }

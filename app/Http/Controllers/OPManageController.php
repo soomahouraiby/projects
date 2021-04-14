@@ -2,82 +2,121 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report_detailes;
+use App\Models\Sites;
+use App\Models\Commercial_drugs;
+use App\Models\App_users;
 use App\Models\Reports;
 use App\Models\Types_report;
+use App\Request\ReportsRequest;
+use App\Models\Shipments;
+use App\Models\Combinations;
+use App\Models\Effective_materials;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class OPManageController extends Controller
 {
-
     public function newReports()
     {
-       // $q="s";
-       // return Reports::get();
-        $reports = Reports::select('report_no', 'presented_report', 'report_date', 'type_report_no'
-            ) ->get();
+        $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->select('reports.report_no','reports.authors_name','reports.report_date', 'types_reports.type_report')
+            ->get();
+        return view('operationsManagement.newReports', compact('reports'));
+    }
 
-//->with(['type_report'=>function ($t){$t->select('type_report');}])
-//         if (isset($reports) && $reports->count() > 0) {
-//            foreach ($reports as $report) {
-//
-//                 if($report->type_report_no=$report->type_report_no == 1)   {
-//                     $report->type_report_no == 'مهرب';
-//                 }
-//                 elseif  ($report->type_report_no=$report->type_report_no == 2 ){
-//                     $report->type_report_no =='مسحوب';
-//                 }
-//                 elseif  ($report->type_report_no=$report->type_report_no == 3 ){
-//                     $report->type_report_no == 'غير مطابق';
-//                 }
-//                 else {
-//                     $report->type_report_no == 'غير معروف';
-//                 }
-//
-//            }
-//        }
-           //return response()->json($reports);
-       return view('operationsManagement.newReports', compact('reports'));
+    public function detailsReport2(){
+         $r=Reports::select('report_no','authors_name')->get();
+        return response($r);
     }
 
 
-    public function type(){
-       return $r=Reports::with('type_report')->get();
-    }
+    public function detailsReport($report_no){
 
-    public function user(){
-        return $r=\App\Models\Reports::with('app_user')->find(1);
-    }
+        $reports = Reports::find($report_no);  // search in given table id only
+        if (!$reports)
+            return redirect()->back();
 
-    public function material(){
-        return  $r=\App\Models\Reports::with('effective_material')->get();
-    }
-
-    public function drug(){
-        return $r=\App\Models\Reports::with('drug')->find(1);
-    }
-
-//    public function detailsReport(){
-//
-//       //  $f=\App\Models\Reports::with('app_user')->find(1);
-//         return $r=\App\Models\Reports::select('report_date', 'notes_user', 'drug_picture')
-//              ->with(['type_report'=>function ($t){$t->select('type_report');}
-//              ,'app_user'=>function($a){$a->select('app_user_name','app_user_phone','age','number_of_report');}
-//                  ,'drug'=>function ($d){$d->select('drug_name','drug_picture');}
-//                  ,'drug.effective_material'=>function($e){$e->select('material_name');}
-//                  ])->find(1);
-////,'effective_material'=>function($e){$e->select('material_name');}
-//            return response()->json($r,$f);
-//    }
-
-    public function detailsReport(){
-
-
-        return $r=\App\Models\Reports::
-            with(['type_report:type_report','app_user:app_user_name','drug'])->get();
+        $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->select('reports.report_no','reports.authors_name','reports.authors_phone',
+                'reports.authors_character', 'reports.authors_age','reports.report_date',
+                'reports.notes_user', 'types_reports.type_report')
+            ->find($report_no);
+        return view('operationsManagement.detailsReport',compact('reports'));
 
     }
 
-    public function addReport(){
+
+    public function getDrugMaterial(){
+        return $r=Commercial_drugs::with('effective_materials')->get();
+    }
+
+    public function getShipment(){
+        $r=Commercial_drugs::get();
+//        $r = DB::table('commercial_drug')
+//            ->join('shipments', 'commercial_drug.shipment_no', '=', 'shipments.shipment_no')
+//            ->get();
+
+        return response($r);
+    }
+
+    public function getReportType(){
+        return $r=Reports::with('type_report')->find(1);
+    }
+
+    public function getReportUser(){
+        return $r=Reports::with('app_user')->find(1);
+    }
+
+    public function getReportDrug(){
+        return $r=Reports::with('drug')->find(1);
+    }
+
+    public function getReportSit(){
+        return $r=Reports::with('sit')->find(1);
+    }
+
+    public function getReportDetails(){
+        return $r=Reports::with('report_details')->find(1);
+    }
+
+    public function getReportMaterial(){
+        return  $r=Reports::with('effective_material')->get();
+    }
+
+    //هذي الدالة للادخال عن طريق الواجهات
+    public function create()
+    {
         return view('operationsManagement.addReport');
     }
+
+    public function store(Request  $request): \Illuminate\Http\RedirectResponse
+    {
+        echo "fff";
+        // $file_name = $this->saveImage($request->drug_picture, 'images/Report');
+        //insert
+        Reports::create([
+            // 'drug_picture' => $file_name,
+            'pharmacy_address' => $request->input('pharmacy_address'),
+            'drug_name' =>   $request->input('drug_name'),
+            'material_name' =>  $request->input('material_name'),
+            'district' => $request->input('district'),
+            'notes_user' => $request->input('notes_user'),
+            'report_date'=>Carbon::now()->toDateTimeString()
+        ]);
+
+        // return redirect()->back()->with(['success' => 'تم اضافه البلاغ بنجاح ']);
+    }
+
+    //هذي الدالة للادخال مباشره
+    public function storeType()
+    {
+        Types_report::create([
+            'type_report' => 'جديد',
+
+        ]);
+    }
+
 }
