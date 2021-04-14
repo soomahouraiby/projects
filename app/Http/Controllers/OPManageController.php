@@ -26,11 +26,6 @@ class OPManageController extends Controller
         return view('operationsManagement.newReports', compact('reports'));
     }
 
-    public function detailsReport2(){
-         $r=Reports::select('report_no','authors_name')->get();
-        return response($r);
-    }
-
 
     public function detailsReport($report_no){
 
@@ -41,10 +36,11 @@ class OPManageController extends Controller
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->join('site', 'reports.sit_no', '=', 'site.site_no')
-            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
             ->select('reports.report_no','reports.authors_name','reports.authors_phone',
                 'reports.authors_character', 'reports.authors_age','reports.report_date',
-                'reports.notes_user', 'types_reports.type_report','site.pharmacy_name','site.street_name','site.sit_dec')
+                'reports.notes_user', 'types_reports.type_report','site.pharmacy_name','site.street_name','site.sit_dec'
+            ,'commercial_drug.drug_name')
             ->find($report_no);
         return view('operationsManagement.detailsReport',compact('reports'));
 
@@ -64,29 +60,6 @@ class OPManageController extends Controller
         return response($r);
     }
 
-    public function getReportType(){
-        return $r=Reports::with('type_report')->find(1);
-    }
-
-    public function getReportUser(){
-        return $r=Reports::with('app_user')->find(1);
-    }
-
-    public function getReportDrug(){
-        return $r=Reports::with('drug')->find(1);
-    }
-
-    public function getReportSit(){
-        return $r=Reports::with('sit')->find(1);
-    }
-
-    public function getReportDetails(){
-        return $r=Reports::with('report_details')->find(1);
-    }
-
-    public function getReportMaterial(){
-        return  $r=Reports::with('effective_material')->get();
-    }
 
     //هذي الدالة للادخال عن طريق الواجهات
     public function create()
@@ -112,13 +85,6 @@ class OPManageController extends Controller
         // return redirect()->back()->with(['success' => 'تم اضافه البلاغ بنجاح ']);
     }
 
-    //هذي الدالة للادخال مباشره
-    public function storeType()
-    {
-        Types_report::create([
-            'type_report' => 'جديد',
 
-        ]);
-    }
 
 }

@@ -90,7 +90,7 @@
             {{--                       تفاصيل الدواء                    --}}
             {{--//////////////////////////////////////////////////////--}}
 
-          {{--  <div class="card shadow  col-md-4 col-lg-5" style="width: 40%; background-color: #F9F9F9;"  >
+            <div class="card shadow  col-md-4 col-lg-5" style="width: 40%; background-color: #F9F9F9;"  >
                 <div class="card-header "style="background-color: #F9F9F9;">
                     <h5 class="card-title" style="color:#5468FF">تفاصيل الدواء</h5>
                 </div>
@@ -99,7 +99,7 @@
                         <ul class="list-group list-group-flush" >
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label>الاسم التجاري: </label>
-                                <label  class="ml-3">Panadol</label>
+                                <label  class="ml-3">{{$reports -> drug_name}}</label>
                             </li>
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label>التركيبه العلميه:</label>
@@ -115,7 +115,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>--}}
+            </div>
 
             {{--//////////////////////////////////////////////////////--}}
             {{--                       موضوع البلاغ                    --}}

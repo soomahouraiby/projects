@@ -23,8 +23,7 @@ class CreateShipmentsTable extends Migration
             $table->boolean('exception')->default('1');
             $table->integer('price');
 
-            $table->unsignedInteger('agent_no');
-            $table->foreign('agent_no')->references('agent_no')->on('agents');
+
 
             $table->timestamps();
         });

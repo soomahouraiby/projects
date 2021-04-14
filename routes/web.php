@@ -49,20 +49,7 @@ Route::group(['namespace'=>'pharmaciesManagement'],function (){
 });
 
 
-######################OPController############################
-//Route::get('/newReports1','OPManageController@newReports');
-//Route::get('/detailsReport1','OPManageController@detailsReport1');
-Route::get('/getReportType','OPManageController@getReportType');
-Route::get('/getReportUser','OPManageController@getReportUser');
-Route::get('/getReportDrug','OPManageController@getReportDrug');
-Route::get('/getReportSit','OPManageController@getReportSit');
-Route::get('/getReportDetails','OPManageController@getReportDetails');
-Route::get('/getReportMaterial','OPManageController@getReportMaterial');
-Route::get('/getshipment','OPManageController@getShipment');
-Route::get('getshipment1', function () {
-    return \App\Models\Commercial_drugs::latest()->get();
-});
-######################OPController############################
+
 
 Route::get('create', 'OPManageController@create');
 Route::post('store', 'OPManageController@store')->name('report.store');
