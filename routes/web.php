@@ -47,12 +47,10 @@ Route::group(['namespace'=>'pharmaciesManagement'],function (){
     Route::get('/followReports','UsersController@followReports')->name('followReports');
     Route::get('/follow','UsersController@follow')->name('follow');
     Route::get('/detailsReport','UsersController@detailsReport')->name('detailsReport');
-
+    Route::post('transfer', 'OPManageController@transfer');
 
 });
-
-
-
-
+Route::get('getDrug', 'OPManageController@getDrug');
+Route::get('gg', 'OPManageController@gg');
 Route::get('create', 'OPManageController@create');
 Route::post('store', 'OPManageController@store')->name('report.store');

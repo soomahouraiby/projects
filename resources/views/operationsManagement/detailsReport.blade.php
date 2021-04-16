@@ -8,11 +8,17 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 pr-2  border-bottom main " >
             <h1 class="h2   ml-2 mt-2 mb-2">تفاصيل بلاغ وارد</h1>
             <div class="dropdown">
-                <button type="button" class="btn btn-sm  dropdown-toggle mr-4 ml-4 button" data-toggle="dropdown" id="btn">
-                    الجهه المُحال إليها
-                </button>
-                <div class="dropdown-menu dropdown-menu-right bg-light">
-                    <a class="dropdown-item " href="#">إدارة الصيدلة</a>
+{{--                <button type="button" class="btn btn-sm  dropdown-toggle mr-4 ml-4 button" data-toggle="dropdown" id="btn">--}}
+{{--                    الجهه المُحال إليها--}}
+{{--                </button>--}}
+{{--                <div class="dropdown-menu dropdown-menu-right bg-light">--}}
+{{--                    <a class="dropdown-item " href="#" >إدارة الصيدلة</a>--}}
+{{--                </div>--}}
+                <select class="form-control mb-3 " id="transfer">
+                    <option selected="" value="إدارة الصيدلة">إدارة الصيدلة</option>
+                </select>
+                <div class="form-group raw mt-4 " style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
+                    <button id="save" class="btn btn-primary "  >حفظ</button>
                 </div>
             </div>
         </div>
@@ -34,8 +40,10 @@
                     <h5 class="card-title" style="color:#5468FF">بيانات المبلغ</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row {{$reports -> report_no}}" >
-                        <ul class="list-group list-group-flush{{$reports -> report_no}}" >
+                    <div class="row " >
+                        @if(isset($report))
+                            @foreach($report as $reports)
+                        <ul class="list-group list-group-flush" >
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label>الاسم : </label>
                                 <label  class="ml-3">{{$reports -> authors_name}}</label>
@@ -51,6 +59,8 @@
                                 <label  class="ml-3">{{$reports -> authors_character}}</label>
                             </li>
                         </ul>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -65,20 +75,24 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        @if(isset($report))
+                            @foreach($report as $reports)
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item" style="background-color: #F9F9F9;">
-                                <label> :اسم الصيدلية </label>
+                                <label> اسم الصيدلية : </label>
                                 <label  class="ml-3">{{$reports -> pharmacy_name}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
-                                <label>  :الشارع </label>
+                                <label>  الشارع : </label>
                                 <label  class="ml-3">{{$reports -> street_name}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
-                                <label> : وصف الموقع</label>
+                                <label> وصف الموقع :</label>
                                 <label  class="ml-3">{{$reports -> sit_dec}}</label>
                             </li>
                         </ul>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -96,6 +110,8 @@
                 </div>
                 <div class="card-body">
                     <div class="row" >
+                        @if(isset($report))
+                            @foreach($report as $reports)
                         <ul class="list-group list-group-flush" >
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label>الاسم التجاري: </label>
@@ -113,6 +129,8 @@
                                 <div class="card-img-top" ><img class="card-img-top img-fluid" src="../images/Panadol.jpg"></div>
                             </li>
                         </ul>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -126,8 +144,10 @@
                     <h5 class="card-title" style="color:#5468FF"> موضوع البلاغ</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row {{$reports -> report_no}}">
-                        <ul class="list-group list-group-flush {{$reports -> report_no}}">
+                    <div class="row ">
+                        @if(isset($report))
+                            @foreach($report as $reports)
+                        <ul class="list-group list-group-flush ">
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label> نوع البلاغ :</label>
                                 <label  class="ml-3">{{$reports -> type_report}}</label>
@@ -140,11 +160,13 @@
                                 <label> ملاحظة المبلغ :</label>
                                 <label  class="ml-3">{{$reports -> notes_user}}</label>
                             </li>
-                           {{-- <li class="list-group-item"style="background-color: #F9F9F9;">
-                                <label>مرفق</label>
-                                <div class="card-img-top" ><img class="card-img-top img-fluid" src="../images/Panadol.jpg"></div>
-                            </li>--}}
+{{--                            <li class="list-group-item"style="background-color: #F9F9F9;">--}}
+{{--                                <label>مرفق</label>--}}
+{{--                                <div class="card-img-top" ><img class="card-img-top img-fluid" src="../images/Panadol.jpg"></div>--}}
+{{--                            </li>--}}
                         </ul>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -155,3 +177,27 @@
     </main>
 
 @endsection
+
+{{--@push('save_ajax')--}}
+{{--    <script>--}}
+{{--        $(document).on('click', '#btn', function () {--}}
+
+{{--            $.ajax({--}}
+{{--                type: 'POST',--}}
+{{--                url: '/transfer',--}}
+{{--                data: {--}}
+{{--                    '_token':"{{csrf_token()}}",--}}
+{{--                    'transfered_party':$("#transfer").val(),--}}
+{{--                },--}}
+{{--                success: function (data) {--}}
+{{--                    alert(data);--}}
+{{--                },--}}
+{{--                error: function (reject) {--}}
+
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+
+
+{{--    </script>--}}
+{{--@endpush--}}

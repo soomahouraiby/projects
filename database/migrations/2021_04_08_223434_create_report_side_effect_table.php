@@ -13,8 +13,8 @@ class CreateReportDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('report_details', function (Blueprint $table) {
-            $table->id('report_details_no');
+        Schema::create('report_side_effect', function (Blueprint $table) {
+            $table->id('report_side_effect_no');
             $table->string('type_drug',30);
             $table->integer('batch_number');
             $table->string('how_get_drug',50);
