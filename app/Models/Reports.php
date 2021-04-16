@@ -15,9 +15,9 @@ class Reports extends Model
     //use HasFactory;
     protected $table = "reports";
     protected $fillable = [
-        'report_no', 'report_date', 'pharmacy_address', 'notes_user', 'district',
-        'drug_picture','authors_phone','authors_character', 'authors_name', 'report_status',
-        'smuggled_drugs_no', 'type_report_no', 'drug_no', 'sit_no',
+        'report_no', 'report_date',  'notes_user', 'district',
+        'authors_name','authors_phone', 'authors_character',
+        'authors_age', 'transfered_party','transfer_date','type_report_no', 'smuggled_drugs_no', 'drug_no','agent_no'
     ];
     protected $primaryKey = 'report_no';
 
@@ -53,7 +53,7 @@ class Reports extends Model
     }
 
     public function shipment(){
-        return $this->hasOneThrough(Shipments::class,Commercial_drugs::class);
+        return $this->belongsToMany(Shipments::class,commercial_drugs::class);
 
     }
 
