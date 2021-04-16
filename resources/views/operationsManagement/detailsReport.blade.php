@@ -34,21 +34,21 @@
                     <h5 class="card-title" style="color:#5468FF">بيانات المبلغ</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row" >
-                        <ul class="list-group list-group-flush" >
+                    <div class="row {{$reports -> report_no}}" >
+                        <ul class="list-group list-group-flush{{$reports -> report_no}}" >
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label>الاسم : </label>
-                                <label  class="ml-3">احلام محمد عبده الفاشق</label>
+                                <label  class="ml-3">{{$reports -> authors_name}}</label>
                             </li>
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label>رقم الهاتف : </label>
-                                <label  class="ml-3">773773773</label>
+                                <label  class="ml-3">{{$reports -> authors_phone}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
                                 <label>العمر : </label>
-                                <label  class="ml-3 mr-4">22</label>
-                                <label class="ml-5"> عدد البلاغات : </label>
-                                <label  class="ml-3">5</label>
+                                <label  class="ml-3 mr-4">{{$reports -> authors_age}}</label>
+                                <label class="ml-5"> الصفه : </label>
+                                <label  class="ml-3">{{$reports -> authors_character}}</label>
                             </li>
                         </ul>
                     </div>
@@ -67,16 +67,16 @@
                     <div class="row">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item" style="background-color: #F9F9F9;">
-                                <label> : </label>
-                                <label  class="ml-3"></label>
+                                <label> :اسم الصيدلية </label>
+                                <label  class="ml-3">{{$reports -> pharmacy_name}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
-                                <label>  : </label>
-                                <label  class="ml-3"></label>
+                                <label>  :الشارع </label>
+                                <label  class="ml-3">{{$reports -> street_name}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
-                                <label> : </label>
-                                <label  class="ml-3"></label>
+                                <label> : وصف الموقع</label>
+                                <label  class="ml-3">{{$reports -> sit_dec}}</label>
                             </li>
                         </ul>
                     </div>
@@ -99,7 +99,7 @@
                         <ul class="list-group list-group-flush" >
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label>الاسم التجاري: </label>
-                                <label  class="ml-3">Panadol</label>
+                                <label  class="ml-3">{{$reports -> drug_name}}</label>
                             </li>
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label>التركيبه العلميه:</label>
@@ -126,24 +126,24 @@
                     <h5 class="card-title" style="color:#5468FF"> موضوع البلاغ</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <ul class="list-group list-group-flush">
+                    <div class="row {{$reports -> report_no}}">
+                        <ul class="list-group list-group-flush {{$reports -> report_no}}">
                             <li class="list-group-item" style="background-color: #F9F9F9;">
                                 <label> نوع البلاغ :</label>
-                                <label  class="ml-3">مهرب</label>
+                                <label  class="ml-3">{{$reports -> type_report}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
                                 <label>تاريخ البلاغ :</label>
-                                <label  class="ml-3">2021/5/31</label>
+                                <label  class="ml-3">{{$reports -> report_date}}</label>
                             </li>
                             <li class="list-group-item"style="background-color: #F9F9F9;">
                                 <label> ملاحظة المبلغ :</label>
-                                <label  class="ml-3">......</label>
+                                <label  class="ml-3">{{$reports -> notes_user}}</label>
                             </li>
-                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                           {{-- <li class="list-group-item"style="background-color: #F9F9F9;">
                                 <label>مرفق</label>
                                 <div class="card-img-top" ><img class="card-img-top img-fluid" src="../images/Panadol.jpg"></div>
-                            </li>
+                            </li>--}}
                         </ul>
                     </div>
                 </div>

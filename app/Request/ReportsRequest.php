@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,15 +21,27 @@ class ReportsRequest extends FormRequest
      *
      * @return array
      */
+
     public function rules()
     {
         return [
-            'name_ar' => 'required|max:100',
-            'name_en' => 'required|max:100',
-            'price' => 'required|numeric',
-            'details_ar' => 'required',
-            'details_en' => 'required',
-            'photo' => 'required|mimes:png,jpg,jpeg',
+            'report_date'=>'required',
+            'pharmacy_address'=>'required',
+            'notes_user'=>'required',
+            'district'=>'required',
+            'commercial_name'=>'required',
+            'material_name'=>'required',
+            'drug_picture'=>'required|mimes:png,jpg,jpeg',
+            'companies_name'=>'required',
+            'agent_name'=>'required',
+            'presented_report'=>'required',
+            'report_status'=>'required',
+            'app_user_no'=>'required',
+            'type_report_no'=>'required',
+            'drug_no'=>'required',
+            'report_details_no'=>'required',
+            'site_no'=>'required',
+
         ];
     }
 
@@ -38,18 +50,25 @@ class ReportsRequest extends FormRequest
     {
 
         return [
-            'name_ar.required' => __('messages.offer name required'),
-            'name_en.required' => __('messages.offer name required'),
-            'name_ar.unique' => 'اسم العرض موجود ',
-            'name_en.unique' => 'Offer name  is exists ',
-            'price.numeric' => 'سعر العرض يجب ان يكون ارقام',
-            'price.required' => 'السعر مطلوب',
-            'details_ar.required' => 'ألتفاصيل مطلوبة ',
-            'details_en.required' => 'ألتفاصيل مطلوبة ',
-            'photo.required' =>  'صوره العرض مطلوب',
-            'photo.mimes' =>  'صوره غير صالحة',
+            'report_date'.'required'=>'هذاالحقل مطلوب',
+            'pharmacy_address'.'required'=>'هذاالحقل مطلوب',
+            'notes_user'.'required'=>'هذاالحقل مطلوب',
+            'district'.'required'=>'هذاالحقل مطلوب',
+            'commercial_name'.'required'=>'هذاالحقل مطلوب',
+            'material_name'.'required'=>'هذاالحقل مطلوب',
+            'drug_picture'.'required'=>' هذاالحقل مطلوب',
+            'drug_picture'.'mimes'=>'هذي الصوره غير صالحة',
+            'companies_name'.'required'=>'هذاالحقل مطلوب',
+            'agent_name'.'required'=>'هذاالحقل مطلوب',
+            'presented_report'.'required'=>'هذاالحقل مطلوب',
+            'report_status'.'required'=>'هذاالحقل مطلوب',
+            'app_user_no'.'required'=>'هذاالحقل مطلوب',
+            'type_report_no'.'required'=>'هذاالحقل مطلوب',
+            'drug_no'.'required'=>'هذاالحقل مطلوب',
+            'report_details_no'.'required'=>'هذاالحقل مطلوب',
+            'site_no'.'required'=>'هذاالحقل مطلوب',
+
 
         ];
     }
-
 }

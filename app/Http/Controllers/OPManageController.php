@@ -72,29 +72,12 @@ class OPManageController extends Controller
     public function detailsReport(){
 
 
-        $r=\App\Models\Reports::
+        return $r=\App\Models\Reports::
             with(['type_report:type_report','app_user:app_user_name','drug'])->get();
-        return view('operationsManagement/detailsReport');
+
     }
 
     public function addReport(){
         return view('operationsManagement.addReport');
     }
-
-    public function detailsFollow(){
-        return view('operationsManagement/detailsFollow');
-    }
-
-    public function followReports(){
-        return view('operationsManagement/followReports');
-    }
-
-    public function managementReports(){
-        return view('operationsManagement/managementReports');
-    }
-
-    public function followedUp(){
-        return view('operationsManagement/followedUp');
-    }
-
 }

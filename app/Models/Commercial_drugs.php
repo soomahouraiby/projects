@@ -4,6 +4,9 @@ namespace App\Models;
 
 //use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Effective_materials;
+use App\Models\Shipments;
+use App\Models\Combinations;
 
 class Commercial_drugs extends Model
 {
@@ -19,8 +22,11 @@ class Commercial_drugs extends Model
 //         'drug_no',
 //    ];
 
-//    public function effective_materials(){
-//        return $this->belongsToMany('App\Models\Effective_materials',' combination',
-//            'drug_no','material_no','drug_no');
-//    }
+    public function effective_materials(){
+        return $this->belongsToMany(Effective_materials::class, Combinations::class,
+            'drug_no','material_no','drug_no');
+    }
+    public function shipment(){
+        return $this->hasMany(Shipments::class,'shipment_no','shipment_no');
+    }
 }

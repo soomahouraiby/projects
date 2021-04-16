@@ -9,18 +9,11 @@ class Shipments extends Model
 {
     //use HasFactory;
     protected $table="shipments";
-    protected $fillable = [
-        'shipment_no',
-        'barch_number',
-        'production_date',
-        'expiy_date',
-        'quantity',
-        'shipment_drawn',
-        'exception',
-        'price',
-        'agent_no',
+    protected $fillable = ['shipment_no', 'batch_number', 'production_date', 'expiry_date', 'quantity',
+        'shipment_drawn', 'exception', 'price', 'agent_no',
 
     ];
+    protected $primaryKey = 'shipment_no';
 
     public $timestamps=false;
 //    public function noticeDetails(){

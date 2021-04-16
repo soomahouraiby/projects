@@ -19,35 +19,41 @@
             <div class="card-header " style="background-color: #F9F9F9;">
                 <div class="col-md-12 ">
                     <div class="card-body position-relative">
-                        <form>
+                        {{-- @if(Session::has('success'))
+                             <div class="alert alert-success" role="alert">
+                                 {{ Session::get('success') }}
+                             </div>
+                         @endif--}}
 
+                        <br>
+                            @csrf
                             {{--//////////////////////////////////////////////////////--}}
                             {{--                       بيانات المبلغ                   --}}
                             {{--//////////////////////////////////////////////////////--}}
 
-                            <div class="row">
-                                <h4>بيانات المبلغ</h4>
-                            </div>
-                            <div class="row border-bottom pb-5">
-                                <div class="form-group raw mt-4 mr-3 " style="display: flex; flex-wrap: wrap;">
-                                    <label class="col-form-label text-sm-right mt-2 ">اسم المبلغ : </label>
-                                    <div class=" mt-2 ml-4 ">
-                                        <input type="text" class="form-control " placeholder="اسم المبلغ">
-                                    </div>
-                                </div>
-                                <div class="form-group raw mt-4 mr-3" style="display: flex; flex-wrap: wrap;">
-                                    <label class="col-form-label text-sm-right mt-2"> رقم الهاتف : </label>
-                                    <div class=" mt-2 ml-4">
-                                        <input type="text" class="form-control" placeholder="رقم الهاتف ">
-                                    </div>
-                                    <label class="col-form-label text-sm-right mt-2 ml-0"> الصفة : </label>
-                                    <div class=" mt-2 ml-4  ">
-                                        <input type="text" class="form-control  " placeholder="الصفة ">
-                                    </div>
-                                </div>
-                            </div>
+                             <div class="row">
+                                 <h4>بيانات المبلغ</h4>
+                             </div>
+                             <div class="row border-bottom pb-5">
+                                 <div class="form-group raw mt-4 mr-3 " style="display: flex; flex-wrap: wrap;">
+                                     <label class="col-form-label text-sm-right mt-2 ">اسم المبلغ : </label>
+                                     <div class=" mt-2 ml-4 ">
+                                         <input type="text" class="form-control " placeholder="اسم المبلغ" name="user_name">
+                                     </div>
+                                 </div>
+                                 <div class="form-group raw mt-4 mr-3" style="display: flex; flex-wrap: wrap;">
+                                     <label class="col-form-label text-sm-right mt-2"> رقم الهاتف : </label>
+                                     <div class=" mt-2 ml-4">
+                                         <input type="text" class="form-control" placeholder="رقم الهاتف " name="phone">
+                                     </div>
+                                     <label class="col-form-label text-sm-right mt-2 ml-0"> الصفة : </label>
+                                     <div class=" mt-2 ml-4  ">
+                                         <input type="text" class="form-control  " placeholder="الصفة " name="character">
+                                     </div>
+                                 </div>
+                             </div>
 
-                            {{--//////////////////////////////////////////////////////--}}
+                             {{--//////////////////////////////////////////////////////--}}
                             {{--                       تفاصيل البلاغ                    --}}
                             {{--//////////////////////////////////////////////////////--}}
 
@@ -55,67 +61,71 @@
                                 <h4>موضوع البلاغ</h4>
                             </div>
                             <div class="row ">
-                                <div class="form-group raw mt-4 mr-3" style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
+                              {{--  <div class="form-group raw mt-4 mr-3" style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
                                     <label class="col-form-label  text-sm-right mt-2">  الرقم المميز : </label>
                                     <div class="mt-2  ml-4">
-                                        <input type="text" class="form-control" placeholder="الرقم المميز  ">
+                                        <input type="text" class="form-control" placeholder="الرقم المميز  " name="batch_no">
                                     </div>
                                 </div>
+                                <div class="form-group raw mt-4 " style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
+                                    <button id="query" class="btn btn-primary "  >تحقق</button>
+                                </div>--}}
                                 <div class="form-group raw mt-4 mr-3" style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
                                     <label class="col-form-label text-sm-right mt-2">  اسم الدواء : </label>
                                     <div class="mt-2 ml-4">
-                                        <input type="text" class="form-control" placeholder="الاسم التجاري  ">
+                                        <input type="text" class="form-control" placeholder="الاسم التجاري  " name="comerical_name">
+
                                     </div>
                                     <label class="col-form-label text-sm-right mt-2 "> التركيبة العلمية : </label>
                                     <div class=" mt-2 ml-4 ">
-                                        <input type="text" class="form-control" placeholder="الاسم العلمي ">
+                                        <input type="text" class="form-control" placeholder="الاسم العلمي " name="material_name">
                                     </div>
                                 </div>
                                 <div class="form-group raw mt-4 mr-3" style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
                                     <label class="col-form-label text-sm-right mt-2">اسم الصيديلة  : </label>
                                     <div class=" mt-2 ml-4">
-                                        <input type="text" class="form-control" placeholder="اسم الصيديلة">
+                                        <input type="text" class="form-control" placeholder="اسم الصيديلة" name="pharmacy_address">
                                     </div>
                                     <label class="col-form-label text-sm-right mt-2">المنطقة : </label>
                                     <div class=" mt-2 ml-4">
-                                        <input type="text" class="form-control" placeholder="المنطقة ">
+                                        <input type="text" class="form-control" placeholder="المنطقة " name="district">
                                     </div>
                                 </div>
-                                <div class="form-group raw mt-4 mr-3 " style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
-                                    <label class="col-form-label text-sm-right mt-2">وصف الموقع : </label>
-                                    <div class=" mt-2 ml-4">
-                                        <input type="text" class="form-control" placeholder="وصف الموقع ">
-                                    </div>
-                                </div>
+                                {{-- <div class="form-group raw mt-4 mr-3 " style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
+                                     <label class="col-form-label text-sm-right mt-2">وصف الموقع : </label>
+                                     <div class=" mt-2 ml-4">
+                                         <input type="text" class="form-control" placeholder="وصف الموقع ">
+                                     </div>
+                                 </div>--}}
                                 <div class="form-group raw mt-4 mr-3 " style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
                                     <label class="col-form-label text-sm-right mt-2">ملاحظة المبلغ : </label>
                                     <div class=" mt-2 ml-4">
-                                        <textarea class="form-control" placeholder="ملاحظة المبلغ" rows="3"></textarea>
+                                        <textarea id="notes" class="form-control" placeholder="ملاحظة المبلغ" rows="3" name="notes_user"></textarea>
                                     </div>
                                 </div>
-                                <div class="form-group raw mt-4 mr-3" style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
-                                    <label class="col-form-label text-sm-right mt-2">نوع البلاغ : </label>
-                                    <div class=" mt-2 ml-4">
-                                        <select class="form-control mb-3">
-                                            <option selected="">غير معروف</option>
-                                            <option>مهرب</option>
-                                            <option>مسحوب</option>
-                                            <option>غير مطابق</option>
-                                        </select>
-                                    </div>
-                                    <label class="col-form-label text-sm-right mt-2">الجهه المحال إليها : </label>
-                                    <div class="mt-2 ml-4">
-                                        <select class="form-control mb-3">
-                                            <option selected=""></option>
-                                            <option>إدارة الصيدلة</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                {{-- <div class="form-group raw mt-4 mr-3" style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
+                                     <label class="col-form-label text-sm-right mt-2">نوع البلاغ : </label>
+                                     <div class=" mt-2 ml-4">
+                                         <select class="form-control mb-3">
+                                             <option selected="">غير معروف</option>
+                                             <option>مهرب</option>
+                                             <option>مسحوب</option>
+                                             <option>غير مطابق</option>
+                                         </select>
+                                     </div>
+                                     <label class="col-form-label text-sm-right mt-2">الجهه المحال إليها : </label>
+                                     <div class="mt-2 ml-4">
+                                         <select class="form-control mb-3">
+                                             <option selected=""></option>
+                                             <option>إدارة الصيدلة</option>
+                                         </select>
+                                     </div>
+                                 </div>--}}
                             </div>
                             <div class="form-group raw mt-4 " style="display: flex; flex-wrap: wrap; margin-left: -12px; margin-right: -12px;">
-                                <button class="btn " type="button" style="margin-right:90%; width: 20%; background-color: #5468FF; color:#ffffff">حفظ</button>
+                                <button id="save" class="btn btn-primary "  >حفظ</button>
                             </div>
-                        </form>
+
                     </div>
                 </div>
             </div>
@@ -126,3 +136,77 @@
     </main>
 
 @endsection
+@push('save_ajax')
+    <script>
+        {{-- $(document).on('click', '#query', function () {
+
+            $.ajax({
+                type: 'GET',
+                url: '/store',
+                data: {
+                    //'_token':"{{csrf_token()}}",
+                    'pharmacy_address':$("input[name='pharmacy_address']").val,
+                    'comerical_name':$("input[name='comerical_name']").val,
+                    'material_name':$("input[name='material_name']").val,
+                    'district':$("input[name='district']").val,
+                    'notes_user':$("input[name='notes_user']").val,
+                },
+                success: function (data) {},
+                error: function (reject) {
+
+                }
+            });
+        });--}}
+        $(document).on('click', '#save', function () {
+
+            $.ajax({
+                type: 'POST',
+                url: '/store',
+                data: {
+                    '_token':"{{csrf_token()}}",
+                    'pharmacy_address':$("input[name='pharmacy_address']").val(),
+                    'comerical_name':$("input[name='comerical_name']").val(),
+                    'material_name':$("input[name='material_name']").val(),
+                    'district':$("input[name='district']").val(),
+                    'notes_user':$("#notes").val(),
+                },
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (reject) {
+
+                }
+            });
+        });
+
+
+    </script>
+@endpush
+
+{{--@section('script')
+    <script>
+
+        $(document).on('click', '#save_offer', function () {
+
+            $.ajax({
+                type: 'POST',
+                url: '/store',
+                data: {
+                    '_token':"{{csrf_token()}}",
+                    'pharmacy_address':$("input[name='pharmacy_address']").val,
+                    'comerical_name':$("input[name='comerical_name']").val,
+                    'material_name':$("input[name='material_name']").val,
+                    'district':$("input[name='district']").val,
+                    'notes_user':$("input[name='notes_user']").val,
+                },
+                success: function (data) {},
+                error: function (reject) {
+
+                }
+            });
+        });
+
+
+    </script>
+@stop
+--}}

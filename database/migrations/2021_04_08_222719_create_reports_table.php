@@ -15,7 +15,7 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id('report_no');
-            $table->string('comerical_name',30);
+            $table->string('commercial_name',30);
             $table->string('material_name',30);
             $table->string('companies_name',50);
             $table->string('agent_name',50);
@@ -23,7 +23,10 @@ class CreateReportsTable extends Migration
             $table->date('report_date');
             $table->longText('notes_user');
             $table->string('district',20);
-            $table->string('presented_report',50);
+            $table->string('authors_name',50);
+            $table->string('authors_phone',9);
+            $table->string('authors_character',30);
+            $table->integer('authors_age');
             $table->string('report_status',10);
             $table->binary('drug_picture');
 

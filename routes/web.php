@@ -51,5 +51,8 @@ Route::group(['namespace'=>'pharmaciesManagement'],function (){
 
 });
 
-Route::get('/newReports2','OPManageController@material');
-Route::get('/newReports4','OPManageController@detailsReport');
+
+
+
+Route::get('create', 'OPManageController@create');
+Route::post('store', 'OPManageController@store')->name('report.store');
