@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 //Route::group(['prefix'=>'operationsManagement'],function (){
 //
@@ -35,6 +36,8 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/followReports','OPManageController@followReports')->name('OP_followReports');
     Route::get('/managementReports','OPManageController@managementReports')->name('OP_managementReports');
     Route::get('/detailsReport','OPManageController@detailsReport')->name('OP_detailsReport');
+    Route::get('/followedUp','OPManageController@followedUp')->name('OP_followedUp');
+
 });
 
 Route::group(['namespace'=>'pharmaciesManagement'],function (){

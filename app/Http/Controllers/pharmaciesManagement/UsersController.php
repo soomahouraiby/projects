@@ -6,6 +6,11 @@ namespace App\Http\Controllers\pharmaciesManagement;
 
 class UsersController
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function addDrug(){
         return view('pharmaciesManagement/addDrug');
     }

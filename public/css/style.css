@@ -13,6 +13,10 @@ body {
     background-color: #ffffff;
     font-family:myFirstFont;
 }
+.Text{
+    color: #3b48bf;
+    font-size: 17px;
+}
 .main {
     background-color: #ffffff;
     position: fixed;
@@ -43,7 +47,7 @@ body {
 }
 
 .navbar a {
-    margin: 14px;
+    /*margin: 14px;*/
     color: #f1f1f1;
 }
 
@@ -153,13 +157,10 @@ table thead {
 }
 
 
-label {
+label , p {
     color: var(--fivth-color);
 }
 
-p {
-    color: var(--first-color);
-}
 
 a:hover{
     text-decoration:none;

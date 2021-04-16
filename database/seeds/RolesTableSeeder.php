@@ -16,5 +16,12 @@ class RolesTableSeeder extends Seeder
             'display_name'=>'operation Management',
             'description'=>'can do anything in the project'
         ]);
+
+        $pharmacies = Role::create([
+            'name'=>'pharmacies_Management',
+            'display_name'=>'pharmacies Management',
+            'description'=>'can do anything in the project'
+        ]);
+
     }
 }

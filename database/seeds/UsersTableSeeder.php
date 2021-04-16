@@ -12,18 +12,18 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
+        $operation = User::create([
             'name'=>'operation_Management',
-            'email'=>'operation@gmail.com',
-            'password'=>bcrypt('operation')]);
+            'email'=>'adminom@gmail.com',
+            'password'=>bcrypt('adminom')]);
 
-        $user->attachRole('operation_Management');
+        $operation->attachRole('operation_Management');
 
-        $user1 = User::create([
-            'name'=>'opManagement',
-            'email'=>'opion@gmail.com',
-            'password'=>bcrypt('operation')]);
+        $pharmacies = User::create([
+            'name'=>'pharmacies_Management',
+            'email'=>'adminpm@gmail.com',
+            'password'=>bcrypt('adminpm')]);
 
-        $user1->attachRole('operation_Management');
+        $pharmacies->attachRole('pharmacies_Management');
     }
 }

@@ -34,17 +34,16 @@
     <div class="row ">
 
         {{--List--}}
-        @include('pharmaciesManagement.include.sidebarMenu')
+        @include('operationsManagement.include.sidebarMenu')
 
 
-        {{--        @if (auth()->user()->hasRole('operation_Management'))--}}
-        {{--            @include('operationsManagement.include.sidebarMenu')--}}
-        {{--        @elseif (auth()->user()->hasRole('pharmacies_Management'))--}}
+{{--                @if (auth()->user()->hasRole('operation_Management'))--}}
+{{--                    @include('operationsManagement.include.sidebarMenu')--}}
+{{--                @elseif (auth()->user()->hasRole('pharmacies_Management'))--}}
+{{--                    @include('pharmaciesManagement.include.sidebarMenu')--}}
+{{--                @endif--}}
 
 
-
-        {{--add Report--}}
-        {{--        @include('operationsManagement/components/addReport')--}}
 
         {{--Content--}}
         @yield('content')

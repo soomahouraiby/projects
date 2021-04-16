@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +25,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('operationsManagement/newReports');
+
+//        dd(Auth::user()->roles);
+//        return  response(Auth::user()->hasRole('operations_Management'));
+
+
+        return view('operationsManagement/addReport');
+//        if(Auth::user()->hasRole('operations_Management')){
+//            return view('operationsManagement/addReport');
+//        }
+//        elseif (Auth::user()->hasRole('pharmacies_Management')){
+//            return view('pharmaciesManagement/newReports');
+//        }
+//        else{
+//            return view('auth/login');
+//        }
+
+
+//        if(Auth::user()->roles()->first()->name=="operations_Management"){
+//            return view('operationsManagement/addReport');
+//        }
+//        else{
+//            return view('auth/login');
+//        }
     }
 }
