@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReportDetailsTable extends Migration
+class CreateReportSideEffectTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateReportDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('report_side_effect', function (Blueprint $table) {
+        Schema::create('report_side_effects', function (Blueprint $table) {
             $table->id('report_side_effect_no');
             $table->string('type_drug',30);
             $table->integer('batch_number');
@@ -43,6 +43,6 @@ class CreateReportDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('report_details');
+        Schema::dropIfExists('report_side_effects');
     }
 }
