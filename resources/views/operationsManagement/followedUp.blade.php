@@ -27,24 +27,27 @@
             </div>
             <div class="card-body position-relative mb-0 pb-0" style="background-color: #F9F9F9;">
                 <form>
+                    @if(isset($report))
+                        @foreach($report as $reports)
                         <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
                             <label class="col-form-label Text ml-3 mr-4 ">اسم المبلغ : </label>
-                            <label class="col-form-label  ml-2 mr-4  ">احلام محمد عبده الفاشق  </label>
+                            <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_name}}  </label>
                             <label class="col-form-label Text ml-5 mr-4 ">رقم الهاتف : </label>
-                            <label class="col-form-label  ml-2 mr-4  ">773773773  </label>
+                            <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_phone}}  </label>
                         </div>
                         <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
                             <label class="col-form-label  Text ml-3 mr-4 ">نوع البلاغ : </label>
-                            <label class="col-form-label  ml-2 mr-4 ">مسحوب  </label>
-                            <label class="col-form-label Text  ml-5 mr-4 ">اسم الصيديلة : </label>
-                            <label class="col-form-label ml-2 mr-4  ">ابن حيان  </label>
+                            <label class="col-form-label  ml-2 mr-4 ">{{$reports -> type_report}}  </label>
+                            <label class="col-form-label Text  ml-5 mr-4 ">اسم الصيدلية : </label>
+                            <label class="col-form-label ml-2 mr-4  ">{{$reports -> pharmacy_name}}  </label>
                             <label class="col-form-label Text  ml-5 mr-4 ">اسم الدواء : </label>
-                            <label class="col-form-label ml-2 mr-4 mb-3  ">Panadol  </label>
+                            <label class="col-form-label ml-2 mr-4 mb-3  ">{{$reports -> drug_name}}  </label>
                         </div>
                         <div class="form-group raw mt-4  ">
-                            <a class="text-center col-form-label mb-3"  href="#" style="margin-right: 45%"> تفاصيل البلاغ</a>
+                            <a class="text-center col-form-label mb-3"  href="{{url('operationsManagement/detailsReport',$reports -> report_no)}}" style="margin-right: 45%"> تفاصيل البلاغ</a>
                         </div>
-
+                        @endforeach
+                    @endif
                 </form>
             </div>
         </div>
@@ -61,22 +64,24 @@
             </div>
             <div class="card-body position-relative mb-0 pb-0" style="background-color: #F9F9F9;">
                 <form>
+                    @if(isset($procedures))
+                        @foreach($procedures as $procedure)
                     <div class="row pb-5 border-bottom">
                        <div class="col-lg">
                            <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >  تــاريــخ الإجراء : </label>
-                           <label class="col-form-label col-lg-2  mt-2  ">2020/5/5</label>
+                           <label class="col-form-label col-lg-2  mt-2  ">{{$procedure -> procedure_date}}</label>
                        </div>
                     </div>
                     <div class="row pb-5 border-bottom">
                         <div class="col-lg">
                             <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الإجراء المتخذ : </label>
-                            <p class="col-form-label  mx-5  ">تم النزول الى صيدلية ابن حيان تم النزول الى صيدلية ابن حيان تم النزول الى صيدلية ابن حيان تم النزول الى صيدلية ابن حيان تم النزول الى صيدلية ابن حيان </p>
+                            <p class="col-form-label  mx-5  ">{{$procedure -> procedure}} </p>
                         </div>
                     </div>
                     <div class="row pb-5 border-bottom">
                         <div class="col-lg">
                             <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الــنــتــائــج : </label>
-                            <p class="col-form-label  mx-5  ">تم النزول الى صيدلية ابن حيان تم النزول الى صيدلية ابن حيان تم النزول الى صيدلية ابن حيان تم النزول الى صيدلية ابن حيان تم النزول الى صيدلية ابن حيان </p>
+                            <p class="col-form-label  mx-5  ">{{$procedure -> procedure_result}} </p>
                         </div>
                     </div>
                     <div class="row pb-5">
@@ -90,6 +95,8 @@
                             <button class="btn " type="button" style="margin-right:90%; width: 10%; background-color: #5468FF; color:#ffffff">حفظ</button>
                         </div>
                     </div>
+                        @endforeach
+                    @endif
                 </form>
             </div>
         </div>

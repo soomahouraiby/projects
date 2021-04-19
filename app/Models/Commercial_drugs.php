@@ -12,17 +12,21 @@ class Commercial_drugs extends Model
 {
     //use HasFactory;
     protected $table="commercial_drug";
-    protected $fillable = [
-        'drug_no', 'drug_name', 'register_no', 'barcode', 'drug_entrance',
+    protected $filliable = [
+        'drug_no', 'drug_name', 'register_no', 'barcode', 'drug_entrance','drug_photo',
         'how_to_use', 'drug_form', 'side_effects',  'shipment_no','agent_no'
     ];
     public $timestamps=false;
     protected $primaryKey = 'drug_no';
 
+    public function report(){
+        return $this -> hasMany('App\Models\Reports','drug_no');
+    }
+
     public function effective_materials(){
-      //  return $this->belongsToMany(Effective_materials::class, Combinations::class);
-        return $this->belongsToMany('App\Models\Effective_materials', 'combination',
-            'material_no')->withPivot('drug_no');
+        return $this->belongsToMany('App\Models\Effective_materials')->using('App\Models\Combinations');
+//        return $this->belongsToMany('App\Models\Effective_materials', 'combination',
+//            'material_no')->withPivot('drug_no');
 
     }
 

@@ -1,7 +1,11 @@
 @extends('layouts\master')
 @section('content')
     <main class="col-md-8 ms-sm-auto col-lg-10 px-md-4 ">
-
+        @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+            </div>
+        @endif
         {{--Start Content Title--}}
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 pr-2  border-bottom main " >
@@ -55,7 +59,7 @@
                                     <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
                                         <a class="dropdown-item" href="{{url('operationsManagement/detailsReport',$report -> report_no)}}">عرض</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item  " href="#!">تحويل</a>
+                                        <a class="dropdown-item  " href="{{url('operationsManagement/transfer',$report -> report_no)}}">تحويل</a>
                                     </div>
                                 </div>
                             </td>

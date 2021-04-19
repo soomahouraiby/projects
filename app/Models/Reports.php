@@ -8,6 +8,7 @@ use App\Models\Commercial_drugs;
 use App\Models\Types_report;
 use App\Models\Sites;
 use App\Models\Shipments;
+use App\Models\Procedures;
 use Illuminate\Database\Eloquent\Model;
 
 class Reports extends Model
@@ -15,9 +16,9 @@ class Reports extends Model
     //use HasFactory;
     protected $table = "reports";
     protected $fillable = [
-        'report_no', 'report_date',  'notes_user', 'district',
-        'authors_name','authors_phone', 'authors_character',
-        'authors_age', 'transfered_party','transfer_date','type_report_no', 'smuggled_drugs_no', 'drug_no','agent_no'
+        'report_no', 'report_date',  'notes_user', 'district','drug_picture',
+        'authors_name','authors_phone', 'authors_character', 'authors_age',
+        'transfer_party','transfer_date','type_report_no', 'smuggled_drugs_no', 'drug_no','agent_no'
     ];
     protected $primaryKey = 'report_no';
 
@@ -53,11 +54,14 @@ class Reports extends Model
     }
 
     public function shipment(){
-        return $this->belongsToMany(Shipments::class,commercial_drugs::class);
+        return $this->hasOneThrough(Shipments::class,commercial_drugs::class);
 
     }
 
+    public function procedure(){
+        return $this->hasMany('App\Models\Procedures','report_no');
 
+    }
 
 
 }

@@ -158,7 +158,7 @@
                     'district':$("input[name='district']").val(),
                     'notes_user':$("#notes").val(),
                     'type_report_no':$("#type_report").val(),
-                    'transfered_party':$("#transfer").val(),
+                    'transfer_party':$("#transfer").val(),
                 },
                 success: function (data) {
                     alert(data);
