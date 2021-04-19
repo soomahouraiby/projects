@@ -37,7 +37,7 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/managementReports','OPManageController@managementReports')->name('OP_managementReports');
     Route::get('/detailsReport/{report_no}','OPManageController@detailsReport')->name('OP_detailsReport');
     Route::get('/followedUp/{report_no}','OPManageController@followedUp')->name('OP_followedUp');
-    Route::get('/transfer/{report_no}', 'OPManageController@transfer')->name('OP_transfer');
+    Route::get('/transferReports/{report_no}', 'OPManageController@transferReports')->name('OP_transfer');
 });
 
 Route::group(['namespace'=>'pharmaciesManagement'],function (){

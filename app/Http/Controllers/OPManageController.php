@@ -16,6 +16,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class OPManageController extends Controller
 {
@@ -25,6 +27,7 @@ class OPManageController extends Controller
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->select('reports.report_no','reports.authors_name',
                      'reports.report_date', 'types_reports.type_report')
+            ->where('state','=',0)
             ->get();
         return view('operationsManagement.newReports', compact('reports'));
     }
@@ -58,11 +61,13 @@ class OPManageController extends Controller
 
     }
 
-    public function transfer($report_no,Request $request){
-        $reports = DB::table('reports')->where('report_no','=', $report_no)
-           // ,['transfer_party','=','null'],['transfer_date','=','0000-00-00'])
-            ->update(['transfer_party'=>'ادارة الصيدليات',
-                'transfer_date'=>Carbon::now()->toDateTimeString()]);
+    public function transferReports($report_no,Request $request)
+    {
+        $reports = DB::table('reports')->select('reports.transfer_party')
+            ->where('report_no', '=', $report_no)
+            ->update(['transfer_party' => 'ادارة الصيدليات',
+                'transfer_date' => Carbon::now()->toDateTimeString()
+            ,'state'=>1]);
         return redirect()->back()->with(['success' => 'تم التحويل بنجاح ']);
     }
 

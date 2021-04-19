@@ -59,7 +59,7 @@
                                     <div class="dropdown-menu dropdown-menu-right border py-2" aria-labelledby="dropdown0">
                                         <a class="dropdown-item" href="{{url('operationsManagement/detailsReport',$report -> report_no)}}">عرض</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item  " href="{{url('operationsManagement/transfer',$report -> report_no)}}">تحويل</a>
+                                        <a class="dropdown-item  " href="{{url('operationsManagement/transferReports',$report -> report_no)}}">تحويل</a>
                                     </div>
                                 </div>
                             </td>
