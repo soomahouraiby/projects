@@ -4,27 +4,24 @@ namespace App\Models;
 
 //use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Types_report;
+use App\Models\Reports;
 class Procedures extends Model
 {
     //use HasFactory;
     protected $table="procedures";
     protected $fillable = [
         'procedure_no',
-        'procedur',
+        'procedure',
         'procedure_date',
-        'procedure_resulte',
-        'follow_no',
+        'procedure_result',
+        'report_no','opmanage_notes'
 
     ];
     public $timestamps=false;
+    protected $primaryKey = 'procedure_no';
 
-//    public function noticeDetails(){
-//        return $this->belongsTo(type_notices::class,'type_notice_no');
-//    }
-
-//    protected $hidden = [
-//         'procedure_no',
-//    ];
-
+    public function sit()
+    {
+        return $this->belongsTo(Reports::class, 'sit_no');
+    }
 }

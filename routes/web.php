@@ -35,9 +35,9 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/addReport','OPManageController@addReport')->name('OP_addReport');
     Route::get('/followReports','OPManageController@followReports')->name('OP_followReports');
     Route::get('/managementReports','OPManageController@managementReports')->name('OP_managementReports');
-    Route::get('/detailsReport','OPManageController@detailsReport')->name('OP_detailsReport');
-    Route::get('/followedUp','OPManageController@followedUp')->name('OP_followedUp');
-
+    Route::get('/detailsReport/{report_no}','OPManageController@detailsReport')->name('OP_detailsReport');
+    Route::get('/followedUp/{report_no}','OPManageController@followedUp')->name('OP_followedUp');
+    Route::get('/transferReports/{report_no}', 'OPManageController@transferReports')->name('OP_transfer');
 });
 
 Route::group(['namespace'=>'pharmaciesManagement'],function (){
@@ -47,9 +47,11 @@ Route::group(['namespace'=>'pharmaciesManagement'],function (){
     Route::get('/followReports','UsersController@followReports')->name('followReports');
     Route::get('/follow','UsersController@follow')->name('follow');
     Route::get('/detailsReport','UsersController@detailsReport')->name('detailsReport');
-    Route::post('transfer', 'OPManageController@transfer');
+    Route::post('/transfer', 'OPManageController@transfer')->name('transfer');
 
 });
+
+
 Route::get('getDrug', 'OPManageController@getDrug');
 Route::get('gg', 'OPManageController@gg');
 Route::get('create', 'OPManageController@create');

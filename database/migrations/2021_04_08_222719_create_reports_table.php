@@ -24,7 +24,9 @@ class CreateReportsTable extends Migration
             $table->integer('authors_age');
             $table->binary('drug_picture');
             $table->date('transfer_date');
-            $table->string('transfered_party',30);
+            $table->string('transfer_party',30);
+            $table->string('report_statues',30);
+            $table->integer('state');
 
             $table->unsignedInteger('type_report_no');
             $table->foreign('type_report_no')->references('type_report_no')->on('types_reports');
