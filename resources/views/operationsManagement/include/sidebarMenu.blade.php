@@ -12,19 +12,19 @@
                 </a>
                 <ul class="UL">
                     <li class="nav-item " >
-                        <a class="nav-link active " aria-current="page" href="#">
+                        <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/newSmuggledReports')}}">
                             <i class="far fa-newspaper"></i>
                             <span data-feather="file" class="ml-2">مهرب</span>
                         </a>
                     </li>
                     <li class="nav-item " >
-                        <a class="nav-link active " aria-current="page" href="#">
+                        <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/newDrownReports')}}">
                             <i class="far fa-newspaper"></i>
                             <span data-feather="file" class="ml-2">مسحوب</span>
                         </a>
                     </li>
                     <li class="nav-item " >
-                        <a class="nav-link active " aria-current="page" href="#">
+                        <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/newDiffrentReports')}}">
                             <i class="far fa-newspaper"></i>
                             <span data-feather="file" class="ml-2">غير مطابق</span>
                         </a>

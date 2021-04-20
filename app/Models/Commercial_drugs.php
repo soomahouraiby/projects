@@ -24,10 +24,11 @@ class Commercial_drugs extends Model
     }
 
     public function effective_materials(){
-        return $this->belongsToMany('App\Models\Effective_materials')->using('App\Models\Combinations');
+        //return $this->belongsToMany('App\Models\Effective_materials')->using('App\Models\Combinations');
 //        return $this->belongsToMany('App\Models\Effective_materials', 'combination',
 //            'material_no')->withPivot('drug_no');
-
+        return $this->belongsToMany('App\Models\Effective_materials', 'combination',
+            'drug_no','material_no');
     }
 
 

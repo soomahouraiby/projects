@@ -18,10 +18,10 @@
                         نوع البلاغ
                     </button>
                     <div class="dropdown-menu dropdown-menu-right bg-light">
-                        <a class="dropdown-item " href="#">جميع البلاغات</a>
-                        <a class="dropdown-item " href="#">مهرب</a>
-                        <a class="dropdown-item " href="#">مسحوب</a>
-                        <a class="dropdown-item " href="#">غير مطابق</a>
+                        <a class="dropdown-item " href="{{url('operationsManagement/newReports')}}">جميع البلاغات</a>
+                        <a class="dropdown-item " href="{{url('operationsManagement/newSmuggledReports')}}">مهرب</a>
+                        <a class="dropdown-item " href="{{url('operationsManagement/newDrownReports')}}">مسحوب</a>
+                        <a class="dropdown-item " href="{{url('operationsManagement/newDiffrentReports')}}">غير مطابق</a>
                     </div>
                 </div>
             </div>

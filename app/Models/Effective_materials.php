@@ -21,6 +21,6 @@ class Effective_materials extends Model
     ];
 
     public function commercial_drug(){
-        return $this->belongsToMany('App\Models\Commercial_drugs');
+        return $this->belongsToMany('App\Models\Commercial_drugs','combination');
     }
 }

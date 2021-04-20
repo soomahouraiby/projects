@@ -16,10 +16,11 @@ class CreateSmuggledDrugsTable extends Migration
         Schema::create('Smuggled_drugs', function (Blueprint $table) {
             $table->id('Smuggled_drugs_no');
             $table->integer('batch_no');
-            $table->string('commercial_name',30);
+            $table->string('drug_name',30);
             $table->string('material_name',30);
             $table->string('companies_name',50);
             $table->string('agent_name',50);
+            $table->binary('drug_photo');
 
             $table->timestamps();
         });

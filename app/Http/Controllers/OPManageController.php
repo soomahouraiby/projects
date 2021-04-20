@@ -31,32 +31,123 @@ class OPManageController extends Controller
             ->get();
         return view('operationsManagement.newReports', compact('reports'));
     }
+    public function newSmuggledReports()
+{
+    $reports = DB::table('reports')
+        ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+        ->select('reports.report_no','reports.authors_name',
+            'reports.report_date','types_reports.type_report_no', 'types_reports.type_report')
+        ->where('state','=',0)
+        ->where('type_report','=','مهرب')
+        ->get();
+    return view('operationsManagement.newReports', compact('reports'));
+}
+    public function newDrownReports()
+    {
+        $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->select('reports.report_no','reports.authors_name',
+                'reports.report_date', 'types_reports.type_report')
+            ->where('state','=',0)
+            ->where('type_report','=','مسحوب')
+            ->get();
+        return view('operationsManagement.newReports', compact('reports'));
+    }
+    public function newDiffrentReports()
+    {
+        $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->select('reports.report_no','reports.authors_name',
+                'reports.report_date', 'types_reports.type_report')
+            ->where('state','=',0)
+            ->where('type_report','=','غير مطابق')
+            ->get();
+        return view('operationsManagement.newReports', compact('reports'));
+    }
 
     public function detailsReport($report_no){
-        //استخدمت هذا بدل find
-          $reports = DB::table('reports')->select('reports.report_no')
+          $reports = DB::table('reports')->select('reports.report_no','reports.type_report_no'
+              ,'reports.drug_no')
               ->where('report_no','=', $report_no)->get();  // search in given table id only
+//        if (!$reports)
+//            return redirect()->back();
+
+        if (isset($reports) && $reports->count() > 0){
+            foreach ($reports as $report)
+              {
+                   if($report->drug_no==null)
+                {
+                    $report = DB::table('reports')
+                        ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+                        ->join('site', 'reports.site_no', '=', 'site.site_no')
+                        //->where('drug_no', '=', null)
+                        ->join('smuggled_drugs', 'reports.smuggled_drug_no', '=', 'smuggled_drugs.smuggled_drugs_no')
+                        ->select('reports.report_no', 'reports.authors_name', 'reports.authors_phone', 'reports.authors_character', 'reports.authors_age'
+                            , 'site.pharmacy_name', 'site.street_name', 'site.sit_dec'
+                            , 'reports.notes_user', 'reports.report_date', 'types_reports.type_report'
+                            , 'reports.drug_picture', 'smuggled_drugs.drug_name', 'smuggled_drugs.material_name',
+                            'smuggled_drugs.agent_name', 'smuggled_drugs.drug_photo')
+                        ->where('report_no', '=', $report_no)->get();
+
+                    return view('operationsManagement.detailsReport', compact('report'));
+                }
+
+            else{
+                    $report = DB::table('reports')
+                        ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+                        ->join('site', 'reports.site_no', '=', 'site.site_no')
+                        ->where('smuggled_drug_no', '=', null)
+                        ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
+                        ->select('reports.report_no', 'reports.authors_name', 'reports.authors_phone', 'reports.authors_character', 'reports.authors_age'
+                            , 'site.pharmacy_name', 'site.street_name', 'site.sit_dec'
+                            , 'reports.notes_user', 'reports.report_date', 'types_reports.type_report', 'reports.drug_picture'
+                            , 'commercial_drug.drug_name', 'commercial_drug.drug_photo')
+                        ->where('report_no', '=', $report_no)->get();
+                    return view('operationsManagement.detailsReport', compact('report'));
+
+                }
+//            $drug=DB::table('commercial_drug')->select('commercial_drug.drug_no')
+////            ->where('drug_no','=', $report->drug_no)->get();
+////        $transfer=Reports::create([
+//////            'transfer_party' =>'ادارة الصيدلة',
+//////            'transfer_date'=>Carbon::now()->toDateTimeString(),
+////        ]);
+            }}}
+
+    public function detailsSmuggledReport($report_no){
+        //استخدمت هذا بدل find
+        $reports = DB::table('reports')->select('reports.report_no')
+            ->where('report_no','=', $report_no)->get();  // search in given table id only
         if (!$reports)
             return redirect()->back();
 
-        $report = DB::table('reports')
-            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->join('site', 'reports.site_no', '=', 'site.site_no')
-            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
-            ->select('reports.report_no','reports.authors_name','reports.authors_phone', 'reports.authors_character', 'reports.authors_age'
-               ,'site.pharmacy_name','site.street_name','site.sit_dec'
-               ,'reports.notes_user','reports.report_date','types_reports.type_report'
-                ,'commercial_drug.drug_name','commercial_drug.drug_photo','reports.drug_picture',
-            'reports.drug_no')
+        $report = DB::table('reports')->select('reports.drug_no','reports.smuggled_drug_no')
             ->where('report_no','=', $report_no)->get();
+        foreach ($report as $reports)
+        {
+            if($reports->drug_no==null)
+            {
+                $reports = DB::table('reports')
+                    ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+                    ->join('site', 'reports.site_no', '=', 'site.site_no')
+                    ->join('smuggled_drugs', 'reports.smuggled_drug_no', '=', 'smuggled_drugs.smuggled_drugs_no')
+                    ->select('reports.report_no', 'reports.authors_name', 'reports.authors_phone', 'reports.authors_character', 'reports.authors_age'
+                        , 'site.pharmacy_name', 'site.street_name', 'site.sit_dec'
+                        , 'reports.notes_user', 'reports.report_date', 'types_reports.type_report'
+                        , 'reports.drug_picture', 'smuggled_drugs.drug_name', 'smuggled_drugs.material_name',
+                        'smuggled_drugs.agent_name', 'smuggled_drugs.drug_photo')->get();
+            }
+            $reports = DB::table('reports')
+                ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+                ->join('site', 'reports.site_no', '=', 'site.site_no')
+                ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
+                ->select('reports.report_no', 'reports.authors_name', 'reports.authors_phone', 'reports.authors_character', 'reports.authors_age'
+                    , 'site.pharmacy_name', 'site.street_name', 'site.sit_dec'
+                    , 'reports.notes_user', 'reports.report_date', 'types_reports.type_report'
+                    , 'commercial_drug.drug_name', 'commercial_drug.drug_photo', 'reports.drug_picture',
+                    'reports.drug_no')->get();
+        }
 
-//        $drug=DB::table('commercial_drug')->select('commercial_drug.drug_no')
-//            ->where('drug_no','=', $report->drug_no)->get();
-
-//        $transfer=Reports::create([
-//            'transfer_party' =>'ادارة الصيدلة',
-//            'transfer_date'=>Carbon::now()->toDateTimeString(),
-//        ]);
         return view('operationsManagement.detailsReport',compact('report'));
 
     }
@@ -102,13 +193,13 @@ class OPManageController extends Controller
 
     public function getDrug(){
 
-
+        // $r=Effective_materials::with('commercial_drug');
         //$r=Commercial_drugs::with(['effective_materials'])->get();
         $r = DB::table('commercial_drug')
-            ->join('combination', 'commercial_drug.drug_no', '=', 'combination.drug_no')
+            ->join('combination', 'combination.drug_no', '=','commercial_drug.drug_no')
             ->join('effective_material', 'combination.material_no', '=', 'effective_material.material_no')
             ->get();
-        // $r=Effective_materials::with('commercial_drug');
+
 
         return response($r) ;
 

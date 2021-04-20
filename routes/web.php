@@ -32,10 +32,14 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['prefix'=>'operationsManagement'],function (){
 
     Route::get('/newReports','OPManageController@newReports')->name('OP_newReports');
+    Route::get('/newSmuggledReports','OPManageController@newSmuggledReports')->name('OP_newSmuggledReports');
+    Route::get('/newDrownReports','OPManageController@newDrownReports')->name('OP_newDrownReports');
+    Route::get('/newDiffrentReports','OPManageController@newDiffrentReports')->name('OP_newDiffrentReports');
     Route::get('/addReport','OPManageController@addReport')->name('OP_addReport');
     Route::get('/followReports','OPManageController@followReports')->name('OP_followReports');
     Route::get('/managementReports','OPManageController@managementReports')->name('OP_managementReports');
     Route::get('/detailsReport/{report_no}','OPManageController@detailsReport')->name('OP_detailsReport');
+    Route::get('/detailsSmuggledReport/{report_no}','OPManageController@detailsSmuggledReport')->name('OP_detailsSmuggledReport');
     Route::get('/followedUp/{report_no}','OPManageController@followedUp')->name('OP_followedUp');
     Route::get('/transferReports/{report_no}', 'OPManageController@transferReports')->name('OP_transfer');
 });
