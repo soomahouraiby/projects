@@ -2,11 +2,6 @@
 @section('content')
 
     <main class="col-md-8 ms-sm-auto col-lg-10 px-md-4 ">
-        @if(Session::has('success'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('success') }}
-            </div>
-        @endif
         {{--Start Content Title--}}
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 pr-2  border-bottom main " >
             <h1 class="h2  ml-4">متابعة بلاغ وارد</h1>
@@ -71,6 +66,7 @@
             <div class="card-body position-relative mb-0 pb-0" style="background-color: #F9F9F9;">
                  @if(isset($procedures))
                       @foreach($procedures as $procedure)
+                           <form>
                                 <div class="row pb-5 border-bottom">
                                          <div class="col-lg">
                                              <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >  تــاريــخ الإجراء : </label>
@@ -89,29 +85,24 @@
                                             <p class="col-form-label  mx-5  ">{{$procedure -> procedure_result}} </p>
                                         </div>
                                     </div>
+                           </form>
+                          <form method="post" action="" id="notes">
+                              <div class="row pb-5">
+                                  <div class="col-lg">
+                                      <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   ملاحــظــة : </label>
+                                      <textarea class="form-control col-lg-10 ml-5 mt-3" placeholder="ملاحظة " rows="3"></textarea>
+                                  </div>
+                              </div>
+                              <div class="row pb-5">
+                                  <div class="col-lg">
+                                      <button class="btn " type="button" style="margin-right:90%; width: 10%; background-color: #0F122D; color:#ffffff">
+                                          حفظ</button>
+                                  </div>
+                              </div>
+                          </form>
+
                        @endforeach
                  @endif
-                @if(isset($r))
-                    @foreach($r as $rr)
-                          <form method="post" action="{{url('operationsManagement/followedUP',$rr -> report_no)}}" id="notes">
-                                 @csrf
-                                 <div class="row pb-5">
-                                     <div class="col-lg">
-                                         <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   ملاحــظــة : </label>
-                                         <textarea class="form-control col-lg-10 ml-5 mt-3" placeholder="ملاحظة "
-                                                   rows="3" id="opmanage_notes" ></textarea>
-                                     </div>
-                                 </div>
-                                 <div class="row pb-5">
-                                     <div class="col-lg">
-                                         <button class="btn " type="submit" id="save"
-                                                 style="margin-right:90%; width: 10%; background-color: #0F122D; color:#ffffff">
-                                             حفظ</button>
-                                     </div>
-                                 </div>
-                             </form>
-                    @endforeach
-                @endif
             </div>
         </div>
         {{--End Content--}}

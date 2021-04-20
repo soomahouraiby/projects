@@ -46,19 +46,19 @@
                 </a>
                 <ul class="UL">
                     <li class="nav-item " >
-                        <a class="nav-link active " aria-current="page" href="#">
+                        <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/followingReports')}}">
                             <i class="far fa-newspaper"></i>
                             <span data-feather="file" class="ml-2">قيد المتابعة</span>
                         </a>
                     </li>
                     <li class="nav-item " >
-                        <a class="nav-link active " aria-current="page" href="#">
+                        <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/followDoneReports')}}">
                             <i class="far fa-newspaper"></i>
                             <span data-feather="file" class="ml-2">تم متابعتها</span>
                         </a>
                     </li>
                     <li class="nav-item " >
-                        <a class="nav-link active " aria-current="page" href="#">
+                        <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/DoneReports')}}">
                             <i class="far fa-newspaper"></i>
                             <span data-feather="file" class="ml-2">تم انهائها</span>
                         </a>

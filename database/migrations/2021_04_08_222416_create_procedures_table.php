@@ -18,7 +18,7 @@ class CreateProceduresTable extends Migration
             $table->longText('procedure');
             $table->date('procedure_date');
             $table->longText('procedure_result');
-            $table->text('opmanage_notes');
+
 
             $table->unsignedInteger('report_no');
             $table->foreign('report_no')->references('report_no')->on('reports');

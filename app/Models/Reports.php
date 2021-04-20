@@ -17,7 +17,7 @@ class Reports extends Model
     protected $table = "reports";
     protected $fillable = [
         'report_no', 'report_date',  'notes_user', 'district','drug_picture',
-        'authors_name','authors_phone', 'authors_character', 'authors_age',
+        'authors_name','authors_phone', 'authors_character', 'authors_age','opmanage_notes',
         'transfer_party','transfer_date','type_report_no', 'smuggled_drugs_no', 'drug_no','agent_no'
     ];
     protected $primaryKey = 'report_no';

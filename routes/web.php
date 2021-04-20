@@ -37,11 +37,17 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/newDiffrentReports','OPManageController@newDiffrentReports')->name('OP_newDiffrentReports');
     Route::get('/addReport','OPManageController@addReport')->name('OP_addReport');
     Route::get('/followReports','OPManageController@followReports')->name('OP_followReports');
+    Route::get('/followingReports','OPManageController@followingReports')->name('OP_followingReports');
+    Route::get('/followDoneReports','OPManageController@followDoneReports')->name('OP_followDoneReports');
+    Route::get('/DoneReports','OPManageController@DoneReports')->name('OP_DoneReports');
     Route::get('/managementReports','OPManageController@managementReports')->name('OP_managementReports');
     Route::get('/detailsReport/{report_no}','OPManageController@detailsReport')->name('OP_detailsReport');
     Route::get('/detailsSmuggledReport/{report_no}','OPManageController@detailsSmuggledReport')->name('OP_detailsSmuggledReport');
     Route::get('/followedUp/{report_no}','OPManageController@followedUp')->name('OP_followedUp');
-    Route::get('/transferReports/{report_no}', 'OPManageController@transferReports')->name('OP_transfer');
+    Route::get('/followedUp2/{report_no}','OPManageController@followedUp2')->name('OP_followedUp2');
+    Route::get('/followedUp3/{report_no}','OPManageController@followedUp3')->name('OP_followedUp3');
+    Route::get('/transferReports/{report_no}', 'OPManageController@transferReports')->name('OP_transferReports');
+    Route::post('/saveOPMNotes/{report_no}', 'OPManageController@saveOPMNotes')->name('OP_saveOPMNotes');
 });
 
 Route::group(['namespace'=>'pharmaciesManagement'],function (){

@@ -113,7 +113,6 @@
                 <div class="card-body">
                     <div class="row" >
                         @if(isset($report))
-{{--                            @if($report -> type_report=='مهرب')--}}
                                @foreach($report as $reports)
                                 <ul class="list-group list-group-flush" >
                                     <li class="list-group-item" style="background-color: #F9F9F9;">
@@ -130,37 +129,12 @@
                                     </li>
                                     <li class="list-group-item"style="background-color: #F9F9F9;">
                                         <div class="card-img-top" >
-{{--                                            <img class="card-img-top img-fluid"--}}
-{{--                                                 src="{{ asset('images/' . $reports -> drug_photo) }}">--}}
+                                            <img class="card-img-top img-fluid"
+                                                 src="{{ asset('images/' . $reports -> drug_photo) }}">
                                         </div>
                                     </li>
                                 </ul>
                             @endforeach
-
-{{--                        @else--}}
-{{--                             @foreach($report as $reports)--}}
-{{--                                <ul class="list-group list-group-flush" >--}}
-{{--                                    <li class="list-group-item" style="background-color: #F9F9F9;">--}}
-{{--                                        <label>الاسم التجاري: </label>--}}
-{{--                                        <label  class="ml-3">{{$reports -> commercial_name}}</label>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="list-group-item" style="background-color: #F9F9F9;">--}}
-{{--                                        <label>التركيبه العلميه:</label>--}}
-{{--                                        <label  class="ml-3">paracetamol</label>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="list-group-item"style="background-color: #F9F9F9;">--}}
-{{--                                        <label>الوكيل :</label>--}}
-{{--                                        <label  class="ml-3">مجموعة الحيدري</label>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="list-group-item"style="background-color: #F9F9F9;">--}}
-{{--                                        <div class="card-img-top" >--}}
-{{--                                            --}}{{--  <img class="card-img-top img-fluid"--}}
-{{--                                            --}}{{--   src="{{ asset('images/' . $reports -> drug_photo) }}">--}}
-{{--                                        </div>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                               @endforeach--}}
-{{--                        @endif--}}
                         @endif
                     </div>
                 </div>
@@ -195,7 +169,7 @@
                                         <label>مرفق</label>
                                         <div class="card-img-top" >
                                             <img class="card-img-top img-fluid"
-                                                 src="{{ asset('images/' . $reports -> drug_picture)}}">
+                                                 src="{{  $reports -> drug_picture}}">
                                         </div>
                                     </li>
                                 </ul>
