@@ -120,8 +120,8 @@
                                         <label  class="ml-3">{{$reports -> drug_name}}</label>
                                     </li>
                                     <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label>التركيبه العلميه:</label>
-                                        <label  class="ml-3">paracetamol</label>
+                                        <label> الاستخدامات:</label>
+                                        <label  class="ml-3">{{$reports -> how_to_use}}</label>
                                     </li>
                                     <li class="list-group-item"style="background-color: #F9F9F9;">
                                         <label>الوكيل :</label>

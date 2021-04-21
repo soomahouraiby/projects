@@ -83,7 +83,7 @@ class OPManageController extends Controller
                 'reports.authors_character', 'reports.authors_age', 'site.pharmacy_name',
                 'site.street_name', 'site.sit_dec', 'reports.notes_user', 'reports.report_date',
                 'types_reports.type_report', 'reports.drug_picture'
-                , 'commercial_drug.drug_name', 'commercial_drug.drug_photo')
+                , 'commercial_drug.drug_name', 'commercial_drug.drug_photo','commercial_drug.how_to_use')
             ->where('report_no', '=', $report_no)->get();
                     return view('operationsManagement.detailsReport', compact('report'));
 
@@ -108,8 +108,6 @@ class OPManageController extends Controller
         return view('operationsManagement.detailsSmuggledReport', compact('report'));
     }
 
-
-
 //عشان تحويل البلاغات الوارده
     public function transferReports($report_no,Request $request)
     {
@@ -127,6 +125,7 @@ class OPManageController extends Controller
         $reports = DB::table('reports')
             ->select('reports.report_no','reports.authors_name','reports.report_date',
                 'reports.transfer_date','reports.transfer_party','reports.report_statues' )
+            ->where('report_statues','!=',null)
             ->get();
         return view('operationsManagement/followReports',compact('reports'));
     }
@@ -155,6 +154,8 @@ class OPManageController extends Controller
         return view('operationsManagement/followReports',compact('reports'));
     }
 
+
+
 //عشان تفاصيل الذي تمت المتابعه
     public function followedUp($report_no,Request $request){
         $reports = DB::table('reports')->select('reports.report_no')
@@ -174,12 +175,12 @@ class OPManageController extends Controller
             ,'procedures.procedure_date','procedures.procedure_result')
            ->where('report_no','=', $report_no)->get();
 
-        $r = DB::table('reports')->select('reports.opmanage_notes','reports.report_no')
-            ->where('report_no', '=', $report_no)
-            ->update(['opmanage_notes' => $request->opmanage_notes]);
-    //return view('operationsManagement/followedUp',compact('report','procedures','r'));
-        return view('operationsManagement/followedUp',['report'=>$report]
-            ,['procedures'=>$procedures],['r'=>$r]);
+//        $reports = DB::table('reports')->select('reports.opmanage_notes','reports.report_no')
+//            ->where('report_no', '=', $report_no)
+//            ->update(['opmanage_notes' => $request->opmanage_notes]);
+    return view('operationsManagement/followedUp',compact('report','procedures'));
+//        return view('operationsManagement/followedUp',['report'=>$report],['reports'=>$reports]
+//            ,['procedures'=>$procedures]);
 }
 //عشان تفاصيل الذي قيد المتابعه
     public function followedUp2($report_no){
@@ -214,28 +215,37 @@ class OPManageController extends Controller
             ->join('site', 'reports.site_no', '=', 'site.site_no')
             ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
             ->select('reports.report_no','reports.authors_name','reports.authors_phone'
-                ,'site.pharmacy_name','types_reports.type_report','commercial_drug.drug_name')
-            ->where('report_no','=', $report_no)->get();
+                ,'site.pharmacy_name','types_reports.type_report','commercial_drug.drug_name','reports.opmanage_notes')
+            //->where('opmanage_notes','!=',null)
+            ->where('report_no','=', $report_no)
+            ->get();
 
         $procedures=DB::table('procedures')->select('procedures.procedure'
             ,'procedures.procedure_date','procedures.procedure_result')
             ->where('report_no','=', $report_no)->get();
 
-        return view('operationsManagement/followedUp2',compact('report','procedures'));
+        return view('operationsManagement/followedUp3',compact('report','procedures'));
     }
-
 
 //عشان حفظ ملاحظة المدير على البلاغ
+    public function editReport($report_no){
+        $reports = Reports::find($report_no);
+         return view('operationsManagement/doneReports',compact('reports'));
+    }
     public function saveOPMNotes($report_no,Request $request)
     {
-        $reports = DB::table('reports')->select('reports.opmanage_notes','reports.report_no')
+         Reports::select('reports.report_no')
             ->where('report_no', '=', $report_no)
-            ->update(['opmanage_notes' => $request->opmanage_notes]);
-        dd( compact('reports') );
-        return view('operationsManagement/followedUp',compact('reports'));
-        //return redirect()->back()->with(['success' => 'تم الحفظ بنجاح ']);
+            ->update(['opmanage_notes' => $request->opmanage_notes,
+                'reports.report_statues'=>'تم الانهاء' ]);
+        $reports = DB::table('reports')
+            ->select('reports.report_no','reports.authors_name','reports.report_date',
+                'reports.transfer_date','reports.transfer_party','reports.report_statues' )
+            ->where('report_statues','!=',null)
+            ->get();
+        return view('operationsManagement/followReports',compact('reports'))
+            ->with(['success' => 'تم الانهاء بنجاح ']);
     }
-
 
 
     public function getDrug(){
@@ -286,25 +296,6 @@ class OPManageController extends Controller
 
 
 
-    public function detailsReport3($report_no){
-        $reports = DB::table('reports')->select('reports.report_no','reports.type_report_no')
-            ->where('report_no','=', $report_no)->get();  // search in given table id only
-        if (!$reports)
-            return redirect()->back();
 
-        $report = DB::table('reports')
-            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->join('site', 'reports.site_no', '=', 'site.site_no')
-            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
-            ->join('effective_material')
-            ->select('reports.report_no', 'reports.authors_name', 'reports.authors_phone',
-                'reports.authors_character', 'reports.authors_age', 'site.pharmacy_name',
-                'site.street_name', 'site.sit_dec', 'reports.notes_user', 'reports.report_date',
-                'types_reports.type_report', 'reports.drug_picture'
-                , 'commercial_drug.drug_name', 'commercial_drug.drug_photo')
-            ->where('report_no', '=', $report_no)->get();
-        return response($report);
-
-    }
 
 }

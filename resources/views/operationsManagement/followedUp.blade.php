@@ -2,11 +2,7 @@
 @section('content')
 
     <main class="col-md-8 ms-sm-auto col-lg-10 px-md-4 ">
-        @if(Session::has('success'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('success') }}
-            </div>
-        @endif
+
         {{--Start Content Title--}}
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 pr-2  border-bottom main " >
             <h1 class="h2  ml-4">متابعة بلاغ وارد</h1>
@@ -20,7 +16,7 @@
 
         {{--Start Content--}}
 
-        <!--//////////////////////////////////////////////////////-->
+    <!--//////////////////////////////////////////////////////-->
         <!--                      موضوع البلاغ                      -->
         <!--//////////////////////////////////////////////////////-->
 
@@ -34,23 +30,23 @@
                 <form>
                     @if(isset($report))
                         @foreach($report as $reports)
-                        <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
-                            <label class="col-form-label Text ml-3 mr-4 ">اسم المبلغ : </label>
-                            <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_name}}  </label>
-                            <label class="col-form-label Text ml-5 mr-4 ">رقم الهاتف : </label>
-                            <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_phone}}  </label>
-                        </div>
-                        <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
-                            <label class="col-form-label  Text ml-3 mr-4 ">نوع البلاغ : </label>
-                            <label class="col-form-label  ml-2 mr-4 ">{{$reports -> type_report}}  </label>
-                            <label class="col-form-label Text  ml-5 mr-4 ">اسم الصيدلية : </label>
-                            <label class="col-form-label ml-2 mr-4  ">{{$reports -> pharmacy_name}}  </label>
-                            <label class="col-form-label Text  ml-5 mr-4 ">اسم الدواء : </label>
-                            <label class="col-form-label ml-2 mr-4 mb-3  ">{{$reports -> drug_name}}  </label>
-                        </div>
-                        <div class="form-group raw mt-4  ">
-                            <a class="text-center col-form-label mb-3"  href="{{url('operationsManagement/detailsReport',$reports -> report_no)}}" style="margin-right: 45%"> تفاصيل البلاغ</a>
-                        </div>
+                            <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
+                                <label class="col-form-label Text ml-3 mr-4 ">اسم المبلغ : </label>
+                                <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_name}}  </label>
+                                <label class="col-form-label Text ml-5 mr-4 ">رقم الهاتف : </label>
+                                <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_phone}}  </label>
+                            </div>
+                            <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
+                                <label class="col-form-label  Text ml-3 mr-4 ">نوع البلاغ : </label>
+                                <label class="col-form-label  ml-2 mr-4 ">{{$reports -> type_report}}  </label>
+                                <label class="col-form-label Text  ml-5 mr-4 ">اسم الصيدلية : </label>
+                                <label class="col-form-label ml-2 mr-4  ">{{$reports -> pharmacy_name}}  </label>
+                                <label class="col-form-label Text  ml-5 mr-4 ">اسم الدواء : </label>
+                                <label class="col-form-label ml-2 mr-4 mb-3  ">{{$reports -> drug_name}}  </label>
+                            </div>
+                            <div class="form-group raw mt-4  ">
+                                <a class="text-center col-form-label mb-3"  href="{{url('operationsManagement/detailsReport',$reports -> report_no)}}" style="margin-right: 45%"> تفاصيل البلاغ</a>
+                            </div>
                         @endforeach
                     @endif
                 </form>
@@ -69,49 +65,42 @@
             </div>
 
             <div class="card-body position-relative mb-0 pb-0" style="background-color: #F9F9F9;">
-                 @if(isset($procedures))
-                      @foreach($procedures as $procedure)
-                                <div class="row pb-5 border-bottom">
-                                         <div class="col-lg">
-                                             <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >  تــاريــخ الإجراء : </label>
-                                             <label class="col-form-label col-lg-2  mt-2  ">{{$procedure -> procedure_date}}</label>
-                                         </div>
-                                     </div>
-                                <div class="row pb-5 border-bottom">
-                                        <div class="col-lg">
-                                            <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الإجراء المتخذ : </label>
-                                            <p class="col-form-label  mx-5  ">{{$procedure -> procedure}} </p>
-                                        </div>
-                                    </div>
-                                <div class="row pb-5 border-bottom">
-                                        <div class="col-lg">
-                                            <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الــنــتــائــج : </label>
-                                            <p class="col-form-label  mx-5  ">{{$procedure -> procedure_result}} </p>
-                                        </div>
-                                    </div>
-                       @endforeach
-                 @endif
-                @if(isset($r))
-                    @foreach($r as $rr)
-                          <form method="post" action="{{url('operationsManagement/followedUP',$rr -> report_no)}}" id="notes">
-                                 @csrf
-                                 <div class="row pb-5">
-                                     <div class="col-lg">
-                                         <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   ملاحــظــة : </label>
-                                         <textarea class="form-control col-lg-10 ml-5 mt-3" placeholder="ملاحظة "
-                                                   rows="3" id="opmanage_notes" ></textarea>
-                                     </div>
-                                 </div>
-                                 <div class="row pb-5">
-                                     <div class="col-lg">
-                                         <button class="btn " type="submit" id="save"
-                                                 style="margin-right:90%; width: 10%; background-color: #0F122D; color:#ffffff">
-                                             حفظ</button>
-                                     </div>
-                                 </div>
-                             </form>
+                @if(isset($procedures))
+                    @foreach($procedures as $procedure)
+                            <div class="row pb-5 border-bottom">
+                                <div class="col-lg">
+                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >  تــاريــخ الإجراء : </label>
+                                    <label class="col-form-label col-lg-2  mt-2  ">{{$procedure -> procedure_date}}</label>
+                                </div>
+                            </div>
+                            <div class="row pb-5 border-bottom">
+                                <div class="col-lg">
+                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الإجراء المتخذ : </label>
+                                    <p class="col-form-label  mx-5  ">{{$procedure -> procedure}} </p>
+                                </div>
+                            </div>
+                            <div class="row pb-5 border-bottom">
+                                <div class="col-lg">
+                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الــنــتــائــج : </label>
+                                    <p class="col-form-label  mx-5  ">{{$procedure -> procedure_result}} </p>
+                                </div>
+                            </div>
+
                     @endforeach
                 @endif
+
+                    @if(isset($report))
+                        @foreach($report as $reports)
+                    <div class="row pb-5">
+                        <div class="col-lg">
+                            <button class="btn " type="submit" style="margin-right:90%; width: 10%; background-color: #0F122D; color:#ffffff">
+                                <a  href="{{url('operationsManagement/editReport',$reports -> report_no)}}">انهاء</a></button>
+
+
+                        </div>
+                    </div>
+                        @endforeach
+                    @endif
             </div>
         </div>
         {{--End Content--}}

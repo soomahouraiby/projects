@@ -47,6 +47,7 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/followedUp2/{report_no}','OPManageController@followedUp2')->name('OP_followedUp2');
     Route::get('/followedUp3/{report_no}','OPManageController@followedUp3')->name('OP_followedUp3');
     Route::get('/transferReports/{report_no}', 'OPManageController@transferReports')->name('OP_transferReports');
+    Route::get('/editReport/{report_no}', 'OPManageController@editReport')->name('OP_editReport');
     Route::post('/saveOPMNotes/{report_no}', 'OPManageController@saveOPMNotes')->name('OP_saveOPMNotes');
 });
 
