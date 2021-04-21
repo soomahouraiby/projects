@@ -2,7 +2,6 @@
 @section('content')
 
     <main class="col-md-8 ms-sm-auto col-lg-10 px-md-4 ">
-
         {{--Start Content Title--}}
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 pr-2  border-bottom main " >
             <h1 class="h2  ml-4">متابعة بلاغ وارد</h1>
@@ -85,23 +84,32 @@
                                     <p class="col-form-label  mx-5  ">{{$procedure -> procedure_result}} </p>
                                 </div>
                             </div>
-
                     @endforeach
                 @endif
 
-                    @if(isset($report))
-                        @foreach($report as $reports)
+                @if(isset($report))
+                    @foreach($report as $reports)
+                            <div class="row pb-5 border-bottom">
+                            <div class="col-lg">
+                                <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الملاحظة  : </label>
+                                <p class="col-form-label  mx-5  ">{{$reports -> opmanage_notes}}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+            @if(isset($report))
+                @foreach($report as $reports)
                     <div class="row pb-5">
                         <div class="col-lg">
                             <button class="btn " type="submit" style="margin-right:90%; width: 10%; background-color: #0F122D; color:#ffffff">
-                                <a  href="{{url('operationsManagement/editReport',$reports -> report_no)}}">انهاء</a></button>
+                                <a  href="{{url('operationsManagement/editReport',$reports -> report_no)}}">تعديل</a></button>
 
 
                         </div>
                     </div>
-                        @endforeach
-                    @endif
-            </div>
+                @endforeach
+            @endif
         </div>
         {{--End Content--}}
 

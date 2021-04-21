@@ -14,7 +14,7 @@ class Procedures extends Model
         'procedure',
         'procedure_date',
         'procedure_result',
-        'report_no','opmanage_notes'
+        'report_no'
 
     ];
     public $timestamps=false;
