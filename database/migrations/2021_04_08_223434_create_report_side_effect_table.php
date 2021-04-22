@@ -15,16 +15,14 @@ class CreateReportSideEffectTable extends Migration
     {
         Schema::create('report_side_effects', function (Blueprint $table) {
             $table->id('report_side_effect_no');
-            $table->string('type_drug',30);
-            $table->integer('batch_number');
-            $table->string('how_get_drug',50);
-            $table->string('form_drug',30);
             $table->date('date_start_use');
-            $table->date('expiration_date');
             $table->longText('dose');
             $table->string('status_stop_use',5);
             $table->date('date_stop_use');
-            $table->longText('notes');
+            $table->string('Relation_with_patient',50);
+
+            $table->unsignedInteger('report_no');
+            $table->foreign('report_no')->references('report_no')->on('reports');
 
             $table->unsignedInteger('drug_user_no');
             $table->foreign('drug_user_no')->references('drug_user_no')->on('drug_user');

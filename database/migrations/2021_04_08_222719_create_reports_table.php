@@ -23,6 +23,10 @@ class CreateReportsTable extends Migration
             $table->string('authors_character',30);
             $table->integer('authors_age');
             $table->binary('drug_picture');
+            $table->string('commercial_name',30);
+            $table->string('material_name',30);
+            $table->string('companies_name',50);
+            $table->string('agent_name',50);
             $table->date('transfer_date');
             $table->string('transfer_party',30);
             $table->string('report_statues',30);
@@ -31,6 +35,9 @@ class CreateReportsTable extends Migration
 
             $table->unsignedInteger('type_report_no');
             $table->foreign('type_report_no')->references('type_report_no')->on('types_reports');
+
+            $table->unsignedInteger('app_user_no');
+            $table->foreign('app_user_no')->references('app_user_no')->on('app_user');
 
             $table->unsignedInteger('smuggled_drug_no');
             $table->foreign('smuggled_drug_no')->references('smuggled_drug_no')->on('smuggled_drug');

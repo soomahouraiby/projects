@@ -24,8 +24,6 @@ class CreateCommercialDrugTable extends Migration
             $table->longText('side_effects');
             $table->binary('drug_photo');
 
-            $table->unsignedInteger('shipment_no');
-            $table->foreign('shipment_no')->references('shipment_no')->on('shipments');
 
             $table->unsignedInteger('agent_no');
             $table->foreign('agent_no')->references('agent_no')->on('agents');

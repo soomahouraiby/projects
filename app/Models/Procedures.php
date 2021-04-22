@@ -20,8 +20,4 @@ class Procedures extends Model
     public $timestamps=false;
     protected $primaryKey = 'procedure_no';
 
-    public function sit()
-    {
-        return $this->belongsTo(Reports::class, 'sit_no');
-    }
 }
