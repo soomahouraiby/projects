@@ -22,7 +22,7 @@ class CreateCommercialDrugTable extends Migration
             $table->longText('how_to_use');
             $table->string('drug_form',30);
             $table->longText('side_effects');
-            $table->binary('drug_photo');
+            $table->string('drug_photo');
 
 
             $table->unsignedInteger('agent_no');

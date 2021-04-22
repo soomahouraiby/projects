@@ -22,7 +22,7 @@ class CreateReportsTable extends Migration
             $table->string('authors_phone',9);
             $table->string('authors_character',30);
             $table->integer('authors_age');
-            $table->binary('drug_picture');
+            $table->string('drug_picture');
             $table->string('commercial_name',30);
             $table->string('material_name',30);
             $table->string('companies_name',50);

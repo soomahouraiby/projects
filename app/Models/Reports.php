@@ -63,5 +63,7 @@ class Reports extends Model
 
     }
 
+    public function procedure(){
+        return $this->hasMany('App\Models\Procedures','report_no');
 
 }
