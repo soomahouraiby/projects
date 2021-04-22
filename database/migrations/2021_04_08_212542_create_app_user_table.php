@@ -20,7 +20,7 @@ class CreateAppUserTable extends Migration
             $table->string('app_user_email',40);
             $table->integer('age');
             $table->string('gender',6);
-            $table->date('date_of_birth');
+            $table->int('report_count');
 
 
             $table->timestamps();

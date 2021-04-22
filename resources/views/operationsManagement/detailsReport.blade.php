@@ -114,26 +114,27 @@
                     <div class="row" >
                         @if(isset($report))
                                @foreach($report as $reports)
-                                <ul class="list-group list-group-flush" >
-                                    <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label>الاسم التجاري: </label>
-                                        <label  class="ml-3">{{$reports -> drug_name}}</label>
-                                    </li>
-                                    <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label> الاستخدامات:</label>
-                                        <label  class="ml-3">{{$reports -> how_to_use}}</label>
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label>الوكيل :</label>
-                                        <label  class="ml-3">مجموعة الحيدري</label>
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <div class="card-img-top" >
-                                            <img class="card-img-top img-fluid"
-                                                 src="{{ asset('images/' . $reports -> drug_photo) }}">
-                                        </div>
-                                    </li>
-                                </ul>
+                                    <ul class="list-group list-group-flush" >
+                                        <li class="list-group-item" style="background-color: #F9F9F9;">
+                                            <label>الاسم التجاري: </label>
+                                            <label  class="ml-3">{{$reports -> drug_name}}</label>
+                                        </li>
+                                        <li class="list-group-item" style="background-color: #F9F9F9;">
+                                            <label> الاستخدامات:</label>
+                                            <label  class="ml-3">{{$reports -> how_to_use}}</label>
+                                        </li>
+                                        <li class="list-group-item"style="background-color: #F9F9F9;">
+                                            <label>الاعراض الجانبية :</label>
+                                            <label  class="ml-3">{{$reports -> side_effects}}</label>
+                                        </li>
+                                        <li class="list-group-item"style="background-color: #F9F9F9;">
+                                            {{--                                        <div class="card-img-top" >--}}
+                                            {{--                                            <img class="card-img-top img-fluid"--}}
+                                            {{--                                                 src="{{ asset('images/' . $reports -> drug_photo) }}">--}}
+                                            {{--                                        </div>--}}
+                                            <a class="btn float-right" href="{{url('operationsManagement/detailsDrug',$reports -> drug_no)}}">المزيد</a>
+                                        </li>
+                                    </ul>
                             @endforeach
                         @endif
                     </div>

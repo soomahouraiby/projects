@@ -20,58 +20,22 @@ use Illuminate\Database\Eloquent\Model;
 use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\isNull;
 
-class OPManageController extends Controller
+class PHCManageController extends Controller
 {
     //عشان عرض البلاغات الوارده
     public function newReports()
     {
         $reports = DB::table('reports')
-            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
             ->select('reports.report_no','reports.authors_name',
-                     'reports.report_date', 'types_reports.type_report')
+                     'reports.report_date','commercial_drug.drug_name' )
+            ->where('type_report_no','=',5)
             ->where('state','=',0)
             ->get();
-        return view('operationsManagement.newReports', compact('reports'));
-    }
-    // عشان اللفلترة حق البلاغات الوارده المهربة
-    public function newSmuggledReports()
-{
-    $reports = DB::table('reports')
-        ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-        ->select('reports.report_no','reports.authors_name',
-            'reports.report_date','types_reports.type_report_no', 'types_reports.type_report')
-        ->where('state','=',0)
-        ->where('type_report','=','مهرب')
-        ->get();
-    return view('operationsManagement.newReports', compact('reports'));
-}
-//عشان اللفلترة حق البلاغات الوارده المسحوبة
-    public function newDrownReports()
-    {
-        $reports = DB::table('reports')
-            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name',
-                'reports.report_date', 'types_reports.type_report')
-            ->where('state','=',0)
-            ->where('type_report','=','مسحوب')
-            ->get();
-        return view('operationsManagement.newReports', compact('reports'));
-    }
-    //عشان اللفلترة حق البلاغات الوارده الغير مطابقة
-    public function newDiffrentReports()
-    {
-        $reports = DB::table('reports')
-            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name',
-                'reports.report_date', 'types_reports.type_report')
-            ->where('state','=',0)
-            ->where('type_report','=','غير مطابق')
-            ->get();
-        return view('operationsManagement.newReports', compact('reports'));
+        return view('pharmacovigilanceManagement.newReports', compact('reports'));
     }
 
-
-//عشان تفاصيل كل البلاغات المسحوبة والغير مطابقة
+//عشان تفاصيل كل البلاغات
     public function detailsReport($report_no){
           $reports = DB::table('reports')->select('reports.report_no','reports.type_report_no'
               ,'reports.drug_no')
@@ -90,38 +54,17 @@ class OPManageController extends Controller
                 , 'commercial_drug.drug_name', 'commercial_drug.drug_photo','commercial_drug.how_to_use'
             ,'commercial_drug.side_effects','commercial_drug.drug_no')
             ->where('report_no', '=', $report_no)->get();
-                    return view('operationsManagement.detailsReport', compact('report'));
+                    return view('pharmacovigilanceManagement.detailsReport', compact('report'));
 
                 }
-//عشان تفاصيل كل البلاغات المهربة
-    public function detailsSmuggledReport($report_no){
-        //استخدمت هذا بدل find
-        $reports = DB::table('reports')->select('reports.report_no')
-            ->where('report_no','=', $report_no)->get();  // search in given table id only
-        if (!$reports)
-            return redirect()->back();
 
-        $report = DB::table('reports')
-            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->join('site', 'reports.site_no', '=', 'site.site_no')
-            ->select('reports.report_no', 'reports.authors_name', 'reports.authors_phone', 'reports.authors_character', 'reports.authors_age'
-                , 'site.pharmacy_name', 'site.street_name', 'site.sit_dec'
-                , 'reports.notes_user', 'reports.report_date', 'types_reports.type_report'
-                , 'reports.drug_picture', 'reports.commercial_name', 'reports.material_name',
-                'reports.agent_name', 'reports.companies_name')
-            ->where('report_no', '=', $report_no)->get();
-        return view('operationsManagement.detailsSmuggledReport', compact('report'));
-    }
-
-//عشان تحويل البلاغات الوارده
+//عشان تحويل البلاغات الوارده الى متابعة
     public function transferReports($report_no,Request $request)
     {
         $reports = DB::table('reports')->select('reports.transfer_party')
             ->where('report_no', '=', $report_no)
-            ->update(['transfer_party' => 'ادارة الصيدليات',
-                'transfer_date' => Carbon::now()->toDateTimeString()
-            ,'state'=>1,'reports.report_statues'=>'قيد المتابعة']);
-        return redirect()->back()->with(['success' => 'تم التحويل بنجاح ']);
+            ->update(['state'=>1,'reports.report_statues'=>'قيد المتابعة']);
+        return view('pharmacovigilanceManagement.followReports');
     }
 
 
@@ -299,5 +242,49 @@ class OPManageController extends Controller
         // return redirect()->back()->with(['success' => 'تم اضافه البلاغ بنجاح ']);
     }
 
+
+
+
+
+
+    public function fileUpload()
+    {
+        return view('fileUpload');
+    }
+    public function fileUploadPost(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:pdf,xlx,csv|max:2048',
+        ]);
+
+        $fileName = time().'.'.$request->file->extension();
+
+        $request->file->move(public_path('uploads'), $fileName);
+
+        return back()
+            ->with('success','You have successfully upload file.')
+            ->with('file',$fileName);
+
+    }
+
+    public function imageUpload()
+    {
+        return view('imageUpload');
+    }
+    public function imageUploadPost(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $imageName = time().'.'.$request->image->extension();
+
+        $request->image->move(public_path('images'), $imageName);
+
+        return back()
+            ->with('success','You have successfully upload image.')
+            ->with('image',$imageName);
+
+    }
 
 }
