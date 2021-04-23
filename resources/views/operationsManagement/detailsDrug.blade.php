@@ -19,55 +19,48 @@
         {{--                       بيانات الدواء                   --}}
         {{--//////////////////////////////////////////////////////--}}
 
-        <div class="card shadow col-lg-5" style="width: 40%; background-color: #F9F9F9;"  >
+        <div class="card shadow mb-0 pb-0" >
             <div class="card-header "style="background-color: #F9F9F9;">
                 <h5 class="card-title" style="color:#5468FF">تفاصيل الدواء</h5>
             </div>
-            <div class="card-body">
-                <div class="row " >
+            <div class="card-body position-relative mb-0 pb-0" style="background-color: #F9F9F9;">
+                <form>
                     @if(isset($r))
                         @foreach($r as $rr)
-                            <ul class="list-group list-group-flush" >
-                                <li class="list-group-item" style="background-color: #F9F9F9;">
-                                    <label>الاسم التجاري : </label>
-                                    <label  class="ml-5">{{$rr->drug_name}}</label>
-                                    <label >الاسم العلمي : </label>
-                                    <label  class="ml-3"></label>
-                                </li>
-                                <li class="list-group-item" style="background-color: #F9F9F9;">
-                                    <label>الاستخدامات : </label>
-                                    <label  class="ml-3 mr-4">{{$rr->how_to_use}}</label>
-                                </li>
-                                <li class="list-group-item"style="background-color: #F9F9F9;">
-                                    <label > الاعراض : </label>
-                                    <label  class="ml-3">{{$rr->side_effects}}</label>
-                                </li>
-                                <li class="list-group-item"style="background-color: #F9F9F9;">
-                                    <label > اسم الوكيل : </label>
-                                    <label  class="ml-5">{{$rr->agent_name}}</label>
-                                </li>
-                            </ul>
+                            <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
+                                <label>الاسم التجاري : </label>
+                                <label  class="ml-3">{{$rr->drug_name}}</label>
+                                <label >الاسم العلمي : </label>
+                                <label class="ml-3" >{{$rr->material_name}}</label>
+                                <label > اسم الوكيل : </label>
+                                <label  class="ml-3">{{$rr->agent_name}}</label>
+                                <label > بلد الصنع : </label>
+                                <label  class="ml-3">{{$rr->company_country}}</label>
+                            </div>
+                            <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
+                                <label>الاستخدامات : </label>
+                                <label  class="ml-3 mr-4">{{$rr->how_to_use}}</label>
+                                <label > الاعراض : </label>
+                                <label  class="ml-3">{{$rr->side_effects}}</label>
+                            </div>
+                            <br>
                         @endforeach
                     @endif
+                </form>
+                <form>
                     @if(isset($s))
                         @foreach($s as $ss)
-                            <ul>
-                                <li>
-                                    <label > رقم الشحنة : </label>
-                                    <label  class="ml-3">{{$ss->batch_number}}</label>
-                                </li>
-                                <li class="list-group-item"style="background-color: #F9F9F9;">
-                                    <label>  تاريخ الانتاج : </label>
-                                    <label  class="ml-5">{{$ss->production_date}}</label>
-                                </li>
-                                <li class="list-group-item"style="background-color: #F9F9F9;">
-                                    <label > تاريخ الانتهاء :</label>
-                                    <label  class="ml-3">{{$ss->expiry_date}}</label>
-                                </li>
-                            </ul>
+                            <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
+                                <label > رقم الشحنة : </label>
+                                <label  class="ml-3">{{$ss->batch_number}}</label>
+                                <label>  تاريخ الانتاج : </label>
+                                <label  class="ml-5">{{$ss->production_date}}</label>
+                                <label > تاريخ الانتهاء :</label>
+                                <label  class="ml-3">{{$ss->expiry_date}}</label>
+                            </div>
                         @endforeach
                     @endif
-                </div>
+                </form>
             </div>
         </div>
 

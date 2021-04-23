@@ -10,7 +10,7 @@
         {{--Title--}}
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 pr-2  border-bottom main " >
             <h1 class="h2   ml-2 mt-2 mb-2">تفاصيل بلاغ وارد</h1>
-                    </div>
+        </div>
 
         {{--Title--}}
 
@@ -29,28 +29,28 @@
                 </div>
                 <div class="card-body">
                     <div class="row " >
-{{--                        @if(isset($report))--}}
-{{--                            @foreach($report as $reports)--}}
-                                <ul class="list-group list-group-flush" >
-                                    <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label>الاسم : </label>
-{{--                                        <label  class="ml-3">{{$reports -> authors_name}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label>رقم الهاتف : </label>
-{{--                                        <label  class="ml-3">{{$reports -> authors_phone}}</label>--}}
-                                        <label>العمر : </label>
-{{--                                        <label  class="ml-3 mr-4">{{$reports -> authors_age}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label>الطول : </label>
-{{--                                        <label  class="ml-3 mr-4">{{$reports -> authors_age}}</label>--}}
-                                        <label class="ml-5"> الوزن : </label>
-{{--                                        <label  class="ml-3">{{$reports -> authors_character}}</label>--}}
-                                    </li>
-                                </ul>
-{{--                            @endforeach--}}
-{{--                        @endif--}}
+                        {{--                        @if(isset($report))--}}
+                        {{--                            @foreach($report as $reports)--}}
+                        <ul class="list-group list-group-flush" >
+                            <li class="list-group-item" style="background-color: #F9F9F9;">
+                                <label>الاسم : </label>
+                                {{--                                        <label  class="ml-3">{{$reports -> authors_name}}</label>--}}
+                            </li>
+                            <li class="list-group-item" style="background-color: #F9F9F9;">
+                                <label>رقم الهاتف : </label>
+                                {{--                                        <label  class="ml-3">{{$reports -> authors_phone}}</label>--}}
+                                <label>العمر : </label>
+                                {{--                                        <label  class="ml-3 mr-4">{{$reports -> authors_age}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                <label>الطول : </label>
+                                {{--                                        <label  class="ml-3 mr-4">{{$reports -> authors_age}}</label>--}}
+                                <label class="ml-5"> الوزن : </label>
+                                {{--                                        <label  class="ml-3">{{$reports -> authors_character}}</label>--}}
+                            </li>
+                        </ul>
+                        {{--                            @endforeach--}}
+                        {{--                        @endif--}}
                     </div>
                 </div>
             </div>
@@ -65,31 +65,31 @@
                 </div>
                 <div class="card-body">
                     <div class="row" >
-{{--                        @if(isset($report))--}}
-{{--                            @foreach($report as $reports)--}}
-                                <ul class="list-group list-group-flush" >
-                                    <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label>الاسم التجاري: </label>
-{{--                                        <label  class="ml-3">{{$reports -> drug_name}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label> الاستخدامات:</label>
-{{--                                        <label  class="ml-3">{{$reports -> how_to_use}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label>الاعراض الجانبية :</label>
-{{--                                        <label  class="ml-3">{{$reports -> side_effects}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-{{--                                        <div class="card-img-top" >--}}
-{{--                                            <img class="card-img-top img-fluid"--}}
-{{--                                                 src="{{ asset('images/' . $reports -> drug_photo) }}">--}}
-{{--                                        </div>--}}
-{{--                                        <a class="btn float-right" href="{{url('pharmacovigilanceManagement/detailsDrug',$reports -> drug_no)}}">المزيد</a>--}}
-                                    </li>
-                                </ul>
-{{--                            @endforeach--}}
-{{--                        @endif--}}
+                        {{--                        @if(isset($report))--}}
+                        {{--                            @foreach($report as $reports)--}}
+                        <ul class="list-group list-group-flush" >
+                            <li class="list-group-item" style="background-color: #F9F9F9;">
+                                <label>الاسم التجاري: </label>
+                                {{--                                        <label  class="ml-3">{{$reports -> drug_name}}</label>--}}
+                            </li>
+                            <li class="list-group-item" style="background-color: #F9F9F9;">
+                                <label> الاستخدامات:</label>
+                                {{--                                        <label  class="ml-3">{{$reports -> how_to_use}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                <label>الاعراض الجانبية :</label>
+                                {{--                                        <label  class="ml-3">{{$reports -> side_effects}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                {{--                                        <div class="card-img-top" >--}}
+                                {{--                                            <img class="card-img-top img-fluid"--}}
+                                {{--                                                 src="{{ asset('images/' . $reports -> drug_photo) }}">--}}
+                                {{--                                        </div>--}}
+                                {{--                                        <a class="btn float-right" href="{{url('pharmacovigilanceManagement/detailsDrug',$reports -> drug_no)}}">المزيد</a>--}}
+                            </li>
+                        </ul>
+                        {{--                            @endforeach--}}
+                        {{--                        @endif--}}
                     </div>
                 </div>
             </div>
@@ -107,28 +107,28 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-{{--                        @if(isset($report))--}}
-{{--                            @foreach($report as $reports)--}}
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label> اسم الدواء : </label>
-{{--                                        <label  class="ml-3">{{$reports -> pharmacy_name}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label>  تاريخ بدء الاستخدام : </label>
-{{--                                        <label  class="ml-3">{{$reports -> date_start_use}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label> تاريخ توقف الاستخدام :</label>
-{{--                                        <label  class="ml-3">{{$reports -> sit_dec}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label> الجرعه :</label>
-{{--                                        <label  class="ml-3">{{$reports -> sit_dec}}</label>--}}
-                                    </li>
-                                </ul>
-{{--                            @endforeach--}}
-{{--                        @endif--}}
+                        {{--                        @if(isset($report))--}}
+                        {{--                            @foreach($report as $reports)--}}
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="background-color: #F9F9F9;">
+                                <label> اسم الدواء : </label>
+                                {{--                                        <label  class="ml-3">{{$reports -> pharmacy_name}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                <label>  تاريخ بدء الاستخدام : </label>
+                                {{--                                        <label  class="ml-3">{{$reports -> date_start_use}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                <label> تاريخ توقف الاستخدام :</label>
+                                {{--                                        <label  class="ml-3">{{$reports -> sit_dec}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                <label> الجرعه :</label>
+                                {{--                                        <label  class="ml-3">{{$reports -> sit_dec}}</label>--}}
+                            </li>
+                        </ul>
+                        {{--                            @endforeach--}}
+                        {{--                        @endif--}}
                     </div>
                 </div>
             </div>
@@ -143,31 +143,31 @@
                 </div>
                 <div class="card-body">
                     <div class="row ">
-{{--                        @if(isset($report))--}}
-{{--                            @foreach($report as $reports)--}}
-                                <ul class="list-group list-group-flush ">
-                                    <li class="list-group-item" style="background-color: #F9F9F9;">
-                                        <label> نوع البلاغ :</label>
-{{--                                        <label  class="ml-3">{{$reports -> type_report}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label>تاريخ البلاغ :</label>
-{{--                                        <label  class="ml-3">{{$reports -> report_date}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label> ملاحظة المبلغ :</label>
-{{--                                        <label  class="ml-3">{{$reports -> notes_user}}</label>--}}
-                                    </li>
-                                    <li class="list-group-item"style="background-color: #F9F9F9;">
-                                        <label>مرفق</label>
-                                        <div class="card-img-top" >
-{{--                                            <img class="card-img-top img-fluid"--}}
-{{--                                                 src="{{  $reports -> drug_picture}}">--}}
-                                        </div>
-                                    </li>
-                                </ul>
-{{--                            @endforeach--}}
-{{--                        @endif--}}
+                        {{--                        @if(isset($report))--}}
+                        {{--                            @foreach($report as $reports)--}}
+                        <ul class="list-group list-group-flush ">
+                            <li class="list-group-item" style="background-color: #F9F9F9;">
+                                <label> نوع البلاغ :</label>
+                                {{--                                        <label  class="ml-3">{{$reports -> type_report}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                <label>تاريخ البلاغ :</label>
+                                {{--                                        <label  class="ml-3">{{$reports -> report_date}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                <label> ملاحظة المبلغ :</label>
+                                {{--                                        <label  class="ml-3">{{$reports -> notes_user}}</label>--}}
+                            </li>
+                            <li class="list-group-item"style="background-color: #F9F9F9;">
+                                <label>مرفق</label>
+                                <div class="card-img-top" >
+                                    {{--                                            <img class="card-img-top img-fluid"--}}
+                                    {{--                                                 src="{{  $reports -> drug_picture}}">--}}
+                                </div>
+                            </li>
+                        </ul>
+                        {{--                            @endforeach--}}
+                        {{--                        @endif--}}
                     </div>
                 </div>
             </div>

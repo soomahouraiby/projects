@@ -15,7 +15,6 @@ class CreateShipmentsTable extends Migration
     {
         Schema::create('shipments', function (Blueprint $table) {
             $table->id('shipment_no');
-            $table->string('batch_number',10);
             $table->date('production_date');
             $table->date('expiry_date');
             $table->integer('quantity');

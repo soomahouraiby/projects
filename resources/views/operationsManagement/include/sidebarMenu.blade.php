@@ -2,7 +2,7 @@
 
 <nav id="sidebarMenu" class="col-md-4 col-lg-2 d-md-block">
     <div class="position-fixed pt-4  border-bottom">
-{{--        @if(\Illuminate\Support\Facades\Auth::user()->hasRole('operations_Management'))--}}
+        {{--        @if(\Illuminate\Support\Facades\Auth::user()->hasRole('operations_Management'))--}}
         <ul class="nav flex-column">
             <li class="nav-item " >
                 <a class="nav-link active " aria-current="page" href="{{route('OP_newReports')}}">
@@ -72,7 +72,7 @@
                 </a>
             </li>
         </ul>
-{{--        @endif--}}
+        {{--        @endif--}}
     </div>
 </nav>
 

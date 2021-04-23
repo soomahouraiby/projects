@@ -18,24 +18,24 @@
         <div class="card-body position-relative mb-0 pb-0" style="background-color: #F9F9F9;">
             <br>
             <br><br><br><br>
-                <form method="post" action="{{url('operationsManagement/saveOPMNotes',$reports -> report_no)}}">
-                    @csrf
-                    <div class="row pb-5">
-                        <div class="col-lg">
-                            <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   ملاحــظــة : </label>
-                            <textarea class="form-control col-lg-10 ml-5 mt-3" id="opmanage_notes" name="opmanage_notes"
-                                      placeholder="ملاحظة " rows="3"></textarea>
-                        </div>
+            <form method="post" action="{{url('operationsManagement/saveOPMNotes',$reports -> report_no)}}">
+                @csrf
+                <div class="row pb-5">
+                    <div class="col-lg">
+                        <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   ملاحــظــة : </label>
+                        <textarea class="form-control col-lg-10 ml-5 mt-3" id="opmanage_notes" name="opmanage_notes"
+                                  placeholder="ملاحظة " rows="3"></textarea>
                     </div>
-                    <div class="row pb-5">
-                        <div class="col-lg">
-                            <button class="btn " type="submit" style="margin-right:90%; width: 10%; background-color: #0F122D; color:#ffffff">
-                                حفظ</button>
-                        </div>
+                </div>
+                <div class="row pb-5">
+                    <div class="col-lg">
+                        <button class="btn " type="submit" style="margin-right:90%; width: 10%; background-color: #0F122D; color:#ffffff">
+                            حفظ</button>
                     </div>
-{{--                </form>--}}
-            </div>
-         {{--End Content--}}
+                </div>
+            {{--                </form>--}}
+        </div>
+        {{--End Content--}}
 
     </main>
 

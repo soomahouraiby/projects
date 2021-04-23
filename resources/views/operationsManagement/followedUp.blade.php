@@ -63,45 +63,34 @@
                     <h4>الإجراءات المتخذه حيال البلاغ</h4>
                 </div>
             </div>
-
             <div class="card-body position-relative mb-0 pb-0" style="background-color: #F9F9F9;">
-                @if(isset($procedures))
-                    @foreach($procedures as $procedure)
-                            <div class="row pb-5 border-bottom">
-                                <div class="col-lg">
-                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >  تــاريــخ الإجراء : </label>
-                                    <label class="col-form-label col-lg-2  mt-2  ">{{$procedure -> procedure_date}}</label>
-                                </div>
+                <form>
+                    @if(isset($procedures))
+                        @foreach($procedures as $procedure)
+                            <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
+                                <label  >  تــاريــخ الإجراء : </label>
+                                <label class="ml-3">{{$procedure -> procedure_date}}</label>
+                                <label >   الإجراء المتخذ : </label>
+                                <label class="ml-3">{{$procedure -> procedure}} </label>
                             </div>
-                            <div class="row pb-5 border-bottom">
-                                <div class="col-lg">
-                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الإجراء المتخذ : </label>
-                                    <p class="col-form-label  mx-5  ">{{$procedure -> procedure}} </p>
-                                </div>
+                            <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
+                                <label  >   الــنــتــائــج : </label>
+                                <label class="ml-3">{{$procedure -> procedure_result}} </label>
                             </div>
-                            <div class="row pb-5 border-bottom">
-                                <div class="col-lg">
-                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الــنــتــائــج : </label>
-                                    <p class="col-form-label  mx-5  ">{{$procedure -> procedure_result}} </p>
-                                </div>
-                            </div>
-
-                    @endforeach
-                @endif
-
-                    @if(isset($report))
-                        @foreach($report as $reports)
+                        @endforeach
+                    @endif
+                </form>
+            </div>
+            @if(isset($report))
+                @foreach($report as $reports)
                     <div class="row pb-5">
                         <div class="col-lg">
                             <button class="btn " type="submit" style="margin-right:90%; width: 10%; background-color: #0F122D; color:#ffffff">
                                 <a  href="{{url('operationsManagement/editReport',$reports -> report_no)}}">انهاء</a></button>
-
-
                         </div>
                     </div>
-                        @endforeach
-                    @endif
-            </div>
+                @endforeach
+            @endif
         </div>
         {{--End Content--}}
 

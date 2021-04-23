@@ -113,7 +113,7 @@
                 <div class="card-body">
                     <div class="row" >
                         @if(isset($report))
-                               @foreach($report as $reports)
+                            @foreach($report as $reports)
                                 <ul class="list-group list-group-flush" >
                                     <li class="list-group-item" style="background-color: #F9F9F9;">
                                         <label>الاسم التجاري: </label>
@@ -131,12 +131,12 @@
                                         <label>الشركة المصنعة :</label>
                                         <label  class="ml-3">{{$reports -> companies_name}}</label>
                                     </li>
-{{--                                    <li class="list-group-item"style="background-color: #F9F9F9;">--}}
-{{--                                        <div class="card-img-top" >--}}
-{{--                                            <img class="card-img-top img-fluid"--}}
-{{--                                                 src="{{ asset('images/' . $reports -> drug_photo) }}">--}}
-{{--                                        </div>--}}
-{{--                                    </li>--}}
+                                    {{--                                    <li class="list-group-item"style="background-color: #F9F9F9;">--}}
+                                    {{--                                        <div class="card-img-top" >--}}
+                                    {{--                                            <img class="card-img-top img-fluid"--}}
+                                    {{--                                                 src="{{ asset('images/' . $reports -> drug_photo) }}">--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </li>--}}
                                 </ul>
                             @endforeach
                         @endif

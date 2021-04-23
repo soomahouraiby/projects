@@ -61,6 +61,7 @@ Route::group(['prefix'=>'pharmacovigilanceManagement'],function (){
     Route::get('/newReports','PHCManageController@newReports')->name('PHC_newReports');
     Route::get('/newQualityReports','PHCManageController@newQualityReports')->name('OP_newQualityReports');
     Route::get('/newEffectReports','PHCManageController@newEffectReports')->name('OP_newEffectReports');
+    Route::get('/transferReports/{report_no}', 'OPManageController@transferReports')->name('OP_transferReports');
     Route::get('/addReport','PHCManageController@addReport')->name('PHC_addReport');
     Route::get('/followReports','PHCManageController@followReports')->name('PHC_followReports');
     Route::get('/followingReports','PHCManageController@followingReports')->name('PHC_followingReports');

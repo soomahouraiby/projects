@@ -26,20 +26,49 @@ class PHCManageController extends Controller
     public function newReports()
     {
         $reports = DB::table('reports')
-            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
-            ->select('reports.report_no','reports.authors_name',
-                     'reports.report_date','commercial_drug.drug_name' )
-            ->where('type_report_no','=',5)
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->select('reports.report_no','reports.authors_name','types_reports.type_report_no'
+                , 'reports.report_date', 'types_reports.type_report')
+
+            ->where('type_report','!=','مهرب')
             ->where('state','=',0)
+            ->where('type_report','!=','مسحوب')
+            ->where('type_report','!=','غير مطابق')
+            ->get();
+        //return response($reports);
+        return view('pharmacovigilanceManagement.newReports', compact('reports'));
+    }
+
+    // عشان اللفلترة حق البلاغات الوارده للاعراض الجانبية
+    public function newEffectReports()
+    {
+        $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->select('reports.report_no','reports.authors_name',
+                'reports.report_date','types_reports.type_report_no', 'types_reports.type_report')
+            ->where('state','=',0)
+            ->where('type_report','=','اعراض جانبية')
+            ->get();
+        return view('pharmacovigilanceManagement.newReports', compact('reports'));
+    }
+//عشان اللفلترة حق البلاغات الوارده للجودة
+    public function newQualityReports()
+    {
+        $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->select('reports.report_no','reports.authors_name',
+                'reports.report_date', 'types_reports.type_report')
+            ->where('state','=',0)
+            ->where('type_report','=','جودة')
             ->get();
         return view('pharmacovigilanceManagement.newReports', compact('reports'));
     }
 
 //عشان تفاصيل كل البلاغات
     public function detailsReport($report_no){
-          $reports = DB::table('reports')->select('reports.report_no','reports.type_report_no'
-              ,'reports.drug_no')
-              ->where('report_no','=', $report_no)->get();  // search in given table id only
+        $reports = DB::table('reports')->select('reports.report_no','reports.type_report_no'
+            ,'reports.drug_no')
+            ->where('report_no','=', $report_no)->get();  // search in given table id only
         if (!$reports)
             return redirect()->back();
 
@@ -52,11 +81,11 @@ class PHCManageController extends Controller
                 'site.street_name', 'site.sit_dec', 'reports.notes_user', 'reports.report_date',
                 'types_reports.type_report', 'reports.drug_picture'
                 , 'commercial_drug.drug_name', 'commercial_drug.drug_photo','commercial_drug.how_to_use'
-            ,'commercial_drug.side_effects','commercial_drug.drug_no')
+                ,'commercial_drug.side_effects','commercial_drug.drug_no')
             ->where('report_no', '=', $report_no)->get();
-                    return view('pharmacovigilanceManagement.detailsReport', compact('report'));
+        return view('pharmacovigilanceManagement.detailsReport', compact('report'));
 
-                }
+    }
 
 //عشان تحويل البلاغات الوارده الى متابعة
     public function transferReports($report_no,Request $request)
@@ -124,10 +153,10 @@ class PHCManageController extends Controller
 
         $procedures=DB::table('procedures')->select('procedures.procedure'
             ,'procedures.procedure_date','procedures.procedure_result')
-           ->where('report_no','=', $report_no)->get();
+            ->where('report_no','=', $report_no)->get();
 
-    return view('operationsManagement/followedUp',compact('report','procedures'));
-}
+        return view('operationsManagement/followedUp',compact('report','procedures'));
+    }
 //عشان تفاصيل الذي قيد المتابعه
     public function followedUp2($report_no){
         $reports = DB::table('reports')->select('reports.report_no')
@@ -176,11 +205,11 @@ class PHCManageController extends Controller
 //عشان حفظ ملاحظة المدير على البلاغ
     public function editReport($report_no){
         $reports = Reports::find($report_no);
-         return view('operationsManagement/doneReports',compact('reports'));
+        return view('operationsManagement/doneReports',compact('reports'));
     }
     public function saveOPMNotes($report_no,Request $request)
     {
-         Reports::select('reports.report_no')
+        Reports::select('reports.report_no')
             ->where('report_no', '=', $report_no)
             ->update(['opmanage_notes' => $request->opmanage_notes,
                 'reports.report_statues'=>'تم الانهاء' ]);
@@ -197,8 +226,8 @@ class PHCManageController extends Controller
     public function detailsDrug($drug_no){
 
         $r = DB::table('commercial_drug')
-           // ->join('combination', 'combination.drug_no', '=','commercial_drug.drug_no')
-           // ->join('effective_material', 'combination.material_no', '=', 'effective_material.material_no')
+            // ->join('combination', 'combination.drug_no', '=','commercial_drug.drug_no')
+            // ->join('effective_material', 'combination.material_no', '=', 'effective_material.material_no')
             ->join('agents', 'commercial_drug.agent_no', '=', 'agents.agent_no')
             ->select('commercial_drug.drug_name','commercial_drug.how_to_use'
                 ,'commercial_drug.side_effects','commercial_drug.drug_no','agents.agent_name' )
@@ -210,7 +239,7 @@ class PHCManageController extends Controller
             ->where('drug_no','=', $drug_no)->get();
 
         return view('operationsManagement/detailsDrug',compact('r','s'));
-       // return response($r) ;
+        // return response($r) ;
 
     }
 
@@ -235,56 +264,12 @@ class PHCManageController extends Controller
             'district' => $request->input('district'),
             'notes_user' => $request->input('notes_user'),
             'report_date'=>Carbon::now()->toDateTimeString(),
-              'transfer_party' =>$request->input('transfer_party'),
-              'transfer_date'=>Carbon::now()->toDateTimeString(),
+            'transfer_party' =>$request->input('transfer_party'),
+            'transfer_date'=>Carbon::now()->toDateTimeString(),
         ]);
 
         // return redirect()->back()->with(['success' => 'تم اضافه البلاغ بنجاح ']);
     }
 
-
-
-
-
-
-    public function fileUpload()
-    {
-        return view('fileUpload');
-    }
-    public function fileUploadPost(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:pdf,xlx,csv|max:2048',
-        ]);
-
-        $fileName = time().'.'.$request->file->extension();
-
-        $request->file->move(public_path('uploads'), $fileName);
-
-        return back()
-            ->with('success','You have successfully upload file.')
-            ->with('file',$fileName);
-
-    }
-
-    public function imageUpload()
-    {
-        return view('imageUpload');
-    }
-    public function imageUploadPost(Request $request)
-    {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $imageName = time().'.'.$request->image->extension();
-
-        $request->image->move(public_path('images'), $imageName);
-
-        return back()
-            ->with('success','You have successfully upload image.')
-            ->with('image',$imageName);
-
-    }
 
 }

@@ -9,7 +9,7 @@ class Shipments extends Model
 {
     //use HasFactory;
     protected $table="shipments";
-    protected $fillable = ['shipment_no', 'batch_number', 'production_date', 'expiry_date', 'quantity',
+    protected $fillable = ['shipment_no',  'production_date', 'expiry_date', 'quantity',
         'shipment_drawn', 'exception', 'price',
 
     ];

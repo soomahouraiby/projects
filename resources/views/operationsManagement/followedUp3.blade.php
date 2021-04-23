@@ -66,30 +66,30 @@
             <div class="card-body position-relative mb-0 pb-0" style="background-color: #F9F9F9;">
                 @if(isset($procedures))
                     @foreach($procedures as $procedure)
-                            <div class="row pb-5 border-bottom">
-                                <div class="col-lg">
-                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >  تــاريــخ الإجراء : </label>
-                                    <label class="col-form-label col-lg-2  mt-2  ">{{$procedure -> procedure_date}}</label>
-                                </div>
+                        <div class="row pb-5 border-bottom">
+                            <div class="col-lg">
+                                <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >  تــاريــخ الإجراء : </label>
+                                <label class="col-form-label col-lg-2  mt-2  ">{{$procedure -> procedure_date}}</label>
                             </div>
-                            <div class="row pb-5 border-bottom">
-                                <div class="col-lg">
-                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الإجراء المتخذ : </label>
-                                    <p class="col-form-label  mx-5  ">{{$procedure -> procedure}} </p>
-                                </div>
+                        </div>
+                        <div class="row pb-5 border-bottom">
+                            <div class="col-lg">
+                                <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الإجراء المتخذ : </label>
+                                <p class="col-form-label  mx-5  ">{{$procedure -> procedure}} </p>
                             </div>
-                            <div class="row pb-5 border-bottom">
-                                <div class="col-lg">
-                                    <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الــنــتــائــج : </label>
-                                    <p class="col-form-label  mx-5  ">{{$procedure -> procedure_result}} </p>
-                                </div>
+                        </div>
+                        <div class="row pb-5 border-bottom">
+                            <div class="col-lg">
+                                <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الــنــتــائــج : </label>
+                                <p class="col-form-label  mx-5  ">{{$procedure -> procedure_result}} </p>
                             </div>
+                        </div>
                     @endforeach
                 @endif
 
                 @if(isset($report))
                     @foreach($report as $reports)
-                            <div class="row pb-5 border-bottom">
+                        <div class="row pb-5 border-bottom">
                             <div class="col-lg">
                                 <label class="col-form-label col-lg-2  mt-2 ml-3 Text" >   الملاحظة  : </label>
                                 <p class="col-form-label  mx-5  ">{{$reports -> opmanage_notes}}</p>
