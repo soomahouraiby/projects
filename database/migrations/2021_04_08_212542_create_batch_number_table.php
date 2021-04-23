@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCombinationTable extends Migration
+class CreateBatchNumberTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateCombinationTable extends Migration
      */
     public function up()
     {
-        Schema::create('combination', function (Blueprint $table) {
-            $table->id('combination_no');
+        Schema::create('batch_number', function (Blueprint $table) {
+            $table->id();
+            $table->string('batch_num');
 
+            $table->unsignedInteger('shipment_no');
+            $table->foreign('shipment_no')->references('shipment_no')->on('shipments');
 
             $table->unsignedInteger('drug_no');
             $table->foreign('drug_no')->references('drug_no')->on('commercial_drug');
-
-            $table->unsignedInteger('material_no');
-            $table->foreign('material_no')->references('material_no')->on('effective_material');
 
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateCombinationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('app_user');
     }
 }

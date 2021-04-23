@@ -20,6 +20,9 @@ class CreateSideEffectsTable extends Migration
             $table->string('range_dangerous',40);
             $table->string('status_side',40);
 
+            $table->unsignedInteger('drug_user_no');
+            $table->foreign('drug_user_no')->references('drug_user_no')->on('drug_user');
+
             $table->timestamps();
         });
     }

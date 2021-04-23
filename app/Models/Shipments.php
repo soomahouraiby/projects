@@ -17,6 +17,15 @@ class Shipments extends Model
 
     public $timestamps=false;
 
+    public function drug(){
+        return $this->belongsToMany('App\Models\commercial_drug',
+            'batch_number',
+            'shipment_no',
+            'drug_no',
+            'shipment_no',
+            'drug_no');
+    }
+
 //    public function drug(){
 //        return $this->belongsTo(Commercial_drugs::class);
 //    }

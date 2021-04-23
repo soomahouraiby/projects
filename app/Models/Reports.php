@@ -19,6 +19,7 @@ class Reports extends Model
         'report_no', 'report_date',  'notes_user', 'district','drug_picture',
         'authors_name','authors_phone', 'authors_character', 'authors_age','opmanage_notes',
         'transfer_party','transfer_date','type_report_no', 'smuggled_drugs_no', 'drug_no','agent_no'
+        ,'companes_name','agent_name','material_name','commercial_name','state','sit_no',
     ];
     protected $primaryKey = 'report_no';
 
@@ -63,7 +64,5 @@ class Reports extends Model
 
     }
 
-    public function procedure(){
-        return $this->hasMany('App\Models\Procedures','report_no');
 
 }

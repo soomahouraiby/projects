@@ -20,6 +20,7 @@ class CreateReportSideEffectTable extends Migration
             $table->string('status_stop_use',5);
             $table->date('date_stop_use');
             $table->string('Relation_with_patient',50);
+            $table->date('expiration_date');
 
             $table->unsignedInteger('report_no');
             $table->foreign('report_no')->references('report_no')->on('reports');

@@ -22,7 +22,7 @@ class CreateReportsTable extends Migration
             $table->string('authors_phone',9);
             $table->string('authors_character',30);
             $table->integer('authors_age');
-            $table->string('drug_picture');
+            $table->binary('drug_picture');
             $table->string('commercial_name',30);
             $table->string('material_name',30);
             $table->string('companies_name',50);
@@ -31,7 +31,7 @@ class CreateReportsTable extends Migration
             $table->string('transfer_party',30);
             $table->string('report_statues',30);
             $table->text('opmanage_notes');
-            $table->integer('state');
+            $table->integer('state')->default(0);
 
             $table->unsignedInteger('type_report_no');
             $table->foreign('type_report_no')->references('type_report_no')->on('types_reports');

@@ -14,7 +14,7 @@ class Commercial_drugs extends Model
     protected $table="commercial_drug";
     protected $filliable = [
         'drug_no', 'drug_name', 'register_no', 'barcode', 'drug_entrance','drug_photo',
-        'how_to_use', 'drug_form', 'side_effects', 'agent_no'
+        'how_to_use', 'drug_form', 'side_effects', 'agent_no','company_no'
     ];
     public $timestamps=false;
     protected $primaryKey = 'drug_no';
@@ -27,11 +27,26 @@ class Commercial_drugs extends Model
         //return $this->belongsToMany('App\Models\Effective_materials')->using('App\Models\Combinations');
 //        return $this->belongsToMany('App\Models\Effective_materials', 'combination',
 //            'material_no')->withPivot('drug_no');
-        return $this->belongsToMany(Effective_materials::class, 'combination');
+        //return $this->belongsToMany(Effective_materials::class, 'combination');
+        return $this->belongsToMany('App\Models\effective_material',
+            'Combinations',
+            'drug_no',
+            'material_no',
+            'drug_no',
+            'material_no');
     }
 
+//    public function shipment(){
+//        return $this->hasMany(Shipments::class,'shipment_no');
+//    }
+
     public function shipment(){
-        return $this->hasMany(Shipments::class,'shipment_no');
+        return $this->belongsToMany('App\Models\Shipments',
+            'batch_number',
+            'drug_no',
+            'shipment_no',
+            'drug_no',
+            'shipment_no');
     }
 
     public function agent(){

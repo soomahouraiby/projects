@@ -16,7 +16,6 @@ class CreateDrugUserTable extends Migration
         Schema::create('drug_user', function (Blueprint $table) {
             $table->id('drug_user_no');
             $table->string('drug_user_name',30);
-            $table->date('date_of_birth');
             $table->integer('age');
             $table->integer('height');
             $table->integer('weight');

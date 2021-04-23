@@ -23,5 +23,11 @@ class RolesTableSeeder extends Seeder
             'description'=>'can do anything in the project'
         ]);
 
+        $pharmacovigilance = Role::create([
+            'name'=>'pharmacovigilance_Management',
+            'display_name'=>'pharmacovigilance Management',
+            'description'=>'can do anything in the project'
+        ]);
+
     }
 }

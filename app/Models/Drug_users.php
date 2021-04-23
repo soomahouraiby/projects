@@ -12,7 +12,6 @@ class Drug_users extends Model
     protected $fillable = [
         'drug_user_no',
         'drug_user_name',
-        'date_of_brith',
         'age',
         'height',
         'weight',
