@@ -22,7 +22,6 @@ class CreateAppUserTable extends Migration
             $table->string('gender',6);
             $table->integer('report_count');
 
-
             $table->timestamps();
         });
     }

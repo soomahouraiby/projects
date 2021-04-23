@@ -39,9 +39,6 @@ class CreateReportsTable extends Migration
             $table->unsignedInteger('app_user_no');
             $table->foreign('app_user_no')->references('app_user_no')->on('app_user');
 
-            $table->unsignedInteger('smuggled_drug_no');
-            $table->foreign('smuggled_drug_no')->references('smuggled_drug_no')->on('smuggled_drug');
-
             $table->unsignedInteger('drug_no');
             $table->foreign('drug_no')->references('drug_no')->on('commercial_drug');
 

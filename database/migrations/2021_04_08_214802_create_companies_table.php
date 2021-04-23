@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('company_country',30);
 
             $table->unsignedInteger('drug_no');
-            $table->foreign('drug_no')->references('agent_no')->on('commercial_drug');
+            $table->foreign('drug_no')->references('drug_no')->on('commercial_drug');
 
             $table->timestamps();
         });
