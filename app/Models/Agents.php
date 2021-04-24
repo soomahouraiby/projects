@@ -21,4 +21,15 @@ class Agents extends Model
 //        'agent_no',
 //    ];
 
+    public function company(){
+        //  return $this->belongsToMany(Commercial_drugs::class,'combination');
+        return $this->belongsToMany('App\Models\Companies',
+            'agent_company',
+            'agent_no',
+            'company_no',
+            'agent_no',
+            'company_no');
+
+    }
+
 }

@@ -10,9 +10,9 @@ class Companies extends Model
     //use HasFactory;
     protected $table="companies";
     protected $fillable = [
-        'companie_no',
-        'companie_name',
-        'companie_country',
+        'company_no',
+        'company_name',
+        'company_country',
         'agent_no',
 
     ];
@@ -25,5 +25,15 @@ class Companies extends Model
 //    protected $hidden = [
 //       'companie_no',
 //    ];
+    public function agent(){
+        //  return $this->belongsToMany(Commercial_drugs::class,'combination');
+        return $this->belongsToMany('App\Models\Agents',
+            'agent_company',
+            'company_no',
+            'agent_no',
+            'company_no',
+            'agent_no');
+
+    }
 
 }
