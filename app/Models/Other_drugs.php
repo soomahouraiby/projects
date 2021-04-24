@@ -20,12 +20,4 @@ class Other_drugs extends Model
     ];
     public $timestamps=false;
 
-//    public function noticeDetails(){
-//        return $this->belongsTo(type_notices::class,'type_notice_no');
-//    }
-
-//    protected $hidden = [
-//        'o_drug_no',
-//    ];
-
 }

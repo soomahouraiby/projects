@@ -24,10 +24,6 @@ class Commercial_drugs extends Model
     }
 
     public function effective_material(){
-        //return $this->belongsToMany('App\Models\Effective_materials')->using('App\Models\Combinations');
-//        return $this->belongsToMany('App\Models\Effective_materials', 'combination',
-//            'material_no')->withPivot('drug_no');
-        //return $this->belongsToMany(Effective_materials::class, 'combination');
         return $this->belongsToMany('App\Models\effective_material',
             'Combinations',
             'drug_no',
@@ -35,10 +31,6 @@ class Commercial_drugs extends Model
             'drug_no',
             'material_no');
     }
-
-//    public function shipment(){
-//        return $this->hasMany(Shipments::class,'shipment_no');
-//    }
 
     public function shipment(){
         return $this->belongsToMany('App\Models\Shipments',
@@ -49,8 +41,13 @@ class Commercial_drugs extends Model
             'shipment_no');
     }
 
+
+    public function company(){
+        return $this->belongsTo(Companies::class,'company_no');
+    }
+
     public function agent(){
-        return $this->belongsTo(Agents::class,'agent_no');
+        return $this -> belongsTo('App\Models\Agents','agent_no');
     }
 
 

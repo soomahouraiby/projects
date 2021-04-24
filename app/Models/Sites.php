@@ -10,7 +10,7 @@ class Sites extends Model
     //use HasFactory;
     protected $table="site";
     protected $fillable = [
-        'site_no', 'pharmacy_name', 'street_name', 'neig_name', 'sit_dec',
+        'site_no', 'pharmacy_name', 'street_name', 'neig_name', 'site_dec',
     ];
 
     protected $hidden = [

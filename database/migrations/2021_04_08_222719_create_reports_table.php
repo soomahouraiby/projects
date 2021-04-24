@@ -20,12 +20,12 @@ class CreateReportsTable extends Migration
             $table->string('district',20);
             $table->string('authors_name',50);
             $table->string('authors_phone',9);
-            $table->string('authors_character',30);
+            $table->string('authors_adjective',30);
             $table->integer('authors_age');
-            $table->binary('drug_picture');
+            $table->string('drug_picture');
             $table->string('commercial_name',30);
             $table->string('material_name',30);
-            $table->string('companies_name',50);
+            $table->string('company_name',50);
             $table->string('agent_name',50);
             $table->date('transfer_date');
             $table->string('transfer_party',30);

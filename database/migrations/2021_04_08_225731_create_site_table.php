@@ -18,7 +18,7 @@ class CreateSiteTable extends Migration
             $table->string('pharmacy_name',30);
             $table->string('street_name',20);
             $table->string('neig_name',20);
-            $table->longText('sit_dec');
+            $table->longText('site_dec');
 
 
             $table->timestamps();

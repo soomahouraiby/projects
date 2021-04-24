@@ -14,8 +14,9 @@ class CreateCombinationTable extends Migration
     public function up()
     {
         Schema::create('combination', function (Blueprint $table) {
-            $table->id('combination_no');
-
+            $table->id('Combination_no');
+            $table->string('con',30);
+            $table->longText('dose');
 
             $table->unsignedInteger('drug_no');
             $table->foreign('drug_no')->references('drug_no')->on('commercial_drug');

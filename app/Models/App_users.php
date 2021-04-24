@@ -16,8 +16,9 @@ class App_users extends Model
     protected $primaryKey = 'app_user_no';
     public $timestamps=false;
 
-//    protected $hidden = [
-//        'app_user_no',
-//    ];
+    public function report(){
+        return $this->hasMany('App\Models\Report','report_no');
+
+    }
 
 }

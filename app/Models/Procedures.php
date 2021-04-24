@@ -20,4 +20,9 @@ class Procedures extends Model
     public $timestamps=false;
     protected $primaryKey = 'procedure_no';
 
+    public function report(){
+        return $this->belongsTo('App\Models\Reports','report_no');
+
+    }
+
 }

@@ -19,6 +19,7 @@ class CreateCompaniesTable extends Migration
                 $table->string('company_country',30);
 
 
+
                 $table->timestamps();
         });
     }

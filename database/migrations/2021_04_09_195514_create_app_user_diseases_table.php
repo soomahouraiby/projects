@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChronicDiseasesTable extends Migration
+class CreateAppUserDiseasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateChronicDiseasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('chronic_diseases', function (Blueprint $table) {
-            $table->id('ch_di_no');
+        Schema::create('app_user_diseases', function (Blueprint $table) {
+            $table->id('us_di_no');
             $table->unsignedInteger('disease_no');
             $table->foreign('disease_no')->references('disease_no')->on('diseases');
             $table->unsignedInteger('app_user_no');

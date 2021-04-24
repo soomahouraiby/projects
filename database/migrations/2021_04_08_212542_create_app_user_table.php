@@ -18,10 +18,10 @@ class CreateAppUserTable extends Migration
             $table->string('app_user_name',30);
             $table->string('app_user_phone',14);
             $table->string('app_user_email',40);
-            $table->string('adjective',60);
+            $table->string('adjective',60)->default('مواطن');
             $table->integer('age');
             $table->string('gender',6);
-            $table->integer('report_count');
+            $table->integer('report_count')->nullable();
 
             $table->timestamps();
         });

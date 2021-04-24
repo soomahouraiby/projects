@@ -14,7 +14,7 @@ class CreateBatchNumberTable extends Migration
     public function up()
     {
         Schema::create('batch_number', function (Blueprint $table) {
-            $table->id();
+            $table->id('batch_number_no');
             $table->string('batch_num');
 
             $table->unsignedInteger('shipment_no');

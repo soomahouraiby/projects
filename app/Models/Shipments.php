@@ -26,9 +26,6 @@ class Shipments extends Model
             'drug_no');
     }
 
-//    public function drug(){
-//        return $this->belongsTo(Commercial_drugs::class);
-//    }
 
 
 }

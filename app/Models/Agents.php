@@ -13,23 +13,10 @@ class Agents extends Model
     ];
     public $timestamps=false;
 
-//    public function noticeDetails(){
-//        return $this->belongsTo(type_notices::class,'type_notice_no');
-//    }
-
-//    protected $hidden = [
-//        'agent_no',
-//    ];
-
     public function company(){
-        //  return $this->belongsToMany(Commercial_drugs::class,'combination');
-        return $this->belongsToMany('App\Models\Companies',
-            'agent_company',
-            'agent_no',
-            'company_no',
-            'agent_no',
-            'company_no');
-
+        return $this -> hasMany('App\Models\Companies','agent_no');
     }
+
+
 
 }

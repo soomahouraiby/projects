@@ -22,9 +22,10 @@ Types_report extends Model
     protected $primaryKey = 'type_report_no';
 
 
-//    protected $hidden = [
-//         'type_report_no',
-//    ];
+    public function report(){
+        return $this->hasMany('App\Models\Reports','report_no');
+
+    }
 
 
 }

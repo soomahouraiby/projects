@@ -31,9 +31,9 @@
                         @foreach($report as $reports)
                             <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
                                 <label class="col-form-label Text ml-3 mr-4 ">اسم المبلغ : </label>
-                                <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_name}}  </label>
+                                <label class="col-form-label  ml-2 mr-4  ">{{$reports -> app_user_name}}  </label>
                                 <label class="col-form-label Text ml-5 mr-4 ">رقم الهاتف : </label>
-                                <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_phone}}  </label>
+                                <label class="col-form-label  ml-2 mr-4  ">{{$reports -> app_user_phone}}  </label>
                             </div>
                             <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
                                 <label class="col-form-label  Text ml-3 mr-4 ">نوع البلاغ : </label>

@@ -48,17 +48,17 @@
                                 <ul class="list-group list-group-flush" >
                                     <li class="list-group-item" style="background-color: #F9F9F9;">
                                         <label>الاسم : </label>
-                                        <label  class="ml-3">{{$reports -> authors_name}}</label>
+                                        <label  class="ml-3">{{$reports -> app_user_name}}</label>
                                     </li>
                                     <li class="list-group-item" style="background-color: #F9F9F9;">
                                         <label>رقم الهاتف : </label>
-                                        <label  class="ml-3">{{$reports -> authors_phone}}</label>
+                                        <label  class="ml-3">{{$reports -> app_user_phone}}</label>
                                     </li>
                                     <li class="list-group-item"style="background-color: #F9F9F9;">
                                         <label>العمر : </label>
-                                        <label  class="ml-3 mr-4">{{$reports -> authors_age}}</label>
+                                        <label  class="ml-3 mr-4">{{$reports -> age}}</label>
                                         <label class="ml-5"> الصفه : </label>
-                                        <label  class="ml-3">{{$reports -> authors_character}}</label>
+                                        <label  class="ml-3">{{$reports -> adjective}}</label>
                                     </li>
                                 </ul>
                             @endforeach
@@ -90,7 +90,7 @@
                                     </li>
                                     <li class="list-group-item"style="background-color: #F9F9F9;">
                                         <label> وصف الموقع :</label>
-                                        <label  class="ml-3">{{$reports -> sit_dec}}</label>
+                                        <label  class="ml-3">{{$reports -> site_dec}}</label>
                                     </li>
                                 </ul>
                             @endforeach
@@ -129,7 +129,7 @@
                                     </li>
                                     <li class="list-group-item"style="background-color: #F9F9F9;">
                                         <label>الشركة المصنعة :</label>
-                                        <label  class="ml-3">{{$reports -> companies_name}}</label>
+                                        <label  class="ml-3">{{$reports -> company_name}}</label>
                                     </li>
                                     {{--                                    <li class="list-group-item"style="background-color: #F9F9F9;">--}}
                                     {{--                                        <div class="card-img-top" >--}}

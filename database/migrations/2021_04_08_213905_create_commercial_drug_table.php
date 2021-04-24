@@ -22,11 +22,11 @@ class CreateCommercialDrugTable extends Migration
             $table->longText('how_to_use');
             $table->string('drug_form',30);
             $table->longText('side_effects');
-            $table->binary('drug_photo');
+            $table->string('drug_photo');
 
 
-//            $table->unsignedInteger('company_no');
-//            $table->foreign('company_no')->references('company_no')->on('companies');
+            $table->unsignedInteger('company_no');
+            $table->foreign('company_no')->references('company_no')->on('companies');
 
             $table->unsignedInteger('agent_no');
             $table->foreign('agent_no')->references('agent_no')->on('agents');
