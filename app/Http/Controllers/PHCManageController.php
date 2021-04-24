@@ -27,7 +27,8 @@ class PHCManageController extends Controller
     {
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name','types_reports.type_report_no'
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->select('reports.report_no','app_user.app_user_name'
                 , 'reports.report_date', 'types_reports.type_report')
 
             ->where('type_report','!=','مهرب')
@@ -44,8 +45,9 @@ class PHCManageController extends Controller
     {
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name',
-                'reports.report_date','types_reports.type_report_no', 'types_reports.type_report')
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->select('reports.report_no','app_user.app_user_name'
+                , 'reports.report_date', 'types_reports.type_report')
             ->where('state','=',0)
             ->where('type_report','=','اعراض جانبية')
             ->get();
@@ -56,8 +58,9 @@ class PHCManageController extends Controller
     {
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name',
-                'reports.report_date', 'types_reports.type_report')
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->select('reports.report_no','app_user.app_user_name'
+                , 'reports.report_date', 'types_reports.type_report')
             ->where('state','=',0)
             ->where('type_report','=','جودة')
             ->get();

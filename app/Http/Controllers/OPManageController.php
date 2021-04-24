@@ -27,7 +27,8 @@ class OPManageController extends Controller
     {
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name','types_reports.type_report_no'
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->select('reports.report_no','app_user.app_user_name'
                 , 'reports.report_date', 'types_reports.type_report')
 
             ->where('type_report','!=','اعراض جانبية')
@@ -36,14 +37,16 @@ class OPManageController extends Controller
             ->get();
         //return response($reports);
         return view('operationsManagement.newReports', compact('reports'));
+
     }
     // عشان اللفلترة حق البلاغات الوارده المهربة
     public function newSmuggledReports()
     {
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name',
-                'reports.report_date','types_reports.type_report_no', 'types_reports.type_report')
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->select('reports.report_no','app_user.app_user_name'
+                , 'reports.report_date', 'types_reports.type_report')
             ->where('state','=',0)
             ->where('type_report','=','مهرب')
             ->get();
@@ -54,8 +57,9 @@ class OPManageController extends Controller
     {
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name',
-                'reports.report_date', 'types_reports.type_report')
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->select('reports.report_no','app_user.app_user_name'
+                , 'reports.report_date', 'types_reports.type_report')
             ->where('state','=',0)
             ->where('type_report','=','مسحوب')
             ->get();
@@ -66,8 +70,9 @@ class OPManageController extends Controller
     {
         $reports = DB::table('reports')
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->select('reports.report_no','reports.authors_name',
-                'reports.report_date', 'types_reports.type_report')
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->select('reports.report_no','app_user.app_user_name'
+                , 'reports.report_date', 'types_reports.type_report')
             ->where('state','=',0)
             ->where('type_report','=','غير مطابق')
             ->get();
