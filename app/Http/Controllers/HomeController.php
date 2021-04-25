@@ -35,7 +35,7 @@ class HomeController extends Controller
 //            return view('operationsManagement/addReport');
 //        }
 //        elseif (Auth::user()->hasRole('pharmacies_Management')){
-//            return view('pharmaciesManagement/newReports');
+//            return view('pharmacyManagement/newReports');
 //        }
 //        else{
 //            return view('auth/login');

@@ -41,7 +41,7 @@
 {{--                @if (auth()->user()->hasRole('operation_Management'))--}}
 {{--                    @include('operationsManagement.include.sidebarMenu')--}}
 {{--                @elseif (auth()->user()->hasRole('pharmacies_Management'))--}}
-{{--                    @include('pharmaciesManagement.include.sidebarMenu')--}}
+{{--                    @include('pharmacyManagement.include.sidebarMenu')--}}
 {{--                @endif--}}
 
 
