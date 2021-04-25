@@ -78,6 +78,19 @@ class OPManageController extends Controller
             ->get();
         return view('operationsManagement.newReports', compact('reports'));
     }
+    //عشان اللفلترة حق البلاغات الوارده المستثناه
+    public function newExceptionReports()
+    {
+        $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->select('reports.report_no','app_user.app_user_name'
+                , 'reports.report_date', 'types_reports.type_report')
+            ->where('state','=',0)
+            ->where('type_report','=','مستثناء')
+            ->get();
+        return view('operationsManagement.newReports', compact('reports'));
+    }
 
 
 //عشان تفاصيل كل البلاغات المسحوبة والغير مطابقة

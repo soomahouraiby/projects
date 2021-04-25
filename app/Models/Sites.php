@@ -19,4 +19,9 @@ class Sites extends Model
 
     public $timestamps=false;
 
+    public function report(){
+        return $this->hasMany('App\Models\Reports','site_no');
+
+    }
+
 }

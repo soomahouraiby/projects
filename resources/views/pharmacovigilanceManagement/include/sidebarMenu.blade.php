@@ -11,7 +11,20 @@
                     <i class="fas fa-caret-down ml-3 dropdown "></i>
                 </a>
             </li>
-
+                <ul class="UL">
+                <li class="nav-item " >
+                    <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/newEffectReports')}}">
+                        <i class="far fa-newspaper"></i>
+                        <span data-feather="file" class="ml-2">اعراض جانبية</span>
+                    </a>
+                </li>
+                <li class="nav-item " >
+                    <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/newQualityReports')}}">
+                        <i class="far fa-newspaper"></i>
+                        <span data-feather="file" class="ml-2">جودة</span>
+                    </a>
+                </li>
+            </ul>
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{route('PHC_addReport')}}">
                     <i class="fas fa-plus "></i>

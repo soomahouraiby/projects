@@ -35,6 +35,7 @@ class PHCManageController extends Controller
             ->where('state','=',0)
             ->where('type_report','!=','مسحوب')
             ->where('type_report','!=','غير مطابق')
+            ->where('type_report','!=','مستثناء')
             ->get();
         //return response($reports);
         return view('pharmacovigilanceManagement.newReports', compact('reports'));

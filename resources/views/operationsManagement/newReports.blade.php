@@ -22,6 +22,7 @@
                         <a class="dropdown-item " href="{{url('operationsManagement/newSmuggledReports')}}">مهرب</a>
                         <a class="dropdown-item " href="{{url('operationsManagement/newDrownReports')}}">مسحوب</a>
                         <a class="dropdown-item " href="{{url('operationsManagement/newDiffrentReports')}}">غير مطابق</a>
+                        <a class="dropdown-item " href="{{url('operationsManagement/newExceptionReports')}}">مستثناء</a>
                     </div>
                 </div>
             </div>

@@ -29,6 +29,12 @@
                             <span data-feather="file" class="ml-2">غير مطابق</span>
                         </a>
                     </li>
+                    <li class="nav-item " >
+                        <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/newExceptionReports')}}">
+                            <i class="far fa-newspaper"></i>
+                            <span data-feather="file" class="ml-2">مستثناء</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 

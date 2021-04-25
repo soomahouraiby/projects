@@ -27,40 +27,41 @@
                 <form>
                     @if(isset($r))
                         @foreach($r as $rr)
-                            <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
+                            <div class="form-group raw mt-4 " style="display: flex; flex-wrap: wrap;  ">
                                 <label>الاسم التجاري : </label>
-{{--                                <label  class="ml-3">{{$rr->drug_name}}</label>--}}
+                                <label  class="ml-3">{{$rr->drug_name}}</label>
                                 <label >الاسم العلمي : </label>
-{{--                                <label class="ml-3" >{{$rr->material_name}}</label>--}}
-                                <label > اسم الوكيل : </label>
-{{--                                <label  class="ml-3">{{$rr->agent_name}}</label>--}}
-                                <label > بلد الصنع : </label>
-{{--                                <label  class="ml-3">{{$rr->company_country}}</label>--}}
+                                <label class="ml-3" >{{$rr->material_name}}</label>
                             </div>
-                            <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
+{{--                        <div>--}}
+{{--                            <label >الاسم العلمي : </label>--}}
+{{--                            @foreach($r as $rr)--}}
+{{--                                <label class="ml-3" >{{$rr->material_name}}</label>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+                            <div>
+                                <label > اسم الوكيل : </label>
+                                <label  class="ml-3">{{$rr->agent_name}}</label>
+                                <label > بلد الصنع : </label>
+                                <label  class="ml-3">{{$rr->company_country}}</label>
+                            </div>
+                            <div >
                                 <label>الاستخدامات : </label>
                                 <label  class="ml-3 mr-4">{{$rr->how_to_use}}</label>
                                 <label > الاعراض : </label>
                                 <label  class="ml-3">{{$rr->side_effects}}</label>
+                            </div >
+                            <div class="form-group raw   border-bottom " style="display: flex; flex-wrap: wrap; ">
+                                <label > رقم الشحنة : </label>
+                                <label  class="ml-3">{{$rr->batch_num}}</label>
+                                <label>  تاريخ الانتاج : </label>
+                                <label  class="ml-3">{{$rr->production_date}}</label>
+                                <label > تاريخ الانتهاء :</label>
+                                <label  class="ml-3">{{$rr->expiry_date}}</label>
                             </div>
-                            <br>
                         @endforeach
                     @endif
                 </form>
-{{--                <form>--}}
-{{--                    @if(isset($r))--}}
-{{--                        @foreach($r as $rr)--}}
-{{--                            <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">--}}
-{{--                                <label > رقم الشحنة : </label>--}}
-{{--                                <label  class="ml-3">{{$rr->batch_num}}</label>--}}
-{{--                                <label>  تاريخ الانتاج : </label>--}}
-{{--                                <label  class="ml-5">{{$rr->production_date}}</label>--}}
-{{--                                <label > تاريخ الانتهاء :</label>--}}
-{{--                                <label  class="ml-3">{{$rr->expiry_date}}</label>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-{{--                    @endif--}}
-{{--                </form>--}}
             </div>
         </div>
 

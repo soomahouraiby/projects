@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class Combinations extends Pivot
 {
     //use HasFactory;
-    protected $table="Drug_material";
-    protected $fillable = ['combination_no', 'material_no', 'drug_no'];
+    protected $table="combination";
+    protected $fillable = ['combination_no', 'material_no', 'drug_no','con'];
     public $timestamps=false;
 
 }

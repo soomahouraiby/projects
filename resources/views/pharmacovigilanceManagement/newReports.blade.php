@@ -47,7 +47,7 @@
                     @foreach($reports as $report)
                         @if($report -> type_report=='اعراض جانبية')
                             <tr class="reportRow">
-                                <td><a class="nav-link "   href="{{url('pharmacovigilanceManagement/detailsEffectReports',$report -> report_no)}}">{{$report -> authors_name}}</a></td>
+                                <td><a class="nav-link "   href="{{url('pharmacovigilanceManagement/detailsEffectReports',$report -> report_no)}}">{{$report -> app_user_name}}</a></td>
                                 <td><a class="nav-link  "  href="{{url('pharmacovigilanceManagement/detailsEffectReports',$report -> report_no)}}">{{$report -> report_date}} </a></td>
                                 <td ><a class="nav-link  " href="{{url('pharmacovigilanceManagement/detailsEffectReports',$report -> report_no)}}">{{$report -> type_report}}</a></td>
                                 <td class="align-middle white-space-nowrap">
@@ -65,7 +65,7 @@
                             </tr>
                         @else
                             <tr class="reportRow">
-                                <td><a class="nav-link "   href="{{url('pharmacovigilanceManagement/detailsReport',$report -> report_no)}}">{{$report -> authors_name}}</a></td>
+                                <td><a class="nav-link "   href="{{url('pharmacovigilanceManagement/detailsReport',$report -> report_no)}}">{{$report -> app_user_name}}</a></td>
                                 <td><a class="nav-link  "  href="{{url('pharmacovigilanceManagement/detailsReport',$report -> report_no)}}">{{$report -> report_date}} </a></td>
                                 <td ><a class="nav-link  " href="{{url('pharmacovigilanceManagement/detailsReport',$report -> report_no)}}">{{$report -> type_report}}</a></td>
                                 <td class="align-middle white-space-nowrap">

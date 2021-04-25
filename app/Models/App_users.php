@@ -21,4 +21,13 @@ class App_users extends Model
 
     }
 
+    public function disees(){
+        return $this->belongsToMany('App\Models\Diseases',
+            'app_user_diseases',
+            'app_user_no',
+            'disease_no',
+            'app_user_no',
+            'disease_no');
+    }
+
 }

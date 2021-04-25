@@ -17,7 +17,6 @@ class CreateCommercialDrugTable extends Migration
             $table->id('drug_no');
             $table->string('drug_name',50);
             $table->string('register_no',10);
-            $table->string('barcode',20);
             $table->string('drug_entrance',50);
             $table->longText('how_to_use');
             $table->string('drug_form',30);

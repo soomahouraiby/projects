@@ -27,6 +27,7 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/newSmuggledReports','OPManageController@newSmuggledReports')->name('OP_newSmuggledReports');
     Route::get('/newDrownReports','OPManageController@newDrownReports')->name('OP_newDrownReports');
     Route::get('/newDiffrentReports','OPManageController@newDiffrentReports')->name('OP_newDiffrentReports');
+    Route::get('/newExceptionReports','OPManageController@newExceptionReports')->name('OP_newExceptionReports');
     Route::get('/addReport','OPManageController@addReport')->name('OP_addReport');
     Route::get('/followReports','OPManageController@followReports')->name('OP_followReports');
     Route::get('/followingReports','OPManageController@followingReports')->name('OP_followingReports');

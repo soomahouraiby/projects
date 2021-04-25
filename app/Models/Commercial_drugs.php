@@ -13,7 +13,7 @@ class Commercial_drugs extends Model
     //use HasFactory;
     protected $table="commercial_drug";
     protected $filliable = [
-        'drug_no', 'drug_name', 'register_no', 'barcode', 'drug_entrance','drug_photo',
+        'drug_no', 'drug_name', 'register_no', 'drug_entrance','drug_photo',
         'how_to_use', 'drug_form', 'side_effects', 'agent_no','company_no'
     ];
     public $timestamps=false;
@@ -25,7 +25,7 @@ class Commercial_drugs extends Model
 
     public function effective_material(){
         return $this->belongsToMany('App\Models\effective_material',
-            'Combinations',
+            'combination',
             'drug_no',
             'material_no',
             'drug_no',

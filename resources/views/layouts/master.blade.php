@@ -35,6 +35,7 @@
 
         {{--List--}}
         @include('operationsManagement.include.sidebarMenu')
+{{--        @include('pharmacovigilanceManagement.include.sidebarMenu')--}}
 
 
 {{--                @if (auth()->user()->hasRole('operation_Management'))--}}

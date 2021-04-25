@@ -13,9 +13,7 @@ class Agents extends Model
     ];
     public $timestamps=false;
 
-    public function company(){
-        return $this -> hasMany('App\Models\Companies','agent_no');
-    }
+
 
 
 

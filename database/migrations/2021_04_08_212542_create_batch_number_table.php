@@ -16,6 +16,7 @@ class CreateBatchNumberTable extends Migration
         Schema::create('batch_number', function (Blueprint $table) {
             $table->id('batch_number_no');
             $table->string('batch_num');
+            $table->string('barcode',20);
 
             $table->unsignedInteger('shipment_no');
             $table->foreign('shipment_no')->references('shipment_no')->on('shipments');
