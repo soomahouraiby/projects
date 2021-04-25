@@ -1,6 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\PHCManageController;
 
+use App\Http\Controllers\Controller;
 use App\Models\Report_detailes;
 use App\Models\Sites;
 use App\Models\Commercial_drugs;
@@ -67,7 +68,7 @@ class PHCManageController extends Controller
         return view('pharmacovigilanceManagement.newReports', compact('reports'));
     }
 
-//عشان تفاصيل كل البلاغات الجودة
+//عشان تفاصيل كل البلاغات
     public function detailsReport($report_no){
         $reports = DB::table('reports')->select('reports.report_no','reports.type_report_no'
             ,'reports.drug_no')
@@ -88,27 +89,6 @@ class PHCManageController extends Controller
             ->where('report_no', '=', $report_no)->get();
         return view('pharmacovigilanceManagement.detailsReport', compact('report'));
 
-    }
-//عشان تفاصيل كل البلاغات الاعراض الجانبية
-    public function detailsSmuggledReport($report_no){
-        //استخدمت هذا بدل find
-        $reports = DB::table('reports')->select('reports.report_no')
-            ->where('report_no','=', $report_no)->get();  // search in given table id only
-        if (!$reports)
-            return redirect()->back();
-
-        $report = DB::table('reports')
-            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
-            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
-            ->join('site', 'reports.site_no', '=', 'site.site_no')
-            ->select('reports.report_no', 'app_user.app_user_name', 'app_user.app_user_phone',
-                'app_user.adjective', 'app_user.age'
-                , 'site.pharmacy_name', 'site.street_name', 'site.site_dec'
-                , 'reports.notes_user', 'reports.report_date', 'types_reports.type_report'
-                , 'reports.drug_picture', 'reports.commercial_name', 'reports.material_name',
-                'reports.agent_name', 'reports.company_name')
-            ->where('report_no', '=', $report_no)->get();
-        return view('operationsManagement.detailsSmuggledReport', compact('report'));
     }
 
 //عشان تحويل البلاغات الوارده الى متابعة

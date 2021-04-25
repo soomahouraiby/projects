@@ -142,7 +142,7 @@ class OPManageController extends Controller
     {
         $reports = DB::table('reports')->select('reports.transfer_party')
             ->where('report_no', '=', $report_no)
-            ->update(['transfer_party' => 'ادارة الصيدليات',
+            ->update(['transfer_party' => 'ادارة الصيدلة',
                 'transfer_date' => Carbon::now()->toDateTimeString()
                 ,'state'=>1,'reports.report_statues'=>'قيد المتابعة']);
         return redirect()->back()->with(['success' => 'تم التحويل بنجاح ']);
