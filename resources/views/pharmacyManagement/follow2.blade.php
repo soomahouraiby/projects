@@ -93,7 +93,7 @@
                        </div>
                     </div>
                      <div class="form-group raw mt-4 " >
-                       <a class="nav-link active float-right" href="../pharmaciesManagement/follow.php">
+                       <a class="nav-link active float-right" href="../pharmacyManagement/follow.php">
                         <i class="fas fa-plus fa-1x ml-0 mr-0"></i>
                         <span data-feather="file" class="ml-1">إضافة إجراء</span>
                        </a>

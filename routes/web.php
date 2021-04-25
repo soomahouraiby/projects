@@ -45,7 +45,7 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::post('store', 'OPManageController@store')->name('report.store');
 });
 
-Route::group(['namespace'=>'pharmaciesManagement'],function (){
+Route::group(['namespace'=>'pharmacyManagement'],function (){
 
     Route::get('/addDrug','UsersController@addDrug')->name('addDrug');
     Route::get('/newReports','UsersController@newReports')->name('newReports');
