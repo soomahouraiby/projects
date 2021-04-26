@@ -21,6 +21,10 @@ class CreateOtherDrugTable extends Migration
             $table->date('date_end_use');
             $table->longText('purpose_of_use');
 
+            $table->unsignedInteger('report_side_effects_no');
+            $table->foreign('report_side_effects_no')
+                ->references('report_side_effects_no')->on('report_side_effects');
+
             $table->timestamps();
         });
     }

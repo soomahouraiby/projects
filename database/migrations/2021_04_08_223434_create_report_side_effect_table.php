@@ -21,6 +21,9 @@ class CreateReportSideEffectTable extends Migration
             $table->date('date_stop_use');
             $table->string('Relation_with_patient',50);
             $table->date('expiration_date');
+            $table->longText('purpose_of_use');
+            $table->Text('how_get_drug');
+            $table->longText('how_use_drug');
 
             $table->unsignedInteger('report_no');
             $table->foreign('report_no')->references('report_no')->on('reports');
@@ -28,8 +31,6 @@ class CreateReportSideEffectTable extends Migration
             $table->unsignedInteger('drug_user_no');
             $table->foreign('drug_user_no')->references('drug_user_no')->on('drug_user');
 
-            $table->unsignedInteger('o_drug_no');
-            $table->foreign('o_drug_no')->references('o_drug_no')->on('other_drug');
 
             $table->timestamps();
         });

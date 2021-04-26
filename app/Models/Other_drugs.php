@@ -15,7 +15,7 @@ class Other_drugs extends Model
         'dose',
         'date_start_use',
         'date_end_use',
-        'purpose_of_use',
+        'purpose_of_use','report_side_effects_no'
 
     ];
     public $timestamps=false;

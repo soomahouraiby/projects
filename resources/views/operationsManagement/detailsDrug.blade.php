@@ -33,12 +33,6 @@
                                 <label >الاسم العلمي : </label>
                                 <label class="ml-3" >{{$rr->material_name}}</label>
                             </div>
-{{--                        <div>--}}
-{{--                            <label >الاسم العلمي : </label>--}}
-{{--                            @foreach($r as $rr)--}}
-{{--                                <label class="ml-3" >{{$rr->material_name}}</label>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
                             <div>
                                 <label > اسم الوكيل : </label>
                                 <label  class="ml-3">{{$rr->agent_name}}</label>
@@ -51,9 +45,15 @@
                                 <label > الاعراض : </label>
                                 <label  class="ml-3">{{$rr->side_effects}}</label>
                             </div >
-                            <div class="form-group raw   border-bottom " style="display: flex; flex-wrap: wrap; ">
+                            <div>
                                 <label > رقم الشحنة : </label>
                                 <label  class="ml-3">{{$rr->batch_num}}</label>
+                                <label>السحب : </label>
+                                <label  class="ml-3">{{$rr->shipment_drawn}}</label>
+                                <label >الاستثناء : </label>
+                                <label class="ml-3" >{{$rr->exception}}</label>
+                            </div>
+                            <div class="form-group raw   border-bottom " style="display: flex; flex-wrap: wrap; ">
                                 <label>  تاريخ الانتاج : </label>
                                 <label  class="ml-3">{{$rr->production_date}}</label>
                                 <label > تاريخ الانتهاء :</label>

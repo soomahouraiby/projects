@@ -10,15 +10,15 @@ class  Report_side_effects extends Model
     //use HasFactory;
     protected $table=" report_side_effects";
     protected $fillable = [
-        'report_side_effects_no', 'authors_name', 'batch_number', 'authors_phone',
-         'date_start_use',  'dose', 'status_stop_use', 'date_stop_use',
-        'notes', 'drug_user_no ', 'o_drug_no ','report_no','expiration_date','Relation_with_patient'
+        'report_side_effects_no', 'date_start_use',  'dose', 'status_stop_use', 'date_stop_use','how_get_drug',
+         'drug_user_no ', 'report_no','expiration_date','Relation_with_patient','purpose_of_use','how_use_drug'
     ];
     public $timestamps=false;
 
 
-//    protected $hidden = [
-//         'report_details_no',
-//    ];
+    public function report()
+    {
+        return $this->belongsTo(Reports::class, 'report_no');
+    }
 
 }

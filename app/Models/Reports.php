@@ -54,6 +54,11 @@ class Reports extends Model
 
     }
 
+    public function reportSideEffect(){
+        return $this->hasOne('App\Models\report_side_effect','report_no');
+
+    }
+
 //    public function effective_material(){
 //        return $this->hasOneThrough(Effective_materials::class,Commercial_drugs::class);
 //

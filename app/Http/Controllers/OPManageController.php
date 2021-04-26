@@ -137,6 +137,31 @@ class OPManageController extends Controller
         return view('operationsManagement.detailsSmuggledReport', compact('report'));
     }
 
+//عشان تفاصيل الدواء
+    public function detailsDrug($drug_no){
+
+        $r = DB::table('commercial_drug')
+            ->join('combination', 'combination.drug_no', '=','commercial_drug.drug_no')
+            ->join('effective_material', 'combination.material_no', '=', 'effective_material.material_no')
+            ->join('batch_number', 'batch_number.drug_no', '=','commercial_drug.drug_no')
+            ->join('shipments', 'batch_number.shipment_no', '=', 'shipments.shipment_no')
+            ->join('agents', 'commercial_drug.agent_no', '=', 'agents.agent_no')
+            ->join('companies', 'commercial_drug.company_no', '=', 'companies.company_no')
+            ->select('commercial_drug.drug_name','commercial_drug.how_to_use'
+                ,'commercial_drug.side_effects','commercial_drug.drug_no','agents.agent_name'
+                ,'effective_material.material_name','companies.company_name','companies.company_country'
+                ,'batch_number.batch_num','shipments.production_date','shipments.expiry_date'
+                ,'shipments.shipment_drawn','shipments.exception')
+            ->where('commercial_drug.drug_no','=',$drug_no)
+            ->get();
+
+
+        return view('operationsManagement/detailsDrug',compact('r'));
+        // return response($r) ;
+
+    }
+
+
 //عشان تحويل البلاغات الوارده
     public function transferReports($report_no,Request $request)
     {
@@ -286,29 +311,6 @@ class OPManageController extends Controller
             ->get();
         return view('operationsManagement/followReports',compact('reports'))
             ->with(['success' => 'تم الانهاء بنجاح ']);
-    }
-
-//عشان تفاصيل الدواء
-    public function detailsDrug($drug_no){
-
-        $r = DB::table('commercial_drug')
-            ->join('combination', 'combination.drug_no', '=','commercial_drug.drug_no')
-            ->join('effective_material', 'combination.material_no', '=', 'effective_material.material_no')
-            ->join('batch_number', 'batch_number.drug_no', '=','commercial_drug.drug_no')
-            ->join('shipments', 'batch_number.shipment_no', '=', 'shipments.shipment_no')
-            ->join('agents', 'commercial_drug.agent_no', '=', 'agents.agent_no')
-            ->join('companies', 'commercial_drug.company_no', '=', 'companies.company_no')
-            ->select('commercial_drug.drug_name','commercial_drug.how_to_use'
-                ,'commercial_drug.side_effects','commercial_drug.drug_no','agents.agent_name'
-                ,'effective_material.material_name','companies.company_name','companies.company_country'
-            ,'batch_number.batch_num','shipments.production_date','shipments.expiry_date')
-            ->where('commercial_drug.drug_no','=',$drug_no)
-            ->get();
-
-
-        return view('operationsManagement/detailsDrug',compact('r'));
-        // return response($r) ;
-
     }
 
 //عشان اضافة بلاغ
