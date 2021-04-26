@@ -20,4 +20,9 @@ class Other_drugs extends Model
     ];
     public $timestamps=false;
 
+    public function report_detail()
+    {
+        return $this->belongsTo(Report_side_effects::class, 'report_side_effects_no');
+    }
+
 }

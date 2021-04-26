@@ -23,7 +23,7 @@ class CreateOtherDrugTable extends Migration
 
             $table->unsignedInteger('report_side_effects_no');
             $table->foreign('report_side_effects_no')
-                ->references('report_side_effects_no')->on('report_side_effects');
+                ->references('report_side_effects_no')->on('report_side_effects_no');
 
             $table->timestamps();
         });
