@@ -14,7 +14,7 @@ class Side_effects extends Model
         'side_effect',
         'date_st_effect',
         'range_dangerous',
-        'statu_side',
+        'status_patient_now',
         'drug_user_no',
 
     ];
