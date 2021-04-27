@@ -137,6 +137,51 @@ class OPManageController extends Controller
         return view('operationsManagement.detailsSmuggledReport', compact('report'));
     }
 
+
+//عشان تفاصيل كل البلاغات المسحوبة والغير مطابقة بدون زر التحويل
+    public function detailsReport2($report_no){
+        $reports = DB::table('reports')->select('reports.report_no')
+            ->where('report_no','=', $report_no)->get();  // search in given table id only
+        if (!$reports)
+            return redirect()->back();
+
+        $report = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->join('site', 'reports.site_no', '=', 'site.site_no')
+            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
+            ->select('reports.report_no', 'app_user.app_user_name', 'app_user.app_user_phone',
+                'app_user.adjective', 'app_user.age', 'site.pharmacy_name',
+                'site.street_name', 'site.site_dec', 'reports.notes_user', 'reports.report_date',
+                'types_reports.type_report', 'reports.drug_picture'
+                , 'commercial_drug.drug_name', 'commercial_drug.drug_photo','commercial_drug.how_to_use'
+                ,'commercial_drug.side_effects','commercial_drug.drug_no')
+            ->where('report_no', '=', $report_no)->get();
+        return view('operationsManagement.detailsReport2', compact('report'));
+
+    }
+ //عشان تفاصيل كل البلاغات المهربة بدون زر التحويل
+    public function detailsSmuggledReport2($report_no){
+        //استخدمت هذا بدل find
+        $reports = DB::table('reports')->select('reports.report_no')
+            ->where('report_no','=', $report_no)->get();  // search in given table id only
+        if (!$reports)
+            return redirect()->back();
+
+        $report = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
+            ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
+            ->join('site', 'reports.site_no', '=', 'site.site_no')
+            ->select('reports.report_no', 'app_user.app_user_name', 'app_user.app_user_phone',
+                'app_user.adjective', 'app_user.age'
+                , 'site.pharmacy_name', 'site.street_name', 'site.site_dec'
+                , 'reports.notes_user', 'reports.report_date', 'types_reports.type_report'
+                , 'reports.drug_picture', 'reports.commercial_name', 'reports.material_name',
+                'reports.agent_name', 'reports.company_name')
+            ->where('report_no', '=', $report_no)->get();
+        return view('operationsManagement.detailsSmuggledReport2', compact('report'));
+    }
+
 //عشان تفاصيل الدواء
     public function detailsDrug($drug_no){
 
@@ -177,45 +222,57 @@ class OPManageController extends Controller
 // عشان عرض المتابعة للبلاغات
     public function followReports(){
         $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
             ->select('reports.report_no','reports.authors_name','app_user.app_user_name',
                 'reports.report_date', 'reports.transfer_date','reports.transfer_party',
-                'reports.report_statues' )
+                'reports.report_statues' , 'types_reports.type_report')
             ->where('report_statues','!=',null)
             ->where('transfer_party','!=',null)
+            ->where('type_report','!=','اعراض جانبية')
+            ->where('type_report','!=','جودة')
             ->get();
         return view('operationsManagement/followReports',compact('reports'));
     }
     //عشان اللفلترة حق قيد المتابعة
     public function followingReports(){
         $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
             ->select('reports.report_no','reports.authors_name','app_user.app_user_name',
                 'reports.report_date', 'reports.transfer_date','reports.transfer_party',
-                'reports.report_statues' )
+                'reports.report_statues' , 'types_reports.type_report')
             ->where('report_statues','=','قيد المتابعة')
+            ->where('type_report','!=','اعراض جانبية')
+            ->where('type_report','!=','جودة')
             ->get();
         return view('operationsManagement/followReports',compact('reports'));
     }
     //عشان اللفلترة حق تمت المتابعة
     public function followDoneReports(){
         $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
             ->select('reports.report_no','reports.authors_name','app_user.app_user_name',
                 'reports.report_date', 'reports.transfer_date','reports.transfer_party',
-                'reports.report_statues' )
+                'reports.report_statues' , 'types_reports.type_report')
             ->where('report_statues','=','تمت المتابعة')
+            ->where('type_report','!=','اعراض جانبية')
+            ->where('type_report','!=','جودة')
             ->get();
         return view('operationsManagement/followReports',compact('reports'));
     }
     //عشان اللفلترة حق تم الانهاء
     public function doneReports(){
         $reports = DB::table('reports')
+            ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
             ->select('reports.report_no','reports.authors_name','app_user.app_user_name',
                 'reports.report_date', 'reports.transfer_date','reports.transfer_party',
-                'reports.report_statues' )
+                'reports.report_statues' , 'types_reports.type_report')
             ->where('report_statues','=','تم الانهاء')
+            ->where('type_report','!=','اعراض جانبية')
+            ->where('type_report','!=','جودة')
             ->get();
         return view('operationsManagement/followReports',compact('reports'));
     }
@@ -231,11 +288,12 @@ class OPManageController extends Controller
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
             ->join('site', 'reports.site_no', '=', 'site.site_no')
-            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
+            //->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
             ->select('reports.report_no','reports.authors_name','reports.authors_phone',
-            'app_user.app_user_name','app_user.app_user_phone'
-                ,'site.pharmacy_name','types_reports.type_report','commercial_drug.drug_name')
+            'app_user.app_user_name','app_user.app_user_phone','reports.commercial_name'
+                ,'site.pharmacy_name','types_reports.type_report','reports.report_date')
             ->where('report_no','=', $report_no)->get();
+
 
         $procedures=DB::table('procedures')->select('procedures.procedure'
             ,'procedures.procedure_date','procedures.procedure_result')
@@ -254,10 +312,9 @@ class OPManageController extends Controller
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
             ->join('site', 'reports.site_no', '=', 'site.site_no')
-            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
             ->select('reports.report_no','reports.authors_name','reports.authors_phone',
-            'app_user.app_user_name','app_user.app_user_phone'
-                ,'site.pharmacy_name','types_reports.type_report','commercial_drug.drug_name')
+            'app_user.app_user_name','app_user.app_user_phone','reports.commercial_name'
+                ,'site.pharmacy_name','types_reports.type_report','reports.report_date')
             ->where('report_no','=', $report_no)->get();
 
         $procedures=DB::table('procedures')->select('procedures.procedure'
@@ -277,10 +334,9 @@ class OPManageController extends Controller
             ->join('types_reports', 'reports.type_report_no', '=', 'types_reports.type_report_no')
             ->join('app_user', 'reports.app_user_no', '=', 'app_user.app_user_no')
             ->join('site', 'reports.site_no', '=', 'site.site_no')
-            ->join('commercial_drug', 'reports.drug_no', '=', 'commercial_drug.drug_no')
             ->select('reports.report_no','reports.authors_name','reports.authors_phone',
-            'app_user.app_user_name','app_user.app_user_phone'
-                ,'site.pharmacy_name','types_reports.type_report','commercial_drug.drug_name','reports.opmanage_notes')
+            'app_user.app_user_name','app_user.app_user_phone','reports.commercial_name','reports.report_date'
+                ,'site.pharmacy_name','types_reports.type_report','reports.opmanage_notes')
             //->where('opmanage_notes','!=',null)
             ->where('report_no','=', $report_no)
             ->get();

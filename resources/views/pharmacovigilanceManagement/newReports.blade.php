@@ -44,6 +44,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @if(isset($reports))
                     @foreach($reports as $report)
                         @if($report -> type_report=='اعراض جانبية')
                             <tr class="reportRow">
@@ -83,6 +84,7 @@
                             </tr>
                         @endif
                     @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>

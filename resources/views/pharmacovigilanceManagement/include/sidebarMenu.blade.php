@@ -13,24 +13,18 @@
             </li>
                 <ul class="UL">
                 <li class="nav-item " >
-                    <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/newEffectReports')}}">
+                    <a class="nav-link active " aria-current="page" href="{{url('pharmacovigilanceManagement/newEffectReports')}}">
                         <i class="far fa-newspaper"></i>
                         <span data-feather="file" class="ml-2">اعراض جانبية</span>
                     </a>
                 </li>
                 <li class="nav-item " >
-                    <a class="nav-link active " aria-current="page" href="{{url('operationsManagement/newQualityReports')}}">
+                    <a class="nav-link active " aria-current="page" href="{{url('pharmacovigilanceManagement/newQualityReports')}}">
                         <i class="far fa-newspaper"></i>
                         <span data-feather="file" class="ml-2">جودة</span>
                     </a>
                 </li>
             </ul>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('PHC_addReport')}}">
-                    <i class="fas fa-plus "></i>
-                    <span data-feather="file" class="ml-2"> إضافة بلاغ جديد</span>
-                </a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link active " aria-current="page" href="{{route('PHC_followReports')}}">
                     <i class="fas fa-chalkboard-teacher "></i>

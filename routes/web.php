@@ -34,8 +34,10 @@ Route::group(['prefix'=>'operationsManagement'],function (){
     Route::get('/followDoneReports','OPManageController@followDoneReports')->name('OP_followDoneReports');
     Route::get('/DoneReports','OPManageController@DoneReports')->name('OP_DoneReports');
     Route::get('/detailsReport/{report_no}','OPManageController@detailsReport')->name('OP_detailsReport');
+    Route::get('/detailsReport2/{report_no}','OPManageController@detailsReport2')->name('OP_detailsReport2');
     Route::get('/detailsDrug/{drug_no}','OPManageController@detailsDrug')->name('OP_detailsDrug');
     Route::get('/detailsSmuggledReport/{report_no}','OPManageController@detailsSmuggledReport')->name('OP_detailsSmuggledReport');
+    Route::get('/detailsSmuggledReport2/{report_no}','OPManageController@detailsSmuggledReport2')->name('OP_detailsSmuggledReport2');
     Route::get('/followedUp/{report_no}','OPManageController@followedUp')->name('OP_followedUp');
     Route::get('/followedUp2/{report_no}','OPManageController@followedUp2')->name('OP_followedUp2');
     Route::get('/followedUp3/{report_no}','OPManageController@followedUp3')->name('OP_followedUp3');
@@ -66,14 +68,15 @@ Route::group(['prefix'=>'pharmacovigilanceManagement'],function (){
     Route::get('/addReport','PHCManageController@addReport')->name('PHC_addReport');
     Route::get('/followReports','PHCManageController@followReports')->name('PHC_followReports');
     Route::get('/followingReports','PHCManageController@followingReports')->name('PHC_followingReports');
-    Route::get('/DoneReports','PHCManageController@DoneReports')->name('PHC_DoneReports');
     Route::get('/detailsReport/{report_no}','PHCManageController@detailsReport')->name('PHC_detailsReport');
     Route::get('/detailsEffectReport/{report_no}','PHCManageController@detailsEffectReport')->name('PHC_detailsEffectReport');
+    Route::get('/detailsReport2/{report_no}','PHCManageController@detailsReport2')->name('PHC_detailsReport2');
+    Route::get('/detailsEffectReport2/{report_no}','PHCManageController@detailsEffectReport2')->name('PHC_detailsEffectReport2');
     Route::get('/detailsDrug/{drug_no}','PHCManageController@detailsDrug')->name('PHC_detailsDrug');
     Route::get('/followedUp/{report_no}','PHCManageController@followedUp')->name('PHC_followedUp');
     Route::get('/followedUp2/{report_no}','PHCManageController@followedUp2')->name('PHC_followedUp2');
-    Route::get('/editReport/{report_no}', 'PHCManageController@editReport')->name('PHC_editReport');
-    Route::post('/saveOPMNotes/{report_no}', 'PHCManageController@saveOPMNotes')->name('PHC_saveOPMNotes');
+    Route::get('/createProcedure/{report_no}', 'PHCManageController@createProcedure')->name('PHC_createProcedure');
+    Route::post('/store/{report_no}', 'PHCManageController@store')->name('PHC_store');
 });
 
 

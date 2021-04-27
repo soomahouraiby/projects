@@ -43,13 +43,14 @@
                             </th>
                             <th class="sort pr-1 align-middle white-space-nowrap text-left" data-sort="name">اسم المبلغ</th>
                             <th class="sort pr-1 align-middle white-space-nowrap text-left" data-sort="email">تاريخ البلاغ</th>
-                            <th class="sort pr-1 align-middle white-space-nowrap text-left" data-sort="product">اسم الدواء</th>
+{{--                            <th class="sort pr-1 align-middle white-space-nowrap text-left" data-sort="product">اسم الدواء</th>--}}
 {{--                            <th class="sort pr-1 align-middle white-space-nowrap text-left" data-sort="payment">الجهه المُحال إليها</th>--}}
                             <th class="sort pr-1 align-middle white-space-nowrap text-left" data-sort="amount">حالة البلاغ</th>
                             <th class="no-sort pr-1 align-middle data-table-row-action"></th>
                         </tr>
                         </thead>
                         <tbody class="list" id="table-purchase-body">
+                        @if(isset($reports))
                         @foreach($reports as $report)
                             @if($report -> report_statues=='قيد المتابعة')
                                     <tr class="btn-reveal-trigger">
@@ -60,7 +61,7 @@
                                         <td class="align-middle white-space-nowrap text-left name ">{{$report -> app_user_name}}</td>
                                         <td class="align-middle white-space-nowrap text-left email">{{$report -> report_date}}</td>
                                         <td class="align-middle text-left  white-space-nowrap payment">
-                                            <a class="badge badge rounded-pill badge-soft-success  align-items-center text-left nav-link active" href="{{url('operationsManagement/followedUp',$report -> report_no)}}" style="background-color:#D9DEFF; color:#5468FF;  height:25px;"  >
+                                            <a class="badge badge rounded-pill badge-soft-success  align-items-center text-left nav-link active" href="{{url('pharmacovigilanceManagement/followedUp',$report -> report_no)}}" style="background-color:#D9DEFF; color:#5468FF;  height:25px;"  >
                                                 <span data-feather="file  text-center">{{$report -> report_statues}} </span>
                                                 <i class="fas fa-file-contract ml-3"></i>
                                             </a>
@@ -107,6 +108,7 @@
                                     </tr>
                         @endif
                         @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div>
