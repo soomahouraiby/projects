@@ -29,19 +29,39 @@
                 <form>
                     @if(isset($report))
                         @foreach($report as $reports)
-                            <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
-                                <label class="col-form-label Text ml-3 mr-4 ">اسم المبلغ : </label>
-                                <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_name}}  </label>
-                                <label class="col-form-label Text ml-5 mr-4 ">رقم الهاتف : </label>
-                                <label class="col-form-label  ml-2 mr-4  ">{{$reports -> authors_phone}}  </label>
-                            </div>
-                            <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
-                                <label class="col-form-label Text  ml-5 mr-4 ">اسم الدواء : </label>
-                                <label class="col-form-label ml-2 mr-4 mb-3  ">{{$reports -> drug_name}}  </label>
-                            </div>
-                            <div class="form-group raw mt-4  ">
-                                <a class="text-center col-form-label mb-3"  href="{{url('pharmacovigilanceManagement/detailsReport',$reports -> report_no)}}" style="margin-right: 45%"> تفاصيل البلاغ</a>
-                            </div>
+                            @if($reports -> type_report=='اعراض جانبية')
+                                <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
+                                    <label class="col-form-label Text ml-3 mr-4 ">اسم المبلغ : </label>
+                                    <label class="col-form-label  ml-2 mr-4  ">{{$reports -> app_user_name}}  </label>
+                                    <label class="col-form-label Text ml-5 mr-4 ">رقم الهاتف : </label>
+                                    <label class="col-form-label  ml-2 mr-4  ">{{$reports -> app_user_phone}}  </label>
+                                </div>
+                                <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
+                                    <label class="col-form-label  Text ml-3 mr-4 ">نوع البلاغ : </label>
+                                    <label class="col-form-label  ml-2 mr-4 ">{{$reports -> type_report}}  </label>
+                                    <label class="col-form-label Text  ml-5 mr-4 ">اسم الدواء : </label>
+                                    <label class="col-form-label ml-2 mr-4 mb-3  ">{{$reports -> drug_name}}  </label>
+                                </div>
+                                <div class="form-group raw mt-4  ">
+                                    <a class="text-center col-form-label mb-3"  href="{{url('pharmacovigilanceManagement/detailsEffectReport2',$reports -> report_no)}}" style="margin-right: 45%"> تفاصيل البلاغ</a>
+                                </div>
+                            @elseif($reports -> type_report=='جودة')
+                                <div class="form-group raw mt-2 " style="display: flex; flex-wrap: wrap;  ">
+                                    <label class="col-form-label Text ml-3 mr-4 ">اسم المبلغ : </label>
+                                    <label class="col-form-label  ml-2 mr-4  ">{{$reports -> app_user_name}}  </label>
+                                    <label class="col-form-label Text ml-5 mr-4 ">رقم الهاتف : </label>
+                                    <label class="col-form-label  ml-2 mr-4  ">{{$reports -> app_user_phone}}  </label>
+                                </div>
+                                <div class="form-group raw mt-4  border-bottom " style="display: flex; flex-wrap: wrap; ">
+                                    <label class="col-form-label  Text ml-3 mr-4 ">نوع البلاغ : </label>
+                                    <label class="col-form-label  ml-2 mr-4 ">{{$reports -> type_report}}  </label>
+                                    <label class="col-form-label Text  ml-5 mr-4 ">اسم الدواء : </label>
+                                    <label class="col-form-label ml-2 mr-4 mb-3  ">{{$reports -> drug_name}}  </label>
+                                </div>
+                                <div class="form-group raw mt-4  ">
+                                    <a class="text-center col-form-label mb-3"  href="{{url('pharmacovigilanceManagement/detailsReport2',$reports -> report_no)}}" style="margin-right: 45%"> تفاصيل البلاغ</a>
+                                </div>
+                            @endif
                         @endforeach
                     @endif
                 </form>

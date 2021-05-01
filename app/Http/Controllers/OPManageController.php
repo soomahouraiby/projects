@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\NewNotification;
 use App\Models\Report_detailes;
 use App\Models\Sites;
 use App\Models\Commercial_drugs;
@@ -215,6 +216,7 @@ class OPManageController extends Controller
             ->update(['transfer_party' => 'ادارة الصيدلة',
                 'transfer_date' => Carbon::now()->toDateTimeString()
                 ,'state'=>1,'reports.report_statues'=>'قيد المتابعة']);
+        event(new NewNotification());
         return redirect()->back()->with(['success' => 'تم التحويل بنجاح ']);
     }
 
